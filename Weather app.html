@@ -2,30 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Makes website responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <!-- Connect CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Main container -->
     <div class="container">
-        <!-- Heading -->
         <h1>Weather App</h1>
-        <!-- Input box for city -->
-        <input
-            type="text"
-            id="cityInput"
-            placeholder="Enter city name" >
-        <!-- Search button -->
-        <button onclick="getWeather()">
-            Search
-        </button>
-        <!-- Weather information will appear here -->
+       <input type="text" id="cityInput" placeholder="Enter city name">
+        <button onclick="getWeather()"> Search </button>
         <div id="weatherResult"></div>
+        <script src="script.js"></script>
+        </div>
     </div>
-    <!-- Connect JavaScript file -->
-    <script src="script.js"></script>
 </body>
 </html>

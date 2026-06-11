@@ -21,68 +21,6 @@ form.addEventListener("submit", async (e) => {
         console.error(error);
     }
 });
-/* Weather app*/
-async function getWeather()
-{
-    // Get city name
-    const city =
-        document.getElementById("cityInput").value;
-    // API Key
-    const apiKey = "YOUR_API_KEY";
-    // API URL
-    const url =
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    try
-    {
-        // Fetch data
-        const response =
-            await fetch(url);
-        // Convert JSON
-        const data =
-            await response.json();
-        // Check city exists
-        if(data.cod === "404")
-        {
-            document.getElementById(
-                "weatherResult"
-            ).innerHTML =
-            "<h3>City not found</h3>";
-            return;
-        }
-        // Display data
-        document.getElementById(
-            "weatherResult"
-        ).innerHTML =
-        `
-        <h2>${data.name}</h2>
-        <p>
-            Temperature:
-            ${data.main.temp} °C
-        </p>
-        <p>
-            Humidity:
-            ${data.main.humidity}%
-        </p>
-        <p>
-            Wind Speed:
-            ${data.wind.speed} m/s
-        </p>
-        <p>
-            Weather:
-            ${data.weather[0].description}
-        </p>
-        `;
-    }
-    catch(error)
-    {
-        document.getElementById(
-            "weatherResult"
-        ).innerHTML =
-        "<h3>Error fetching data</h3>";
-
-        console.log(error);
-    }
-}
 
 /*Quize App*/
 const quizData = [
@@ -220,3 +158,34 @@ submitBtn.addEventListener(
         }
     }
 });
+/*Weather*/
+async function getWeather() {
+    const city = document.getElementById("cityInput").value;
+    const result = document.getElementById("weatherResult");
+    if (city === "") {
+        result.innerHTML = "<p>Please enter a city name.</p>";
+        return;
+    }
+    const apiKey = "1a2b3c4d5e6f7g8h9i0j123456789abc";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data.cod !== 200) {
+            result.innerHTML = `<p>${data.message}</p>`;
+            return;
+        }
+        result.innerHTML = `
+            <div class="weather-card">
+                <h2>${data.name}, ${data.sys.country}</h2>
+                <p>🌤 Weather: ${data.weather[0].main}</p>
+                <p>🌡 Temperature: ${data.main.temp} °C</p>
+                <p>💧 Humidity: ${data.main.humidity}%</p>
+                <p>🌬 Wind Speed: ${data.wind.speed} m/s</p>
+            </div>
+        `;
+    } catch (error) {
+        result.innerHTML = "<p>Error fetching weather data.</p>";
+        console.log(error);
+    }
+}
