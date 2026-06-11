@@ -15,16 +15,24 @@ body{
     background:#f4f4f4;
 }
 header{
-    background:#111;
-    color:white;
-    padding:15px 0;
-    position:sticky;
-    top:0;
+   position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #111;
+    color: white;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
 }
-nav{
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
+nav
+   nav a{
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 18px;
 }
 nav ul{
     display:flex;
@@ -131,90 +139,9 @@ footer{
         </ul>
     </nav>
 </header>
-<!-- Home Section -->
-<section id="home" class="hero">
-    <h1>Build Your Dream Body</h1>
-    <p>Join FitZone Gym and start your fitness journey today.</p>
-    <div id="joinForm" style="display:none; margin-top:20px;">
-    <form onsubmit="registerMember(event)">
-        <input type="text" id="memberName" placeholder="Enter Name" required><br><br>
-        <input type="email" id="memberEmail" placeholder="Enter Email" required><br><br>
-        <input type="tel" id="memberPhone" placeholder="Enter Mobile Number" required><br><br>
-        <select id="memberPlan" required>
-            <option value="">Select Plan</option>
-            <option>Basic Plan</option>
-            <option>Standard Plan</option>
-            <option>Premium Plan</option>
-        </select><br><br>
-        <button type="submit" class="btn">Submit</button>
-    </form>
-</div>
-</section>
-<!-- Services Section -->
-<section id="services">
-    <h2>Our Services</h2>
-    <div class="container">
-        <div class="card">
-            <h3>Personal Training</h3>
-            <p>Professional trainers to guide your fitness journey.</p>
-        </div>
-        <div class="card">
-            <h3>Weight Training</h3>
-            <p>Advanced equipment for strength building.</p>
-        </div>
-        <div class="card">
-            <h3>Cardio Training</h3>
-            <p>Improve stamina and overall health.</p>
-        </div>
-    </div>
-</section>
-<!-- Plans Section -->
-<section id="plans">
-    <h2>Membership Plans</h2>
-    <div class="container">
-        <div class="card">
-            <h3>Basic Plan</h3>
-            <h2>₹999</h2>
-            <p>Gym Access</p>
-            <p>Locker Facility</p>
-        </div>
-        <div class="card">
-            <h3>Standard Plan</h3>
-            <h2>₹1499</h2>
-            <p>Gym Access</p>
-            <p>Personal Trainer</p>
-        </div>
-        <div class="card">
-            <h3>Premium Plan</h3>
-            <h2>₹2499</h2>
-            <p>All Facilities</p>
-            <p>Diet Plan</p>
-        </div>
-    </div>
-</section>
-<!-- Contact Section -->
-<section id="contact">
-    <h2>Contact Us</h2>
-    <form class="contact-form" id="contactForm">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <textarea rows="5" placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-</section>
-<footer>
-    <p>© 2026 FitZone Gym | All Rights Reserved</p>
-</footer>
-<script>
-function joinGym(){
-    alert("Welcome to FitZone Gym!");
-}
-document.getElementById("contactForm").addEventListener("submit",function(e){
-    e.preventDefault();
-    let name = document.getElementById("name").value;
-    alert("Thank You " + name + "! We will contact you soon.");
-    this.reset();
-});
-</script>
+<section class="hero">
+    <h1>WELCOME TO FITZONE GYM</h1>
+    <p>Build Your Body. Improve Your Health. Transform Your Life.</p>
+    <button class="plan">Join Now</button>
 </body>
 </html>
