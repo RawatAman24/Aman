@@ -481,6 +481,8 @@ body{
     font-size:14px;
 }
 
+
+
 /*Weather*/
 *{
     margin:0;
@@ -489,7 +491,7 @@ body{
     font-family:Arial, sans-serif;
 }
 body{
-    background:linear-gradient(to right,#4facfe,#00f2fe);
+    background:linear-gradient(to right,#007bff,#f4f4f4);
     display:flex;
     justify-content:center;
     align-items:center;
