@@ -1,0 +1,16 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+}
+.box{
+    width: 120px;
+    height: 120px;
+    border: 4px solid cyan;
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
