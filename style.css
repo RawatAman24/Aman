@@ -139,7 +139,6 @@ body{
     box-sizing:border-box;
     font-family:Arial, sans-serif;
 }
-
 header{
     position: fixed;
     top: 0;
@@ -153,44 +152,37 @@ header{
     align-items: center;
     z-index: 1000;
 }
-
 .logo{
     font-size:28px;
     font-weight:bold;
     color:orange;
 }
-
 nav a{
     color:white;
     text-decoration:none;
     margin-left:20px;
     font-size:18px;
 }
-
 nav a:hover{
     color:orange;
 }
 body{
     padding-top: 80px;
 }
-
 .hero{
     background:#222;
     color:white;
     text-align:center;
     padding:120px 20px;
 }
-
 .hero h1{
     font-size:50px;
     margin-bottom:20px;
 }
-
 .hero p{
     font-size:20px;
     margin-bottom:25px;
 }
-
 .hero button{
     padding:12px 30px;
     background:orange;
@@ -200,17 +192,14 @@ body{
     cursor:pointer;
     border-radius:5px;
 }
-
 .about{
     text-align:center;
     padding:60px 20px;
 }
-
 .about h2{
     color:orange;
     margin-bottom:15px;
 }
-
 .features{
     display:flex;
     justify-content:center;
@@ -218,7 +207,6 @@ body{
     padding:40px;
     flex-wrap:wrap;
 }
-
 .box{
     width:300px;
     background:#f4f4f4;
@@ -227,12 +215,10 @@ body{
     border-radius:10px;
     box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
-
 .box h3{
     color:orange;
     margin-bottom:10px;
 }
-
 footer{
     position:fixed;
     bottom:0;
@@ -249,19 +235,6 @@ footer{
 }
 body{
     background:#f4f4f4;
-}
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #111;
-    color: white;
-    padding: 15px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
 }
 .about{
     padding:50px;
@@ -324,11 +297,7 @@ header{
     margin-top:15px;
     color:#333;
 }
-footer{
-     position:fixed;
-    bottom:0;
-    width:100%;
-}
+
 
 /*Contact*/
 *{
@@ -491,7 +460,7 @@ body{
     font-family:Arial, sans-serif;
 }
 body{
-    background:linear-gradient(to right,#007bff,#f4f4f4);
+    background:linear-gradient(to right,#f4f4f4,#f4f4f4);
     display:flex;
     justify-content:center;
     align-items:center;
