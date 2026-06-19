@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Gym Supplement Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h2>🏋️ Gym Supplement Store</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="checkout.html" class="active">Checkout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Checkout Section -->
+    <section class="checkout-container">
+        <!-- Billing Form -->
+        <div class="checkout-form">
+            <h2>Billing Details</h2>
+            <form action="">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <textarea placeholder="Delivery Address" rows="4" required></textarea>
+                <input type="text" placeholder="City" required>
+                <input type="text" placeholder="State" required>
+                <input type="text" placeholder="PIN Code" required>
+                <select required>
+                    <option value="cart">Select Payment Method</option>
+                    <option>Cash on Delivery</option>
+                    <option>Credit Card</option>
+                    <option>Debit Card</option>
+                    <option>UPI</option>
+                    <option>Net Banking</option>
+                </select>
+                <button type="submit" class="place-order-btn"> Place Order </button>
+            </form>
+        </div>
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div class="summary-item">
+                <span>Premium Whey Protein</span>
+                <span>₹2,499</span>
+            </div>
+            <div class="summary-item">
+                <span>Creatine</span>
+                <span>₹999</span>
+            </div>
+            <hr>
+            <div class="summary-item">
+                <span>Subtotal</span>
+                <span>₹3,498</span>
+            </div>
+            <div class="summary-item">
+                <span>Shipping</span>
+                <span>₹100</span>
+            </div>
+            <div class="summary-item">
+                <span>GST</span>
+                <span>₹175</span>
+            </div>
+            <hr>
+            <div class="summary-item total">
+                <strong>Total</strong>
+                <strong>₹3,773</strong>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Gym Supplement Store. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
