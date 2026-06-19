@@ -75,9 +75,23 @@
             <div class="summary-item total">
                 <strong>Total</strong>
                 <strong>₹3,773</strong>
+                <div id="buy-now-summary"></div>
             </div>
         </div>
     </section>
+    <script>
+const product = JSON.parse(localStorage.getItem("buyNowProduct"));
+if (product) {
+    document.getElementById("buy-now-summary").innerHTML = `
+        <h3>Order Summary</h3>
+        <img src="${product.image}" alt="${product.name}" width="120">
+        <p><strong>Product:</strong> ${product.name}</p>
+        <p><strong>Price:</strong> ₹${product.price}</p>
+        <p><strong>Quantity:</strong> ${product.quantity}</p>
+        <p><strong>Total:</strong> ₹${product.price * product.quantity}</p>
+    `;
+}
+</script>
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Gym Supplement Store. All Rights Reserved.</p>

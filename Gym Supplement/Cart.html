@@ -36,47 +36,63 @@
                     <th>Remove</th>
                 </tr>
             </thead>
-            <tbody id="cart-items">
-                <tr>
-                    <td>Premium Whey Protein</td>
-                    <td>
-                        <img src="images/whey.jpg" alt="Whey Protein">
-                    </td>
-                    <td>₹2,499</td>
-                    <td>
-                        <input type="number" value="1" min="1">
-                    </td>
-                    <td>₹2,499</td>
-                    <td>
-                        <button class="remove-btn">Remove</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Creatine Monohydrate</td>
-                    <td>
-                        <img src="images/creatine.jpg" alt="Creatine">
-                    </td>
-                    <td>₹999</td>
-                    <td>
-                        <input type="number" value="1" min="1">
-                    </td>
-                    <td>₹999</td>
-                    <td>
-                        <button class="remove-btn">Remove</button>
-                    </td>
-                </tr>
-            </tbody>
+            <button onclick="buyNow()">Buy Now</button>
+<script>
+function buyNow() {
+    addToCart(
+        "Premium Whey Protein",
+        2499,
+        "images/whey.jpg"
+    );
+    window.location.href = "cart.html";
+}
+</script>
+           <script src="Cart.js"></script>
+<script>
+function loadCart() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let table = document.getElementById("cart-items");
+    let html = "";
+    let grandTotal = 0;
+    cart.forEach(function(item, index) {
+        let total = item.price * item.quantity;
+        grandTotal += total;
+        html += `
+        <tr>
+            <td>${item.name}</td>
+            <td>
+                <img src="${item.image}" width="70">
+            </td>
+            <td>₹${item.price}</td>
+            <td>${item.quantity}</td>
+            <td>₹${total}</td>
+            <td>
+                <button onclick="removeItem(${index})">
+                    Remove
+                </button>
+            </td>
+        </tr>
+        `;
+    });
+    table.innerHTML = html;
+    document.getElementById("grand-total").innerText =
+        "₹" + grandTotal;
+}
+function removeItem(index) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCart();
+}
+loadCart();
+</script>
         </table>
-        <div class="cart-summary">
-            <h2>Cart Summary</h2>
-            <p>Subtotal: <strong>₹4,497</strong></p>
-            <p>Shipping: <strong>₹100</strong></p>
-            <p>GST: <strong>₹225</strong></p>
-            <h3> Grand Totla</h3>
-             <a href="checkout.html" class="checkout-btn">
-                Proceed to Checkout
-            </a>
-        </div>
+       <div class="cart-summary">
+    <h2>Total: <span id="grand-total">₹0</span></h2>
+    <a href="checkout.html" class="checkout-btn">
+        Checkout
+    </a>
+</div>
     </section>
     <!-- Footer -->
     <footer>
