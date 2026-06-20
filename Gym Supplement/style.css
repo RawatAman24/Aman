@@ -324,6 +324,32 @@ nav ul li a.active {
 .product-card button:hover {
     background: #ff5500;
 }
+footer {
+    width: 100%;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    clear: both;
+}
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.products-grid,
+.products {
+    flex: 1;
+}
+footer {
+    margin-top: auto;
+}
 
 /*Product-details*/
 .product-details {
