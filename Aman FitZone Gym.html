@@ -1,147 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FitZone Gym</title>
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
-body{
-    background:#f4f4f4;
-}
-header{
-   position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #111;
-    color: white;
-    padding: 15px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-}
-nav
-   nav a{
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 18px;
-}
-nav ul{
-    display:flex;
-    list-style:none;
-}
-nav ul li{
-    margin:0 15px;
-}
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
-.hero{
-    height:100vh;
-    background:url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200")
-    center/cover;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    color:white;
-    text-align:center;
-}
-.hero h1{
-    font-size:55px;
-}
-.hero p{
-    font-size:20px;
-    margin:15px 0;
-}
-.btn{
-    background:orange;
-    color:white;
-    padding:12px 25px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-    font-size:18px;
-}
-section{
-    padding:60px 20px;
-    text-align:center;
-}
-h2{
-    margin-bottom:30px;
-    color:#333;
-}
-.container{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:20px;
-}
-.card{
-    background:white;
-    width:280px;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,.2);
-}
-.card h3{
-    margin-bottom:10px;
-    color:orange;
-}
-.contact-form{
-    max-width:500px;
-    margin:auto;
-}
-.contact-form input,
-.contact-form textarea{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border:1px solid #ccc;
-    border-radius:5px;
-}
-.contact-form button{
-    width:100%;
-    padding:12px;
-    background:orange;
-    color:white;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-}
-footer{
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:15px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitZone Gym</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: #f4f4f4;
+            padding-top: 60px; /* Prevents hero text from being hidden behind the fixed header */
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #111;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: orange;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: orange;
+        }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200") center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 55px;
+        }
+        .hero p {
+            font-size: 20px;
+            margin: 15px 0;
+        }
+        .btn {
+            background: orange;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #e08b00;
+        }
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 36px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            width: 280px;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            color: orange;
+            font-size: 22px;
+        }
+        .card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .contact-form {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 12px;
+            background: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .contact-form button:hover {
+            background: #e08b00;
+        }
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-<header>
-    <nav>
-        <h2>FitZone Gym</h2>
-        <ul>
-            <li><a href="Home.html">Home</a></li>
-            <li><a href="Service.html">Services</a></li>
-            <li><a href="plans">Plans</a></li>
-            <li><a href="contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-<section class="hero">
-    <h1>WELCOME TO FITZONE GYM</h1>
-    <p>Build Your Body. Improve Your Health. Transform Your Life.</p>
-    <button class="plan">Join Now</button>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">FITZONE</div>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Service.html">Services</a></li>
+                <li><a href="Plan.html">Plans</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>WELCOME TO FITZONE GYM</h1>
+        <p>Build Your Body. Improve Your Health. Transform Your Life.</p>
+        <a href="#plans" class="btn">Join Now</a>
+    </section>
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="container">
+            <div class="card">
+                <h3>Cardio Training</h3>
+                <p>High-intensity treadmill, cycling, and rowing sessions to boost your endurance and cardiovascular strength.</p>
+            </div>
+            <div class="card">
+                <h3>Weight Lifting</h3>
+                <p>Fully equipped free-weight and machine zones designed to help you scale your strength training safely.</p>
+            </div>
+            <div class="card">
+                <h3>Group Classes</h3>
+                <p>Energizing group workouts ranging from Yoga and Pilates to high-octane HIIT classes with certified coaches.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans" style="background: #e9e9e9;">
+        <h2>Membership Plans</h2>
+        <div class="container">
+            <div class="card">
+                <h3>Basic Plan</h3>
+                <p style="font-size: 24px; font-weight: bold; color: #333; margin-bottom: 10px;">$29/mo</p>
+                <p>Access to gym floor, standard equipment lockers, and basic shower amenities.</p>
+            </div>
+            <div class="card">
+                <h3>Premium Plan</h3>
+                <p style="font-size: 24px; font-weight: bold; color: #333; margin-bottom: 10px;">$49/mo</p>
+                <p>Includes full gym floor access, all group fitness classes, and one free personal training assessment.</p>
+            </div>
+            <div class="card">
+                <h3>Elite Plan</h3>
+                <p style="font-size: 24px; font-weight: bold; color: #333; margin-bottom: 10px;">$79/mo</p>
+                <p>24/7 unlimited access, dedicated personal coach sessions, nutritional tailoring, and recovery spa entrance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-form">
+            <form action="#" method="POST">
+                <input type="text" placeholder="Your Full Name" required>
+                <input type="email" placeholder="Your Email Address" required>
+                <textarea rows="5" placeholder="How can we help you achieve your goals?" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 FitZone Gym. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
