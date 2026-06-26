@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Launch</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        body{
+            height:100vh;
+            overflow:hidden;
+            background:linear-gradient(to top,#000,#04142a);
+            display:flex;
+            justify-content:center;
+            align-items:flex-end;
+            position:relative;
+        }
+        /* Title */
+        .text{
+            position:absolute;
+            top:40px;
+            color:white;
+            font-size:35px;
+            font-family:Arial, sans-serif;
+            letter-spacing:5px;
+            text-shadow:0 0 20px cyan;
+        }
+        /* Stars */
+        .star{
+            position:absolute;
+            width:4px;
+            height:4px;
+            background:white;
+            border-radius:50%;
+            box-shadow:0 0 10px white;
+        }
+        /* Rocket */
+        .rocket{
+            position:relative;
+            width:80px;
+            height:180px;
+            background:white;
+            border-radius:40px 40px 15px 15px;
+            animation:launch 5s infinite ease-in;
+        }
+        /* Rocket Nose */
+        .rocket::before{
+            content:"";
+            position:absolute;
+            top:-40px;
+            left:0;
+            width:0;
+            height:0;
+            border-left:40px solid transparent;
+            border-right:40px solid transparent;
+            border-bottom:40px solid white;
+        }
+        /* Window */
+        .window{
+            width:30px;
+            height:30px;
+            background:cyan;
+            border-radius:50%;
+            margin:35px auto;
+            box-shadow:0 0 15px cyan;
+        }
+        /* Wings */
+        .left,
+        .right{
+            position:absolute;
+            width:25px;
+            height:70px;
+            background:red;
+            bottom:20px;
+        }
+        .left{
+            left:-20px;
+            border-radius:20px 0 0 20px;
+        }
+        .right{
+            right:-20px;
+            border-radius:0 20px 20px 0;
+        }
+        /* Fire */
+        .fire{
+            position:absolute;
+            bottom:-60px;
+            left:50%;
+            transform:translateX(-50%);
+            width:30px;
+            height:60px;
+            background:linear-gradient(yellow,orange,red);
+            border-radius:50%;
+            animation:fire 0.5s infinite alternate;
+        }
+        /* Launch Animation */
+        @keyframes launch{
+            0%{
+                transform:translateY(0);
+            }
+            100%{
+                transform:translateY(-900px);
+            }
+        }
+        /* Fire Animation */
+        @keyframes fire{
+            from{
+                height:50px;
+            }
+            to{
+                height:80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="text">🚀 Rocket Launch</div>
+    <!-- Stars -->
+    <div class="star" style="top:10%; left:15%;"></div>
+    <div class="star" style="top:20%; left:70%;"></div>
+    <div class="star" style="top:35%; left:40%;"></div>
+    <div class="star" style="top:15%; left:90%;"></div>
+    <div class="star" style="top:60%; left:20%;"></div>
+    <div class="star" style="top:50%; left:80%;"></div>
+    <div class="star" style="top:70%; left:60%;"></div>
+    <div class="star" style="top:30%; left:10%;"></div>
+    <!-- Rocket -->
+    <div class="rocket">
+        <div class="window"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="fire"></div>
+    </div>
+
+</body>
+</html>
