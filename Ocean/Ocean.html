@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Ocean </title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                overflow: hidden;
+                height: 100vh;
+                background: linear-gradient(#02142c,#000);
+                position: relative;
+            }
+            .moon {
+                position: absolute;
+                top: 60px;
+                right: 100px;
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                background: white;
+                box-shadow: 0 0 40 white,0 0 80 cyan;
+            }
+            .star{
+                position: absolute;
+                width: 8px;
+                height: 8px;
+                background: white;
+                border-radius: 50%;
+                animation: blink 5s infinite alternate;
+            }
+            .ocean{
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 45%;
+                background: #012b52;
+                overflow: hidden;
+            }
+            .wave{
+                position: absolute;
+                width: 200%;
+                height: 120px;
+                border-radius: 45%;
+                background: rgba(0,255,255,.25);
+                animation: wavemave 8s linear infinite;
+            }
+            .wave:nth-child(1){
+                bottom: 70px;
+            }
+            .wave:nth-child(2){
+                bottom: 35px;
+                animation-duration: 6s;
+                opacity: .7;
+            }
+            .wave:nth-child(3){
+                bottom: 35px;
+                animation-duration: 4s;
+                opacity: .5;
+            }
+            .reflection{
+                position: absolute;
+                top: 180px;
+                right: 145px;
+                width: 18px;
+                height: 260px;
+                background: linear-gradient(white,transparent);
+                opacity: .5;
+                filter: blur(3px);
+            }
+            .title{
+                position: absolute;
+                top: 30px;
+                left: 50%;
+                transform: translate(-50%);
+                font-size: 38px;
+                font-family: arial;
+                letter-spacing: 6px;
+                color: white;
+                text-shadow: 0 0 20px cyan;
+            }
+            @keyframes wavemove{
+                from{
+                    transform: translateX(0);
+                }
+                to {transform: translateX(-50%); }
+            }
+            @keyframes blink{
+                from{opacity: .2;}
+                to{opacity: 1;}
+            }
+            </style>
+    </head>
+    <body>
+        <div class="title">OCEAN WAVES </div>
+        <div class="moon"></div>
+        <div class="reflection"></div>
+        <div class="star" style="top: 15%;left: 20%;"></div>
+        <div class="star" style="top: 10%;left: 60%;"></div>
+        <div class="star" style="top: 25%;left: 80%;"></div>
+        <div class="star" style="top: 35%;left: 30%;"></div>
+        <div class="star" style="top: 20%;left: 45%;"></div>
+        <div class="ocean">
+            <div class="wave"></div>
+            </div><div class="wave"></div>
+            </div><div class="wave"></div>
+        </div>
+    </body>
+</html>
