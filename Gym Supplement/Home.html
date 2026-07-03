@@ -14,12 +14,13 @@
         </div>
         <nav>
             <ul>
-                <li><a href="Home.html">Home</a></li>
+                <li><a href="Home.html" class="active">Home</a></li>
                 <li><a href="Products.html">Products</a></li>
                 <li><a href="About.html">About</a></li>
                 <li><a href="Contact.html">Contact</a></li>
-                <li><a href="Cart.html">Cart</a></li>
+                <li><a href="Cart.html">Cart (<span id="cartCount">0</span>)</a></li>
                 <li><a href="Registration.html">Registration</a></li>
+                <li><a href="Login.html">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -27,10 +28,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Build Strength. Fuel Performance.</h1>
-            <p>
-                Premium quality protein, creatine, vitamins, and fitness
-                supplements to support your fitness journey.
-            </p>
+            <p>Premium quality protein, creatine, vitamins, and fitness supplements to support your fitness journey.</p>
             <a href="Products.html" class="btn">Shop Now</a>
         </div>
     </section>
@@ -39,22 +37,22 @@
         <h2>Featured Supplements</h2>
         <div class="product-container">
             <div class="card">
-                <img src="C:\Users\Aman Rawat\My Web\images\Whey Prorein.jpg"alt="Whey Protein">
+                <img src="images/whey.jpg" alt="Whey Protein">
                 <h3>Whey Protein</h3>
                 <p>Price: ₹2,499</p>
-                <button>Add to Cart</button>
+                <button type="button" onclick="addToCart('Premium Whey Protein',2499,'images/whey.jpg')">Add to Cart</button>
             </div>
             <div class="card">
-                <img src="C:\Users\Aman Rawat\My Web\images\creatine.jpg" alt="Creatine">
+                <img src="images/creatine.jpg" alt="Creatine">
                 <h3>Creatine</h3>
                 <p>Price: ₹999</p>
-                <button>Add to Cart</button>
+                <button type="button" onclick="addToCart('Premium Creatine',999,'images/creatine.jpg')">Add to Cart</button>
             </div>
             <div class="card">
-                <img src="C:\Users\Aman Rawat\My Web\images\preworkout.jpg" alt="Pre Workout">
+                <img src="images/preworkout.jpg" alt="Pre Workout">
                 <h3>Pre Workout</h3>
                 <p>Price: ₹1,599</p>
-                <button>Add to Cart</button>
+                <button type="button" onclick="addToCart('Premium Pre Workout',1599,'images/preworkout.jpg')">Add to Cart</button>
             </div>
         </div>
     </section>
@@ -80,5 +78,6 @@
     <footer>
         <p>&copy; 2026 Gym Supplement Store. All Rights Reserved.</p>
     </footer>
+    <script src="cart.js"></script>
 </body>
 </html>

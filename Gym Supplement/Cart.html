@@ -3,99 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart - Gym Supplement Store</title>
+    <title>Shopping Cart | Gym Supplement Store</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <h2>🏋️ Gym Supplement Store</h2>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="Home.html">Home</a></li>
-                <li><a href="Products.html">Products</a></li>
-                <li><a href="About.html">About</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-                <li><a href="Cart.html" class="active">Cart</a></li>
-                <li><a href="Registration.html">Registration</a></li>
-            </ul>
-        </nav>
-    </header>
-    <!-- Cart Section -->
-    <section class="cart-section">
-        <h1>Your Shopping Cart</h1>
-        <table class="cart-table">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
-<script>
-function buyNow() {
-    addToCart(
-        "Premium Whey Protein",
-        2499,
-        "images/whey.jpg"
-    );
-    window.location.href = "cart.html";
-}
-</script>
-           <script src="Cart.js"></script>
-<script>
-function loadCart() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let table = document.getElementById("cart-items");
-    let html = "";
-    let grandTotal = 0;
-    cart.forEach(function(item, index) {
-        let total = item.price * item.quantity;
-        grandTotal += total;
-        html += `
-        <tr>
-            <td>${item.name}</td>
-            <td>
-                <img src="${item.image}" width="70">
-            </td>
-            <td>₹${item.price}</td>
-            <td>${item.quantity}</td>
-            <td>₹${total}</td>
-            <td>
-                <button onclick="removeItem(${index})">
-                    Remove
-                </button>
-            </td>
-        </tr>
-        `;
-    });
-    table.innerHTML = html;
-    document.getElementById("grand-total").innerText =
-        "₹" + grandTotal;
-}
-function removeItem(index) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    loadCart();
-}
-loadCart();
-</script>
-        </table>
-       <div class="cart-summary">
-    <h2>Total: <span id="grand-total">₹0</span></h2>
-    <a href="checkout.html" class="checkout-btn">
-        Checkout
-    </a>
-</div>
-    </section>
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Gym Supplement Store. All rights reserved.</p>
-    </footer>
+
+<!-- Header -->
+
+<header>
+
+    <div class="logo">
+        <h2>🏋️ Gym Supplement Store</h2>
+    </div>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="Home.html">Home</a></li>
+
+            <li><a href="Products.html">Products</a></li>
+
+            <li><a href="About.html">About</a></li>
+
+            <li><a href="Contact.html">Contact</a></li>
+
+            <li>
+                <a href="Cart.html">
+                    Cart (<span id="cartCount">0</span>)
+                </a>
+            </li>
+
+            <li><a href="Registration.html">Registration</a></li>
+            <li><a href="Login.html">Login</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<!-- Cart -->
+
+<section class="cart-page">
+
+    <h1>Your Shopping Cart</h1>
+
+    <table class="cart-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Image</th>
+
+                <th>Product</th>
+
+                <th>Price</th>
+
+                <th>Quantity</th>
+
+                <th>Total</th>
+
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="cartItems">
+
+        </tbody>
+
+    </table>
+
+    <div class="cart-summary">
+
+        <h2>Grand Total :
+            <span id="grandTotal">₹0</span>
+        </h2>
+
+        <a href="Checkout.html">
+            <button class="checkout-btn">
+                Proceed To Checkout
+            </button>
+        </a>
+
+    </div>
+
+</section>
+
+<!-- Footer -->
+
+<footer>
+
+<p>&copy; 2026 Gym Supplement Store. All Rights Reserved.</p>
+
+</footer>
+
+<script src="cart.js"></script>
+
 </body>
 </html>

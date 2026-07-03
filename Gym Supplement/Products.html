@@ -20,69 +20,108 @@
                 <li><a href="Contact.html">Contact</a></li>
                 <li><a href="Cart.html">Cart</a></li>
                 <li><a href="Registration.html">Registration</a></li>
+                <li><a href="Login.html">Login</a></li>
             </ul>
         </nav>
     </header>
+
     <!-- Products Section -->
     <section class="page-title">
-        <h1>Our Supplement</h1>
-        <p> Choose premium nutrition products for your fitness journey.</p>
+        <h1>Our Supplements</h1>
+        <p>Choose premium nutrition products for your fitness journey.</p>
     </section>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="C:\Users\Aman Rawat\My Web\images\Whey Prorein.jpg" alt="Whey Protein">
-                <h3>Whey Protein</h3>
-                <p>₹2,499</p>
-               <button onclick="addToCart('Premium Whey Protein',2499,'images/whey.jpg')"> 
-                Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="C:\Users\Aman Rawat\My Web\images\creatine.jpg" alt="Creatine">
-                <h3>Creatine</h3>
-                <p>₹999</p>
-                <button onclick="addToCart('premium Creatine',999,'Image\creatine.jpg')">
-                    Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="C:\Users\Aman Rawat\My Web\images\preworkout.jpg" alt="Pre Workout">
-                <h3>Pre Workout</h3>
-                <p>₹1,599</p>
-                <button onclick="addToCart('premium preworkout',1599,'Image\preworkout.jpg')">
-                    Add to Cart</button>
-            </div>
-             <div class="product-card">
-            <img src="C:\Users\Aman Rawat\My Web\images\mass gainer.jpg" alt="Mass Gainer">
+
+    <section class="product-grid">
+        <div class="product-card">
+            <img src="images/whey.jpg" alt="Whey Protein">
+            <h3>Whey Protein</h3>
+            <p class="price">₹2,499</p>
+            <p>Support healthy weight and muscle gain goals.</p>
+            <button type="button" onclick="addToCart('Premium Whey Protein',2499,'images/whey.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/creatine.jpg" alt="Creatine">
+            <h3>Creatine</h3>
+            <p class="price">₹999</p>
+            <p>Supports strength, power, and muscle performance.</p>
+            <button type="button" onclick="addToCart('Premium Creatine',999,'images/creatine.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/preworkout.jpg" alt="Pre Workout">
+            <h3>Pre Workout</h3>
+            <p class="price">₹1,599</p>
+            <p>Support healthy weight and muscle gain goals.</p>
+            <button type="button" onclick="addToCart('Premium Pre Workout',1599,'images/preworkout.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/mass-gainer.jpg" alt="Mass Gainer">
             <h3>Mass Gainer</h3>
             <p class="price">₹3,299</p>
             <p>Support healthy weight and muscle gain goals.</p>
-            <button onclick="addToCart('premium mass-gainer',3299,'Image\mass-gainer.jpg')">
-                Add to Cart</button>
+            <button type="button" onclick="addToCart('Premium Mass Gainer',3299,'images/mass-gainer.jpg')">Add to Cart</button>
         </div>
         <div class="product-card">
-            <img src="C:\Users\Aman Rawat\My Web\images\bcaa.jpg" alt="BCAA">
+            <img src="images/bcaa.jpg" alt="BCAA">
             <h3>BCAA</h3>
             <p class="price">₹1,299</p>
             <p>Essential amino acids to aid muscle recovery.</p>
-           <button onclick="addToCart('premium bcaa',1299,'Image\bcaa.jpg')">
-            Add to Cart</button>
+            <button type="button" onclick="addToCart('Premium BCAA',1299,'images/bcaa.jpg')">Add to Cart</button>
         </div>
         <div class="product-card">
-            <img src="C:\Users\Aman Rawat\My Web\images\fish oil.jpg" alt="Fish Oil">
+            <img src="images/fish-oil.jpg" alt="Fish Oil">
             <h3>Fish Oil</h3>
             <p class="price">₹799</p>
             <p>Supports heart health and overall wellness.</p>
-            <button onclick="addToCart('premium fish-oil',999,'Image\fish-oil.jpg')">
-                Add to Cart</button>
+            <button type="button" onclick="addToCart('Premium Fish Oil',799,'images/fish-oil.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/multivitamins.jpg" alt="Multivitamins">
+            <h3>Multivitamins</h3>
+            <p class="price">₹999</p>
+            <p>Supports health and daily wellness.</p>
+            <button type="button" onclick="addToCart('Premium Multivitamins',999,'images/multivitamins.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/shakers.jpg" alt="Shaker">
+            <h3>Shaker</h3>
+            <p class="price">₹299</p>
+            <p>Carry supplements and mix drinks easily.</p>
+            <button type="button" onclick="addToCart('Shaker',299,'images/shakers.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/gym-gloves.jpg" alt="Gym Gloves">
+            <h3>Gym Gloves</h3>
+            <p class="price">₹399</p>
+            <p>Protect your hands during workouts.</p>
+            <button type="button" onclick="addToCart('Gym Gloves',399,'images/gym-gloves.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/gym-bags.jpg" alt="Gym Bags">
+            <h3>Gym Bag</h3>
+            <p class="price">₹599</p>
+            <p>Carry your gym essentials in one bag.</p>
+            <button type="button" onclick="addToCart('Gym Bag',599,'images/gym-bags.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/adjustable-dumbbell.jpg" alt="Adjustable Dumbbell">
+            <h3>Adjustable Dumbbell</h3>
+            <p class="price">₹7,999</p>
+            <p>Adjustable weight for your home gym.</p>
+            <button type="button" onclick="addToCart('Adjustable Dumbbell',7999,'images/adjustable-dumbbell.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images/mat.jpg" alt="Yoga Mat">
+            <h3>Yoga Mat</h3>
+            <p class="price">₹499</p>
+            <p>Comfortable mat for workouts and stretching.</p>
+            <button type="button" onclick="addToCart('Yoga Mat',499,'images/mat.jpg')">Add to Cart</button>
         </div>
     </section>
+
     <script src="cart.js"></script>
-    <!-- Products Section -->
-<section class="products-grid">
-    <!-- Product cards -->
-</section>
-<!-- Footer -->
-<footer>
-    <p>&copy; 2024 Gym Supplement Store. All rights reserved.</p>
-</footer>
+
+    <footer>
+        <p>&copy; 2026 Gym Supplement Store. All rights reserved.</p>
+    </footer>
 </body>
 </html>
