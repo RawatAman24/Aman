@@ -1,38 +1,439 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stack Game</title>
-    <link rel="stylesheet" href="Block.css">
+<meta charset="UTF-8">
+<title>Block Stack</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(180deg, #6dc7ff 0%, #a4e0ff 40%, #d9f2ff 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #gameCanvas {
+    display: block;
+    margin: 0 auto;
+    background: transparent;
+    touch-action: none;
+  }
+  #ui {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    text-align: center;
+    pointer-events: none;
+  }
+  #score {
+    margin-top: 24px;
+    font-size: 54px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.25);
+  }
+  #message {
+    margin-top: 8px;
+    font-size: 18px;
+    color: #ffffff;
+    opacity: 0.9;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  #overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.45);
+    color: white;
+    text-align: center;
+    z-index: 10;
+  }
+  #overlay.hidden { display: none; }
+  #overlay h1 {
+    font-size: 40px;
+    margin: 0 0 10px 0;
+  }
+  #overlay p {
+    font-size: 20px;
+    margin: 0 0 24px 0;
+    opacity: 0.9;
+  }
+  #restartBtn, #startBtn {
+    background: #ffffff;
+    color: #2b6cb0;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 40px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  }
+  #restartBtn:active, #startBtn:active {
+    transform: translateY(2px);
+  }
+</style>
 </head>
 <body>
 
-    <div id="instruction">
-        <div class="content">
-            <p>Stack the blocks on top of each other</p>
-            <p>Click, tap or press Space when a block is above the stack.</p>
-            <p>Can you reach the blue color blocks?</p>
-            <p>Click, tap or press Space to start the game.</p>
-        </div>
-    </div>
+<div id="ui">
+  <div id="score">0</div>
+  <div id="message"></div>
+</div>
 
-    <div id="results">
-        <div class="content">
-            <p>You missed the block!</p>
-            <p>To reset the game, press R.</p>
-        </div>
-    </div>
+<div id="overlay">
+  <h1>Block Stack</h1>
+  <p>Tap, click, or press Space to drop each block.<br>Stack as high as you can!</p>
+  <button id="startBtn">Start Game</button>
+</div>
 
-    <div id="score">0</div>
+<canvas id="gameCanvas"></canvas>
 
-    <!-- Corrected: Use img tags and relative paths for images -->
-    <div id="game-images">
-        <img src="C:\Users\Aman Rawat\My Web\images\block1.jpg" alt="Block 1">
-        <img src="C:\Users\Aman Rawat\My Web\images\block1.jpg" alt="Block 1 Copy">
-    </div>
+<script>
+(function() {
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d');
+  const scoreEl = document.getElementById('score');
+  const messageEl = document.getElementById('message');
+  const overlay = document.getElementById('overlay');
+  const startBtn = document.getElementById('startBtn');
 
-    <!-- Keep ONLY JavaScript files inside your script tags -->
-    <script src="Block.js"></script>
+  let W, H;
+  function resize() {
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W;
+    canvas.height = H;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // ---- Game constants ----
+  const BLOCK_HEIGHT = 40;
+  const INITIAL_WIDTH = 220;
+  const BASE_SPEED = 4;
+  const SPEED_INCREMENT = 0.15;
+  const MAX_SPEED = 11;
+  const PERFECT_TOLERANCE = 6; // px overlap difference counted as "perfect"
+
+  let hue = 200; // starting color hue, shifts per block
+
+  // ---- Game state ----
+  let stack = [];        // list of placed blocks {x, width, color}
+  let current = null;    // the moving block
+  let particles = [];    // little celebratory bits for perfect placement
+  let cameraY = 0;
+  let targetCameraY = 0;
+  let score = 0;
+  let running = false;
+  let gameOver = false;
+  let baseY;             // y (in world coords) of the very first block's top
+
+  function colorForIndex(i) {
+    const h = (hue + i * 18) % 360;
+    return `hsl(${h}, 70%, 58%)`;
+  }
+
+  function resetGame() {
+    stack = [];
+    particles = [];
+    score = 0;
+    gameOver = false;
+    cameraY = 0;
+    targetCameraY = 0;
+    hue = Math.floor(Math.random() * 360);
+
+    baseY = H - 140; // near bottom of screen, world coords
+
+    const firstBlock = {
+      x: W / 2 - INITIAL_WIDTH / 2,
+      width: INITIAL_WIDTH,
+      y: baseY,
+      color: colorForIndex(0)
+    };
+    stack.push(firstBlock);
+
+    spawnNext();
+    scoreEl.textContent = '0';
+    messageEl.textContent = '';
+  }
+
+  function spawnNext() {
+    const last = stack[stack.length - 1];
+    const speed = Math.min(BASE_SPEED + score * SPEED_INCREMENT, MAX_SPEED);
+    const y = last.y - BLOCK_HEIGHT;
+
+    // Alternate starting side and moving axis isn't needed (classic stack only moves horizontally)
+    const goingRight = Math.random() < 0.5;
+    const startX = goingRight ? -last.width : W;
+
+    current = {
+      x: startX,
+      width: last.width,
+      y: y,
+      color: colorForIndex(stack.length),
+      dir: goingRight ? 1 : -1,
+      speed: speed
+    };
+  }
+
+  function dropBlock() {
+    if (!running || gameOver || !current) return;
+
+    const last = stack[stack.length - 1];
+    const cur = current;
+
+    const curLeft = cur.x;
+    const curRight = cur.x + cur.width;
+    const lastLeft = last.x;
+    const lastRight = last.x + last.width;
+
+    const overlapLeft = Math.max(curLeft, lastLeft);
+    const overlapRight = Math.min(curRight, lastRight);
+    const overlapWidth = overlapRight - overlapLeft;
+
+    if (overlapWidth <= 0) {
+      // Total miss
+      triggerGameOver();
+      return;
+    }
+
+    const diff = Math.abs(curLeft - lastLeft) + Math.abs(curRight - lastRight);
+    const isPerfect = diff < PERFECT_TOLERANCE;
+
+    let placedBlock;
+    if (isPerfect) {
+      placedBlock = {
+        x: lastLeft,
+        width: lastRight - lastLeft,
+        y: cur.y,
+        color: cur.color
+      };
+      spawnParticles(placedBlock.x + placedBlock.width / 2, placedBlock.y, placedBlock.color);
+      messageEl.textContent = 'Perfect!';
+    } else {
+      placedBlock = {
+        x: overlapLeft,
+        width: overlapWidth,
+        y: cur.y,
+        color: cur.color
+      };
+      // falling debris piece
+      if (curLeft < overlapLeft) {
+        spawnDebris(curLeft, overlapLeft - curLeft, cur.y, cur.color, -1);
+      }
+      if (curRight > overlapRight) {
+        spawnDebris(overlapRight, curRight - overlapRight, cur.y, cur.color, 1);
+      }
+      messageEl.textContent = '';
+    }
+
+    stack.push(placedBlock);
+    score++;
+    scoreEl.textContent = score.toString();
+
+    targetCameraY += BLOCK_HEIGHT;
+
+    spawnNext();
+  }
+
+  // falling debris pieces (visual only)
+  let debris = [];
+  function spawnDebris(x, w, y, color, dir) {
+    debris.push({
+      x, y, w, h: BLOCK_HEIGHT, color,
+      vy: 0, vx: dir * 2,
+      rot: 0, vrot: dir * 0.08,
+      alpha: 1
+    });
+  }
+
+  function spawnParticles(x, y, color) {
+    for (let i = 0; i < 14; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 2 + Math.random() * 3;
+      particles.push({
+        x, y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 2,
+        life: 1,
+        color
+      });
+    }
+  }
+
+  function triggerGameOver() {
+    gameOver = true;
+    running = false;
+    messageEl.textContent = '';
+    // debris for the current falling block
+    if (current) {
+      spawnDebris(current.x, current.width, current.y, current.color, current.dir);
+    }
+    showOverlay(true);
+  }
+
+  function showOverlay(isGameOver) {
+    overlay.classList.remove('hidden');
+    overlay.innerHTML = '';
+    const h1 = document.createElement('h1');
+    const p = document.createElement('p');
+    const btn = document.createElement('button');
+    btn.id = 'restartBtn';
+    if (isGameOver) {
+      h1.textContent = 'Game Over';
+      p.innerHTML = 'Height reached: <strong>' + score + '</strong>';
+      btn.textContent = 'Try Again';
+    } else {
+      h1.textContent = 'Block Stack';
+      p.innerHTML = 'Tap, click, or press Space to drop each block.<br>Stack as high as you can!';
+      btn.textContent = 'Start Game';
+    }
+    overlay.appendChild(h1);
+    overlay.appendChild(p);
+    overlay.appendChild(btn);
+    btn.addEventListener('click', onStartClick);
+  }
+
+  function onStartClick() {
+    overlay.classList.add('hidden');
+    resetGame();
+    running = true;
+  }
+
+  startBtn.addEventListener('click', onStartClick);
+
+  // ---- Input ----
+  function handleInput(e) {
+    if (e) e.preventDefault();
+    if (!running) return;
+    dropBlock();
+  }
+
+  canvas.addEventListener('mousedown', handleInput);
+  canvas.addEventListener('touchstart', handleInput, { passive: false });
+  window.addEventListener('keydown', function(e) {
+    if (e.code === 'Space') {
+      handleInput(e);
+    }
+  });
+
+  // ---- Update / Render loop ----
+  function update() {
+    // camera smoothing
+    cameraY += (targetCameraY - cameraY) * 0.15;
+
+    if (running && current) {
+      current.x += current.dir * current.speed;
+      if (current.x <= -current.width || current.x + current.width >= W + current.width) {
+        // bounce off edges, allow full width extension a bit beyond screen for larger blocks
+      }
+      const minX = -current.width * 0.5;
+      const maxX = W - current.width * 0.5;
+      if (current.x < minX) { current.x = minX; current.dir = 1; }
+      if (current.x > maxX) { current.x = maxX; current.dir = -1; }
+    }
+
+    // particles
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.15;
+      p.life -= 0.025;
+      if (p.life <= 0) particles.splice(i, 1);
+    }
+
+    // debris
+    for (let i = debris.length - 1; i >= 0; i--) {
+      const d = debris[i];
+      d.vy += 0.6;
+      d.x += d.vx;
+      d.y += d.vy;
+      d.rot += d.vrot;
+      d.alpha -= 0.012;
+      if (d.alpha <= 0 || d.y - cameraY > H + 200) debris.splice(i, 1);
+    }
+  }
+
+  function worldToScreenY(y) {
+    return y - cameraY;
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, W, H);
+
+    // draw stack blocks
+    for (let i = 0; i < stack.length; i++) {
+      const b = stack[i];
+      const sy = worldToScreenY(b.y);
+      if (sy > H + BLOCK_HEIGHT || sy < -BLOCK_HEIGHT) continue;
+      drawBlock(b.x, sy, b.width, BLOCK_HEIGHT, b.color);
+    }
+
+    // draw current moving block
+    if (current && running) {
+      const sy = worldToScreenY(current.y);
+      drawBlock(current.x, sy, current.width, BLOCK_HEIGHT, current.color);
+    }
+
+    // debris
+    debris.forEach(d => {
+      ctx.save();
+      ctx.globalAlpha = Math.max(d.alpha, 0);
+      ctx.translate(d.x + d.w/2, worldToScreenY(d.y) + d.h/2);
+      ctx.rotate(d.rot);
+      ctx.fillStyle = d.color;
+      ctx.fillRect(-d.w/2, -d.h/2, d.w, d.h);
+      ctx.restore();
+    });
+
+    // particles
+    particles.forEach(p => {
+      ctx.save();
+      ctx.globalAlpha = Math.max(p.life, 0);
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, worldToScreenY(p.y), 3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    });
+  }
+
+  function drawBlock(x, y, w, h, color) {
+    ctx.save();
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, w, h);
+    // top highlight
+    ctx.fillStyle = 'rgba(255,255,255,0.18)';
+    ctx.fillRect(x, y, w, 6);
+    // side shadow
+    ctx.fillStyle = 'rgba(0,0,0,0.12)';
+    ctx.fillRect(x, y + h - 6, w, 6);
+    ctx.restore();
+  }
+
+  function loop() {
+    update();
+    render();
+    requestAnimationFrame(loop);
+  }
+
+  // initial state before starting
+  baseY = H - 140;
+  stack = [{
+    x: W/2 - INITIAL_WIDTH/2,
+    width: INITIAL_WIDTH,
+    y: baseY,
+    color: colorForIndex(0)
+  }];
+
+  loop();
+})();
+</script>
 </body>
 </html>
