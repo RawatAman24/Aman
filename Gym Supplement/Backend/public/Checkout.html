@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | Gym Supplement Store</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+<div class="logo">
+<h2>🏋️ Gym Supplement Store</h2>
+</div>
+<nav>
+<ul>
+<li><a href="Home.html">Home</a></li>
+<li><a href="Products.html">Products</a></li>
+<li><a href="About.html">About</a></li>
+<li><a href="Contact.html">Contact</a></li>
+<li><a href="Cart.html">Cart</a></li>
+</ul>
+</nav>
+</header>
+<!-- Checkout -->
+<section class="checkout">
+<div class="billing">
+<h2>Billing Details</h2>
+<form id="checkoutForm">
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="email" id="email" placeholder="Email Address" required>
+<input type="text" id="phone" placeholder="Mobile Number" required>
+<textarea id="address" placeholder="Full Address" required></textarea>
+<input type="text" id="city" placeholder="City" required>
+<input type="text" id="state" placeholder="State" required>
+<input type="text" id="pincode" placeholder="Pincode" required>
+<select id="payment" required>
+<option value="">Select Payment Method</option>
+<option>Cash On Delivery</option>
+<option>UPI</option>
+<option>Credit Card</option>
+<option>Debit Card</option>
+</select>
+<button type="submit" class="place-order">
+Place Order
+</button>
+</form>
+</div>
+<!-- Order Summary -->
+<div class="summary">
+<h2>Order Summary</h2>
+<div id="checkoutItems">
+</div>
+<hr>
+<h3>Total :
+<span id="checkoutTotal">₹0</span>
+</h3>
+</div>
+</section>
+<footer>
+<p>&copy; 2026 Gym Supplement Store. All Rights Reserved.</p>
+</footer>
+<script src="cart.js"></script>
+</body>
+</html>

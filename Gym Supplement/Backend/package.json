@@ -1,16 +1,18 @@
 {
-  "name": "gym-supplement-store",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Node.js backend for Gym Supplement Store",
+  "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
-    "express-session": "^1.17.3"
-  },
-  "engines": {
-    "node": ">=18"
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0"
   }
 }

@@ -1,177 +1,218 @@
-const path = require("path");
 const express = require("express");
 const session = require("express-session");
+const bcrypt = require("bcryptjs");
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const publicPath = path.join(__dirname, "..", "Frontend");
-const imagesPath = path.join(__dirname, "..", "..", "images");
 
+// ---------- In-memory "database" ----------
+// Replace with a real DB (MongoDB/MySQL/Postgres) for production use.
+const users = []; // { id, name, email, phone, passwordHash }
+const orders = []; // { id, userEmail, billing, items, total, createdAt }
+
+// ---------- Middleware ----------
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
-    secret: "gym-supplement-secret",
+    secret: "change-this-secret-in-production",
     resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 }
+    saveUninitialized: true,
+    cookie: {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
+      // secure: true, // enable when serving over HTTPS
+    },
   })
 );
 
-app.use("/images", express.static(imagesPath));
-app.use(express.static(publicPath));
+// Serve the frontend files directly (place the Frontend folder contents in /public)
+app.use(express.static(path.join(__dirname, "public")));
 
-const products = [
-  { id: "whey-protein", name: "Premium Whey Protein", price: 2499, image: "/images/Whey Prorein.jpg" },
-  { id: "creatine", name: "Premium Creatine", price: 999, image: "/images/creatine.jpg" },
-  { id: "pre-workout", name: "Premium Pre Workout", price: 1599, image: "/images/preworkout.jpg" },
-  { id: "mass-gainer", name: "Premium Mass Gainer", price: 3299, image: "/images/mass gainer.jpg" },
-  { id: "bcaa", name: "Premium BCAA", price: 1299, image: "/images/bcaa.jpg" },
-  { id: "fish-oil", name: "Premium Fish Oil", price: 799, image: "/images/fish oil.jpg" },
-  { id: "multivitamins", name: "Premium Multivitamins", price: 999, image: "/images/Multivitamins.jpg" },
-  { id: "shaker", name: "Shaker", price: 299, image: "/images/Shakers.jpg" },
-  { id: "gym-gloves", name: "Gym Gloves", price: 399, image: "/images/Gym Gloves.jpg" },
-  { id: "gym-bag", name: "Gym Bag", price: 599, image: "/images/GYM Bags.jpg" },
-  { id: "adjustable-dumbbell", name: "Adjustable Dumbbell", price: 7999, image: "/images/Adjustable Dumbbell.jpg" },
-  { id: "yoga-mat", name: "Yoga Mat", price: 499, image: "/images/Mat.jpg" }
-];
+// Ensure every session has a cart array
+app.use((req, res, next) => {
+  if (!req.session.cart) req.session.cart = [];
+  next();
+});
 
-const users = [];
-
-function getSessionCart(req) {
-  if (!req.session.cart) {
-    req.session.cart = [];
-  }
-  return req.session.cart;
+// ---------- Helpers ----------
+function cartCount(cart) {
+  return cart.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
 }
 
-app.get("/api/products", (req, res) => {
-  res.json(products);
-});
+function findUserByEmail(email) {
+  return users.find((u) => u.email.toLowerCase() === String(email).toLowerCase());
+}
 
+// ---------- Cart routes ----------
+
+// GET /api/cart -> { cart, count }
 app.get("/api/cart", (req, res) => {
-  const cart = getSessionCart(req);
-  const count = cart.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
-  res.json({ cart, count });
+  res.json({ cart: req.session.cart, count: cartCount(req.session.cart) });
 });
 
+// POST /api/cart -> add item { name, price, image, quantity }
 app.post("/api/cart", (req, res) => {
-  const { name, price, image, quantity = 1 } = req.body;
-  if (!name || !price) {
+  const { name, price, image, quantity } = req.body || {};
+
+  if (!name || typeof price !== "number") {
     return res.status(400).json({ message: "Product name and price are required." });
   }
-  const cart = getSessionCart(req);
-  const existing = cart.find(item => item.name === name);
+
+  const qty = Number(quantity) > 0 ? Number(quantity) : 1;
+  const existing = req.session.cart.find((item) => item.name === name);
+
   if (existing) {
-    existing.quantity = Number(existing.quantity || 0) + Number(quantity);
+    existing.quantity += qty;
   } else {
-    cart.push({ name, price: Number(price), image: image || "", quantity: Number(quantity) });
+    req.session.cart.push({ name, price: Number(price), image: image || "", quantity: qty });
   }
-  res.json({ message: "Product added to cart.", cart });
+
+  res.status(201).json({ message: "Added to cart.", cart: req.session.cart, count: cartCount(req.session.cart) });
 });
 
+// PUT /api/cart/:index -> { action: "increase" | "decrease" }
 app.put("/api/cart/:index", (req, res) => {
   const index = Number(req.params.index);
-  const { action, quantity } = req.body;
-  const cart = getSessionCart(req);
-  if (Number.isNaN(index) || index < 0 || index >= cart.length) {
-    return res.status(400).json({ message: "Invalid cart item index." });
+  const { action } = req.body || {};
+  const cart = req.session.cart;
+
+  if (!cart[index]) {
+    return res.status(404).json({ message: "Cart item not found." });
   }
+
   if (action === "increase") {
-    cart[index].quantity = Number(cart[index].quantity || 0) + 1;
+    cart[index].quantity += 1;
   } else if (action === "decrease") {
-    if (cart[index].quantity > 1) {
-      cart[index].quantity = Number(cart[index].quantity || 0) - 1;
-    } else {
+    cart[index].quantity -= 1;
+    if (cart[index].quantity <= 0) {
       cart.splice(index, 1);
     }
-  } else if (action === "set") {
-    const qty = Number(quantity || 0);
-    if (qty <= 0) {
-      cart.splice(index, 1);
-    } else {
-      cart[index].quantity = qty;
-    }
+  } else {
+    return res.status(400).json({ message: "Invalid action." });
   }
-  res.json({ cart });
+
+  res.json({ message: "Cart updated.", cart, count: cartCount(cart) });
 });
 
+// DELETE /api/cart/:index
 app.delete("/api/cart/:index", (req, res) => {
   const index = Number(req.params.index);
-  const cart = getSessionCart(req);
-  if (Number.isNaN(index) || index < 0 || index >= cart.length) {
-    return res.status(400).json({ message: "Invalid cart item index." });
+  const cart = req.session.cart;
+
+  if (!cart[index]) {
+    return res.status(404).json({ message: "Cart item not found." });
   }
+
   cart.splice(index, 1);
-  res.json({ message: "Item removed from cart.", cart });
+  res.json({ message: "Item removed.", cart, count: cartCount(cart) });
 });
 
+// ---------- Buy Now ----------
+// POST /api/buy-now -> stashes a single-item "buy now" cart for checkout
 app.post("/api/buy-now", (req, res) => {
-  const { name, price, image, quantity = 1 } = req.body;
-  if (!name || !price) {
+  const { name, price, image, quantity } = req.body || {};
+
+  if (!name || typeof price !== "number") {
     return res.status(400).json({ message: "Product name and price are required." });
   }
-  req.session.buyNowItem = { name, price: Number(price), image: image || "", quantity: Number(quantity) };
-  res.json({ message: "Buy now item saved." });
+
+  const qty = Number(quantity) > 0 ? Number(quantity) : 1;
+  req.session.buyNowItem = { name, price: Number(price), image: image || "", quantity: qty };
+
+  res.status(201).json({ message: "Ready for checkout." });
 });
 
+// ---------- Checkout ----------
+
+// GET /api/checkout-data -> items to display on the checkout page
+// Uses the "buy now" item if present, otherwise the full cart.
 app.get("/api/checkout-data", (req, res) => {
-  const buyNowItem = req.session.buyNowItem || null;
-  const cart = getSessionCart(req);
-  const items = buyNowItem ? [buyNowItem] : cart;
-  const total = items.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 0), 0);
-  res.json({ items, total });
+  const items = req.session.buyNowItem ? [req.session.buyNowItem] : req.session.cart;
+  res.json({ items });
 });
 
+// POST /api/checkout -> { billing } places the order
 app.post("/api/checkout", (req, res) => {
-  const { billing } = req.body;
-  const items = req.session.buyNowItem ? [req.session.buyNowItem] : getSessionCart(req);
-  if (!items || items.length === 0) {
-    return res.status(400).json({ message: "No items available for checkout." });
-  }
-  if (!billing || !billing.name || !billing.email || !billing.phone || !billing.address) {
+  const { billing } = req.body || {};
+
+  if (!billing || !billing.name || !billing.email || !billing.address) {
     return res.status(400).json({ message: "Billing details are incomplete." });
   }
+
+  const items = req.session.buyNowItem ? [req.session.buyNowItem] : req.session.cart;
+
+  if (!items || items.length === 0) {
+    return res.status(400).json({ message: "Your cart is empty." });
+  }
+
+  const total = items.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
+
+  const order = {
+    id: orders.length + 1,
+    userEmail: billing.email,
+    billing,
+    items,
+    total,
+    createdAt: new Date().toISOString(),
+  };
+  orders.push(order);
+
+  // Clear cart / buy-now state after successful order
   req.session.cart = [];
-  req.session.buyNowItem = null;
-  res.json({ message: "Order placed successfully." });
+  delete req.session.buyNowItem;
+
+  res.status(201).json({ message: "Order placed successfully!", orderId: order.id });
 });
 
+// ---------- Auth ----------
+
+// POST /api/register -> { name, email, phone, password }
 app.post("/api/register", (req, res) => {
-  const { name, email, phone, password } = req.body;
+  const { name, email, phone, password } = req.body || {};
+
   if (!name || !email || !phone || !password) {
-    return res.status(400).json({ message: "All fields are required." });
+    return res.status(400).json({ message: "Please complete all registration fields." });
   }
-  const exists = users.find(u => u.email === email);
-  if (exists) {
-    return res.status(409).json({ message: "User already exists." });
+
+  if (findUserByEmail(email)) {
+    return res.status(409).json({ message: "An account with this email already exists." });
   }
-  users.push({ name, email, phone, password });
-  res.json({ message: "Registration successful." });
+
+  const passwordHash = bcrypt.hashSync(password, 10);
+  const user = { id: users.length + 1, name, email, phone, passwordHash };
+  users.push(user);
+
+  res.status(201).json({ message: "Registration successful!" });
 });
 
+// POST /api/login -> { email, password }
 app.post("/api/login", (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body || {};
+
   if (!email || !password) {
     return res.status(400).json({ message: "Email and password are required." });
   }
-  const user = users.find(u => u.email === email && u.password === password);
-  if (!user) {
-    return res.status(401).json({ message: "Invalid credentials." });
+
+  const user = findUserByEmail(email);
+  if (!user || !bcrypt.compareSync(password, user.passwordHash)) {
+    return res.status(401).json({ message: "Invalid email or password." });
   }
-  req.session.user = { name: user.name, email: user.email };
-  res.json({ message: "Login successful.", user: req.session.user });
+
+  req.session.user = { id: user.id, name: user.name, email: user.email };
+  res.json({ message: "Login successful!" });
 });
 
-app.get("/api/session", (req, res) => {
-  if (req.session.user) {
-    return res.json({ loggedIn: true, user: req.session.user });
-  }
-  res.json({ loggedIn: false });
+// POST /api/logout
+app.post("/api/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.json({ message: "Logged out." });
+  });
 });
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(publicPath, "Home.html"));
+// ---------- Fallback ----------
+app.use((req, res) => {
+  res.status(404).json({ message: "Not found." });
 });
 
 app.listen(PORT, () => {

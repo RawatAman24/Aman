@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicHub | Register</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="login-box">
+
+        <div class="logo">
+            <i class="fa-solid fa-music"></i>
+            <h2>MusicHub</h2>
+        </div>
+
+        <h1>Create Account</h1>
+        <p>Join MusicHub and enjoy unlimited music</p>
+
+        <form id="registerForm">
+
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Full Name"
+                    required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-envelope"></i>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email Address"
+                    required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm Password"
+                    required>
+            </div>
+
+            <button type="submit" class="login-btn">
+                Register
+            </button>
+
+        </form>
+
+        <div class="register">
+            <p>
+                Already have an account?
+                <a href="login.html">Login</a>
+            </p>
+        </div>
+
+        <div class="home">
+            <a href="Home.html">
+                <i class="fa-solid fa-house"></i>
+                Back to Home
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.getElementById("registerForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    if(password !== confirmPassword){
+        alert("Passwords do not match!");
+        return;
+    }
+
+    let user = {
+        name: name,
+        email: email,
+        password: password
+    };
+
+    localStorage.setItem("musicUser", JSON.stringify(user));
+
+    alert("Registration Successful!");
+
+    window.location.href = "login.html";
+
+});
+
+</script>
+
+</body>
+</html>

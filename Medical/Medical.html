@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian General — Patient Appointment Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="emergency-bar">In a medical emergency, call <strong>911</strong> immediately. This portal is for scheduled, non-urgent care.</div>
+  <nav class="nav">
+    <div class="wrap">
+      <a href="#" class="brand">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V20M4 12H20" stroke="white" stroke-width="3" stroke-linecap="round"/></svg>
+        </span>
+        <span>
+          <span class="brand-name">Meridian General</span>
+          <span class="brand-sub">PATIENT PORTAL</span>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#departments">Departments</a>
+        <a href="#doctors">Doctors</a>
+        <a href="#appointments">My Appointments<span class="nav-count" id="navCount">0</span></a>
+        <a href="#doctors" class="btn-signal">Book now</a>
+      </div>
+    </div>
+  </nav>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Same-day & scheduled visits</div>
+          <h1>Find the right care, today.</h1>
+          <p class="hero-lede">Search across six departments and eight physicians, compare real availability, and hold your slot in under a minute — no phone tree required.</p>
+          <div class="kiosk">
+            <div class="kiosk-label">Patient kiosk · Quick search</div>
+            <div class="kiosk-row">
+              <div class="field">
+                <label for="kioskDept">Department</label>
+                <select id="kioskDept" onchange="onKioskDeptChange()"></select>
+              </div>
+              <div class="field">
+                <label for="kioskDoctor">Physician</label>
+                <select id="kioskDoctor"></select>
+              </div>
+            </div>
+            <button class="btn-primary" onclick="kioskSearch()">Show availability</button>
+          </div>
+        </div>
+        <div class="board">
+          <div class="board-head">
+            <h2>Next available</h2>
+            <span class="board-clock" id="boardClock"></span>
+          </div>
+          <div id="boardRows"></div>
+        </div>
+      </div>
+    </section>
+    <section id="departments">
+      <div class="section-head">
+        <h2>Departments</h2>
+        <p>Color-coded the same way as our lobby floor directory — match a color to find your way once you're on site.</p>
+      </div>
+      <div class="dept-grid" id="deptGrid"></div>
+    </section>
+    <section id="doctors">
+      <div class="section-head">
+        <h2>Physicians</h2>
+        <p>Filter by department or browse everyone taking new appointments this week.</p>
+      </div>
+      <div class="chip-row" id="chipRow"></div>
+      <div class="doctor-grid" id="doctorGrid"></div>
+    </section>
+    <section id="appointments">
+      <div class="section-head">
+        <h2>My appointments</h2>
+        <p>Visits you confirm in this session appear here as your patient pass.</p>
+      </div>
+      <div class="appt-grid" id="apptGrid"></div>
+    </section>
+  </div>
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <strong>Meridian General Hospital</strong>
+        400 Harbor Ridge Road · Open 24 hours for emergency care
+      </div>
+      <div>
+        <strong>Scheduling desk</strong>
+        (555) 019-2288 · Mon–sat 8am–9pm
+      </div>
+      <div>
+        <strong>Billing & records</strong>
+        (555) 019-2299 · records@meridiangeneral.example
+      </div>
+    </div>
+  </footer>
+  <div id="modalRoot"></div>
+<script src="script.js"></script>
+</body>
+</html>

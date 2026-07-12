@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: linear-gradient(#020111, #000814);
+    overflow: hidden;
+    height: 100vh;
+}
+.star {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    animation: blink 3s infinite alternate;
+}
+.moon{
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 40px #fff;
+    animation: blink 3s infinite alternate;
+}
+.ufo {
+    position: absolute;
+    top: 200px;
+    left: -200px;
+    width: 200px;
+    height: 100px;
+    animation: fly 10s linear infinite;
+}
+.top {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    width: 100%;
+    height: 45px;
+    background: cyan;
+    border-radius: 50% 50% 0 0;
+    box-shadow: 0 0 20px cyan;
+}
+.bottom{
+    position: absolute;
+    top: 45px;
+    width: 180%;
+    height: 50px;
+    background: #888;
+    border-radius: 50%;
+    box-shadow: 0 0 25px cyan;
+}
+.light {
+    position: absolute;
+    bottom: 8px;
+    width: 12px;
+    height: 12px;
+    background: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 15px yellow;
+    animation: flash .5s infinite alternate;
+}
+.l1{left: 25px;}
+.l2{left: 55px;}
+.l3{left: 85px;}
+.l4{left: 115px;}
+.l5{left: 145px;}
+.beam{
+    position: absolute;
+    top: 70px;
+    left: 55px;
+    width: 70px;
+    height: 180px;
+    background: linear-gradient(to bottom, rgba(0,255,255,.5),transparent);
+    clip-path: polygon(30% 0% 70% 0% 100% 100% 0% 100%);
+    animation: pulse 1s infinite alternate;
+}
+@keyframes fly{0%{left: -220px; transform: translateY(0)}; 
+    25%{transform: translateY(-30px);} 50%{transform: translateY(20px);}
+    75%{transform: translateY(-20px);} 100%{left:120%;transform: translateY(0);}}
+@keyframes blink{from{opacity: .2;} to{opacity: 1;}}
+@keyframes flash{from{background: blue;} to{background: red; box-shadow: 0 0 20px red;}}
+@keyframes pulse{from{opacity:.3;} to{opacity: 1;}}
+.title{
+    position: absolute;
+    top: 25px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
+    font-size: 35px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px cyan;
+}
