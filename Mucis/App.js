@@ -128,26 +128,15 @@ volumeSlider.value=50;
 
 /*Login*/
 const form = document.querySelector("form");
-
 form.addEventListener("submit", function(e){
-
     e.preventDefault();
-
     let email = document.getElementById("email").value.trim();
     let password = document.getElementById("password").value;
-
     let user = JSON.parse(localStorage.getItem("musicUser"));
-
     if(user && email === user.email && password === user.password){
-
         alert("Login Successful!");
-
         window.location.href = "index.html";
-
     }else{
-
         alert("Invalid Email or Password");
-
     }
-
 });

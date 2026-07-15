@@ -4,317 +4,182 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MusicHub - Music Streaming Website</title>
-
     <link rel="stylesheet" href="style.css">
-
     <!-- Font Awesome -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
-
     <!-- Header -->
-
     <header>
-
         <div class="logo">
             <h2><i class="fa-solid fa-music"></i> MusicHub</h2>
         </div>
-
         <nav>
-
             <ul>
-
-                <li><a href="index.html">Home</a></li>
-
-                <li><a href="artists.html">Artists</a></li>
-
-                <li><a href="playlist.html">Playlists</a></li>
-
-                <li><a href="search.html">Search</a></li>
-
-                <li><a href="login.html">Login</a></li>
-
+                <li><a href="Home.html" class="active">Home</a></li>
+                <li><a href="Playlist.html">Playlists</a></li>
+                <li><a href="Search.html">Search</a></li>
+                <li><a href="Login.html">Login</a></li>
+                <li><a href="Artist.html">Artists</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+                <li><a href="Favorites.html">Favorites</a></li>
             </ul>
-
         </nav>
-
     </header>
-
     <!-- Hero Section -->
-
     <section class="hero">
-
         <div class="hero-content">
-
             <h1>Unlimited Music, Anytime</h1>
-
             <p>
                 Listen to millions of songs from your favorite artists.
             </p>
-
             <button>Start Listening</button>
-
         </div>
-
     </section>
-
     <!-- Search -->
-
     <section class="search">
-
         <input type="text" placeholder="Search Songs...">
-
         <button>
             <i class="fa-solid fa-search"></i>
         </button>
-
     </section>
-
     <!-- Trending Songs -->
-
     <section class="songs">
-
         <h2>Trending Songs</h2>
-
         <div class="song-container">
-
             <div class="song-card">
-
                 <img src="images/song1.jpg" alt="">
-
                 <h3>Perfect</h3>
-
                 <p>Ed Sheeran</p>
-
                 <button class="play-btn">
                     <i class="fa-solid fa-play"></i> Play
                 </button>
-
             </div>
-
             <div class="song-card">
-
                 <img src="images/song2.jpg" alt="">
-
                 <h3>Believer</h3>
-
                 <p>Imagine Dragons</p>
-
                 <button class="play-btn">
                     <i class="fa-solid fa-play"></i> Play
                 </button>
-
             </div>
-
             <div class="song-card">
-
                 <img src="images/song3.jpg" alt="">
-
                 <h3>Blinding Lights</h3>
-
                 <p>The Weeknd</p>
-
                 <button class="play-btn">
                     <i class="fa-solid fa-play"></i> Play
                 </button>
-
             </div>
-
             <div class="song-card">
-
                 <img src="images/song4.jpg" alt="">
-
                 <h3>Shape of You</h3>
-
                 <p>Ed Sheeran</p>
-
                 <button class="play-btn">
                     <i class="fa-solid fa-play"></i> Play
                 </button>
-
             </div>
-
         </div>
-
     </section>
-
     <!-- Popular Artists -->
-
     <section class="artists">
-
         <h2>Popular Artists</h2>
-
         <div class="artist-container">
-
             <div class="artist-card">
-
                 <img src="images/artist1.jpg">
-
                 <h3>Arijit Singh</h3>
-
             </div>
-
             <div class="artist-card">
-
                 <img src="images/artist2.jpg">
-
                 <h3>Taylor Swift</h3>
-
             </div>
-
             <div class="artist-card">
-
                 <img src="images/artist3.jpg">
-
                 <h3>Justin Bieber</h3>
-
             </div>
-
             <div class="artist-card">
-
                 <img src="images/artist4.jpg">
-
                 <h3>Shreya Ghoshal</h3>
-
             </div>
-
         </div>
-
     </section>
-
     <!-- Playlist -->
-
     <section class="playlist">
-
         <h2>Featured Playlists</h2>
-
         <div class="playlist-container">
-
             <div class="playlist-card">
-
                 <img src="images/p1.jpg">
-
                 <h3>Workout Mix</h3>
-
             </div>
-
             <div class="playlist-card">
-
                 <img src="images/p2.jpg">
-
                 <h3>Romantic Hits</h3>
-
             </div>
-
             <div class="playlist-card">
-
                 <img src="images/p3.jpg">
-
                 <h3>Party Songs</h3>
-
             </div>
-
             <div class="playlist-card">
-
                 <img src="images/p4.jpg">
-
                 <h3>Chill Vibes</h3>
-
             </div>
-
         </div>
-
     </section>
-
     <!-- Bottom Music Player -->
-
     <footer class="music-player">
-
     <div class="left">
-
         <img id="cover" src="images/song1.jpg" width="60" height="60">
-
         <div>
             <h4 id="title">Perfect</h4>
             <p id="artist">Ed Sheeran</p>
         </div>
-
     </div>
-
     <div class="center">
-
         <button id="prev">
             <i class="fa-solid fa-backward"></i>
         </button>
-
         <button id="play">
             <i class="fa-solid fa-play"></i>
         </button>
-
         <button id="next">
             <i class="fa-solid fa-forward"></i>
         </button>
-
         <div class="progress-area">
-
             <span id="currentTime">0:00</span>
-
             <input
                 type="range"
                 id="progress"
                 value="0"
                 min="0"
                 max="100">
-
             <span id="duration">0:00</span>
-
         </div>
-
     </div>
-
     <div class="right">
-
         <i class="fa-solid fa-volume-high"></i>
-
         <input
             type="range"
             id="volume"
             value="50"
             min="0"
             max="100">
-
     </div>
-
 </footer>
-
 <audio id="audio"></audio>
     <!-- Footer -->
-
     <footer class="footer">
-
         <h3>MusicHub © 2026</h3>
-
         <p>
             Stream unlimited music anytime, anywhere.
         </p>
-
         <div class="social">
-
             <i class="fab fa-facebook"></i>
-
             <i class="fab fa-instagram"></i>
-
             <i class="fab fa-twitter"></i>
-
             <i class="fab fa-youtube"></i>
-
         </div>
-
     </footer>
-
     <script src="App.js"></script>
-
 </body>
 </html>

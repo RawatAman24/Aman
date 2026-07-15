@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicHub | My Playlist</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- Header -->
+
+<header>
+
+    <div class="logo">
+        <h2><i class="fa-solid fa-music"></i> MusicHub</h2>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Artist.html">Artists</a></li>
+            <li><a href="Playlist.html" class="active">Playlists</a></li>
+            <li><a href="Search.html">Search</a></li>
+            <li><a href="Login.html">Login</a></li>
+            <li><a href="Profile.html">Profile</a></li>
+            <li><a href="Favorites.html">Favorites</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<!-- Playlist -->
+
+<section class="playlist-page">
+
+    <h1>🎵 My Playlist</h1>
+
+    <button class="play-all">
+        <i class="fa-solid fa-play"></i> Play All
+    </button>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>#</th>
+                <th>Song</th>
+                <th>Artist</th>
+                <th>Duration</th>
+                <th>Play</th>
+                <th>Remove</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="playlistBody">
+
+            <tr>
+
+                <td>1</td>
+
+                <td>Perfect</td>
+
+                <td>Ed Sheeran</td>
+
+                <td>4:22</td>
+
+                <td>
+                    <button class="play-btn">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                </td>
+
+                <td>
+                    <button class="remove-btn">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>2</td>
+
+                <td>Believer</td>
+
+                <td>Imagine Dragons</td>
+
+                <td>3:24</td>
+
+                <td>
+                    <button class="play-btn">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                </td>
+
+                <td>
+                    <button class="remove-btn">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>3</td>
+
+                <td>Blinding Lights</td>
+
+                <td>The Weeknd</td>
+
+                <td>3:20</td>
+
+                <td>
+                    <button class="play-btn">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                </td>
+
+                <td>
+                    <button class="remove-btn">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>4</td>
+
+                <td>Shape of You</td>
+
+                <td>Ed Sheeran</td>
+
+                <td>4:05</td>
+
+                <td>
+                    <button class="play-btn">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                </td>
+
+                <td>
+                    <button class="remove-btn">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<!-- Footer -->
+
+<footer class="footer">
+
+    <h3>MusicHub © 2026</h3>
+
+    <p>Your personal playlist, anytime anywhere.</p>
+
+</footer>
+
+<script>
+
+const removeButtons = document.querySelectorAll(".remove-btn");
+
+removeButtons.forEach(function(btn){
+
+    btn.addEventListener("click",function(){
+
+        if(confirm("Remove this song from playlist?")){
+
+            btn.parentElement.parentElement.remove();
+
+        }
+
+    });
+
+});
+
+const playButtons = document.querySelectorAll(".play-btn");
+
+playButtons.forEach(function(btn){
+
+    btn.addEventListener("click",function(){
+
+        alert("Playing Song...");
+
+    });
+
+});
+
+document.querySelector(".play-all").onclick=function(){
+
+    alert("Playing Entire Playlist");
+
+};
+
+</script>
+
+</body>
+</html>

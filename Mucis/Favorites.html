@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MusicHub | Favorite Songs</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- Header -->
+
+<header>
+
+<div class="logo">
+<h2><i class="fa-solid fa-music"></i> MusicHub</h2>
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="Home.html">Home</a></li>
+<li><a href="Artists.html">Artists</a></li>
+<li><a href="Playlist.html">Playlists</a></li>
+<li><a href="Search.html">Search</a></li>
+<li><a href="Favorites.html" class="active">Favorites</a></li>
+<li><a href="Profile.html">Profile</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<!-- Title -->
+
+<section class="favorite-header">
+
+<h1>❤️ Favorite Songs</h1>
+
+<p>Your liked songs collection</p>
+
+<input
+type="text"
+id="searchFavorite"
+placeholder="Search Favorite Songs...">
+
+</section>
+
+<!-- Counter -->
+
+<div class="counter">
+
+<h3>Total Favorites :
+<span id="count">6</span>
+</h3>
+
+</div>
+
+<!-- Songs -->
+
+<section class="favorite-container" id="favoriteContainer">
+
+<div class="favorite-card">
+
+<img src="images/song1.jpg">
+
+<div>
+
+<h3>Perfect</h3>
+
+<p>Ed Sheeran</p>
+
+</div>
+
+<div>
+
+<button class="play-btn">
+<i class="fa-solid fa-play"></i>
+</button>
+
+<button class="remove-btn">
+<i class="fa-solid fa-trash"></i>
+</button>
+
+</div>
+
+</div>
+
+<div class="favorite-card">
+
+<img src="images/song2.jpg">
+
+<div>
+
+<h3>Believer</h3>
+
+<p>Imagine Dragons</p>
+
+</div>
+
+<div>
+
+<button class="play-btn">
+<i class="fa-solid fa-play"></i>
+</button>
+
+<button class="remove-btn">
+<i class="fa-solid fa-trash"></i>
+</button>
+
+</div>
+
+</div>
+
+<div class="favorite-card">
+
+<img src="images/song3.jpg">
+
+<div>
+
+<h3>Blinding Lights</h3>
+
+<p>The Weeknd</p>
+
+</div>
+
+<div>
+
+<button class="play-btn">
+<i class="fa-solid fa-play"></i>
+</button>
+
+<button class="remove-btn">
+<i class="fa-solid fa-trash"></i>
+</button>
+
+</div>
+
+</div>
+
+<div class="favorite-card">
+
+<img src="images/song4.jpg">
+
+<div>
+
+<h3>Shape of You</h3>
+
+<p>Ed Sheeran</p>
+
+</div>
+
+<div>
+
+<button class="play-btn">
+<i class="fa-solid fa-play"></i>
+</button>
+
+<button class="remove-btn">
+<i class="fa-solid fa-trash"></i>
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Footer -->
+
+<footer class="footer">
+
+<h3>MusicHub © 2026</h3>
+
+<p>Listen to your favorite songs anytime.</p>
+
+</footer>
+
+<script>
+
+// Search
+
+const search=document.getElementById("searchFavorite");
+
+const cards=document.querySelectorAll(".favorite-card");
+
+search.addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase();
+
+cards.forEach(function(card){
+
+let song=card.querySelector("h3").innerHTML.toLowerCase();
+
+let artist=card.querySelector("p").innerHTML.toLowerCase();
+
+if(song.includes(value)||artist.includes(value)){
+
+card.style.display="flex";
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+});
+
+// Remove Song
+
+const remove=document.querySelectorAll(".remove-btn");
+
+let count=document.getElementById("count");
+
+remove.forEach(function(btn){
+
+btn.onclick=function(){
+
+if(confirm("Remove from Favorites?")){
+
+btn.parentElement.parentElement.remove();
+
+count.innerHTML=document.querySelectorAll(".favorite-card").length-1;
+
+}
+
+}
+
+});
+
+// Play Song
+
+document.querySelectorAll(".play-btn").forEach(function(btn){
+
+btn.onclick=function(){
+
+alert("Now Playing...");
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
