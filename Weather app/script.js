@@ -1,15 +1,12 @@
 const apiKey = "YOUR_OPENWEATHERMAP_API_KEY";
 const apiBase = "https://api.openweathermap.org/data/2.5/weather";
-
 function getWeather() {
   const city = document.getElementById("cityInput").value.trim();
   const resultEl = document.getElementById("weatherResult");
-
   if (!city) {
     resultEl.innerHTML = '<p class="error">Please enter a city name.</p>';
     return;
   }
-
   if (apiKey === "YOUR_OPENWEATHERMAP_API_KEY") {
     resultEl.innerHTML = `
       <p class="error">
