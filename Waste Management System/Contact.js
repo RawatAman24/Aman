@@ -9,4 +9,4 @@ return(
 </div>
 )
 }
-export default App;
+export default App.js;

@@ -7,4 +7,4 @@ return(
 </footer>
 )
 }
-export default App;
+export default App.js;

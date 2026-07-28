@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Small Question</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fdf2f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      position: relative;
+    }
+    h1 { color: #881337; font-size: 22px; margin-bottom: 10px; }
+    p { color: #666; font-size: 14px; }
+    
+    /* Layout Fixed: Side-by-Side Flex Box */
+    .btn-container {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      min-height: 60px;
+      position: relative;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: top 0.1s ease, left 0.1s ease;
+      white-space: nowrap;
+    }
+    .yes-btn {
+      background-color: #e11d48;
+      color: white;
+      z-index: 1;
+    }
+    .no-btn {
+      background-color: #f3f4f6;
+      color: #374151;
+      position: relative; /* Shuruat mein side-by-side rahega */
+      z-index: 10;
+    }
+    .submit-btn {
+      background-color: #e11d48;
+      color: white;
+      width: 100%;
+    }
+    /* Input & Food Styles */
+    .form-group { text-align: left; margin-bottom: 15px; }
+    label { font-size: 12px; font-weight: bold; color: #881337; display: block; margin-bottom: 5px; }
+    input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
+    .food-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
+    .food-item { padding: 10px; border: 1px solid #ddd; border-radius: 12px; cursor: pointer; }
+    .food-item.selected { background-color: #ffe4e6; border-color: #e11d48; color: #881337; font-weight: bold; }
+    .price-tag {
+      background: #fff1f2;
+      border: 2px dashed #e11d48;
+      padding: 10px;
+      border-radius: 12px;
+      margin: 15px 0;
+      color: #881337;
+      font-weight: bold;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- STEP 1: Main Question -->
+  <div class="card" id="step1">
+    <p style="letter-spacing: 2px; font-size: 11px;">A SMALL QUESTION</p>
+    <h1>Will you go on a date with me?</h1>
+    <p>Take your time. There is really only one right answer here 😉</p>
+    <div class="btn-container">
+      <button class="yes-btn" onclick="goToStep(2)">❤️ Yes, I'd love to</button>
+      <button id="noBtn" class="no-btn" onmouseover="dodgeAndChangeText('noBtn')" onclick="dodgeAndChangeText('noBtn')">No</button>
+    </div>
+  </div>
+  <!-- STEP 2: Pick Date & Time -->
+  <div class="card hidden" id="step2">
+    <p style="letter-spacing: 2px; font-size: 11px;">STEP 1 OF 2</p>
+    <h1>When works for you?</h1>
+    <p>Pick a date and time — I'll make it special.</p>
+    <div class="form-group">
+      <label>Date</label>
+      <input type="date" id="dateInput">
+    </div>
+    <div class="form-group">
+      <label>Time</label>
+      <input type="time" id="timeInput">
+    </div>
+    <div class="form-group">
+      <label>The Plan</label>
+      <input type="text" id="planInput" placeholder="e.g., Long drive / Cafe">
+    </div>
+    <button class="submit-btn" onclick="goToStep(3)">Next: The Food ➔</button>
+  </div>
+  <!-- STEP 3: Pick Food -->
+  <div class="card hidden" id="step3">
+    <p style="letter-spacing: 2px; font-size: 11px;">STEP 2 OF 2</p>
+    <h1>What should we eat?</h1>
+    <div class="food-grid">
+      <div class="food-item" onclick="selectFood(this)">🍕 Pizza</div>
+      <div class="food-item" onclick="selectFood(this)">🍔 Burgers</div>
+      <div class="food-item" onclick="selectFood(this)">🍜 Chinese</div>
+      <div class="food-item" onclick="selectFood(this)">🍧 Ice Cream</div>
+    </div>
+    <button class="submit-btn" onclick="showSummary()">Next ➔</button>
+  </div>
+  <!-- STEP 4: Summary & Final Confirmation Prank -->
+  <div class="card hidden" id="step4">
+    <h1>It's a Date! 🌹</h1>
+    <div class="price-tag">
+      Total Charges: $999 USD <br>
+      <span style="font-size: 11px; font-weight: normal; color: #666;">(Payment Method: Unlimited Smiles 😄)</span>
+    </div>
+    <p id="finalDetails" style="font-size: 14px; color: #374151; text-align: left; background: #f9fafb; padding: 12px; border-radius: 10px;"></p>
+    <p><b>Final Confirmation?</b></p>
+    <div class="btn-container">
+      <button class="yes-btn" onclick="goToStep(5)">Yes, Confirm ❤️</button>
+      <button id="finalNoBtn" class="no-btn" onmouseover="dodgeAndChangeText('finalNoBtn')" onclick="dodgeAndChangeText('finalNoBtn')">No Way 😜</button>
+    </div>
+  </div>
+  <!-- STEP 5: Final Screen -->
+  <div class="card hidden" id="step5">
+    <h1>All Set! 🎉</h1>
+    <p style="font-size: 16px; color: #881337; font-weight: bold;">Date Officially Confirmed! ❤️</p>
+    <p>Can't wait to see you! ✨</p>
+  </div>
+  <script>
+    const noTexts = [
+      "Are you sure? 🤔", 
+      "Really? 🥺", 
+      "Think again! 💭", 
+      "Seriously? 😭", 
+      "Last chance! 💔", 
+      "No way! 😜"
+    ];
+    let textIndex = 0;
+    let selectedFoodChoice = "Food";
+    function dodgeAndChangeText(btnId) {
+      const btn = document.getElementById(btnId);
+      // Touch/Hover hote hi position ko fixed/absolute karke bhaagane lago
+      btn.style.position = 'fixed';
+      // Text & Emoji loop
+      btn.innerText = noTexts[textIndex];
+      textIndex = (textIndex + 1) % noTexts.length;
+      // Random jump position anywhere on screen
+      const x = Math.random() * (window.innerWidth - 160);
+      const y = Math.random() * (window.innerHeight - 80);
+      btn.style.left = x + 'px';
+      btn.style.top = y + 'px';
+    }
+    function goToStep(stepNum) {
+      document.getElementById('step1').classList.add('hidden');
+      document.getElementById('step2').classList.add('hidden');
+      document.getElementById('step3').classList.add('hidden');
+      document.getElementById('step4').classList.add('hidden');
+      document.getElementById('step5').classList.add('hidden'); 
+      document.getElementById('step' + stepNum).classList.remove('hidden');
+    }
+    function selectFood(element) {
+      let items = document.querySelectorAll('.food-item');
+      items.forEach(item => item.classList.remove('selected'));
+      element.classList.add('selected');
+      selectedFoodChoice = element.innerText;
+    }
+    function showSummary() {
+      let dateVal = document.getElementById('dateInput').value || "2026-07-29";
+      let timeVal = document.getElementById('timeInput').value || "21:00";
+      let planVal = document.getElementById('planInput').value || "Long drive";
+      document.getElementById('finalDetails').innerHTML = 
+        `📅 <b>Date:</b> ${dateVal}<br>
+         ⏰ <b>Time:</b> ${timeVal}<br>
+         📍 <b>Plan:</b> ${planVal}<br>
+         🍕 <b>Food:</b> ${selectedFoodChoice}`;
+      goToStep(4);
+    }
+  </script>
+</body>
+</html>

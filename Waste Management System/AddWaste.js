@@ -36,5 +36,5 @@ placeholder="Weight"/>
 )
 }
 
-export default App
+export default App.js
 ;

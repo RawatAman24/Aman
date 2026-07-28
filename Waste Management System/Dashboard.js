@@ -1,4 +1,4 @@
-import App from "./App";
+import App from "./App.js";
 
 function Dashboard() {
   return (
@@ -21,4 +21,4 @@ function Dashboard() {
     </div>
   );
 }
-export default App;
+export default App.js;
