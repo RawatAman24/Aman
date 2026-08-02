@@ -1,16 +1,72 @@
 <!DOCTYPE html>
-<html leng="en">
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,inital=scale=1.0">
-        <title>Amzon Clone </title>
-        <link rel="stylesheet" href="style.css">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Amzon — Modern Responsive Clone</title>
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <header class="navbar">....</header>
-        <div class="banner">...</div>
-        <section class="products" id="products"></section>
-        <div class="cart" id="cart">...</div>
+        <header class="site-header">
+            <div class="container header-inner">
+                <a class="logo" href="#">Amzon</a>
+                <nav class="nav" id="nav">
+                    <a href="#">Home</a>
+                    <a href="#products">Products</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <div class="header-actions">
+                    <button id="searchBtn" class="icon">🔍</button>
+                    <button id="cartBtn" class="icon">🛒<span id="cartCount" class="badge">0</span></button>
+                    <button id="menuBtn" class="menu-btn">☰</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container hero-inner">
+                    <div class="hero-copy">
+                        <h1>Shop smarter. Live better.</h1>
+                        <p>Discover curated products with fast delivery and great prices.</p>
+                        <a class="btn" href="#products">Shop Now</a>
+                    </div>
+                    <div class="hero-image" aria-hidden="true">🛍️</div>
+                </div>
+            </section>
+
+            <section class="products container" id="products">
+                <h2 class="section-title">Featured Products</h2>
+                <div class="grid" id="productGrid"> <!-- populated by script --> </div>
+            </section>
+
+            <section class="about container" id="about">
+                <h2 class="section-title">About</h2>
+                <p>A simple, modern demo store built to be responsive and accessible.</p>
+            </section>
+
+            <section class="contact container" id="contact">
+                <h2 class="section-title">Contact</h2>
+                <p>Questions? Email us at <a href="mailto:hello@example.com">hello@example.com</a>.</p>
+            </section>
+        </main>
+
+        <aside id="cart" class="cart-panel" aria-hidden="true">
+            <h3>Your Cart</h3>
+            <div id="cartItems"></div>
+            <div class="cart-footer">
+                <div class="total">Total: $<span id="cartTotal">0.00</span></div>
+                <button id="checkout" class="btn">Checkout</button>
+            </div>
+        </aside>
+
+        <footer class="site-footer">
+            <div class="container">
+                <small>© <span id="year"></span> Amzon — Demo site</small>
+            </div>
+        </footer>
+
         <script src="script.js"></script>
     </body>
 </html>
