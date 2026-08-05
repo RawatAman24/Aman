@@ -8,28 +8,34 @@
 </head>
 <body>
 <div class="app">
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="header">WhatsApp</div>
-        <div class="chat-list" id="chatList"></div>
-        <button class="new-chat" id="newChat"> New Chat </button>
-    </div>
-    <!-- Chat Area -->
-    <div class="chat-area">
-        <div class="chat-header">
+    <aside class="sidebar" aria-label="Chats sidebar">
+        <header class="app-header">
+            <h1>WhatsApp</h1>
+            <input id="search" type="search" placeholder="Search chats" aria-label="Search chats">
+        </header>
+        <nav class="chat-list" id="chatList" aria-label="Chat list"></nav>
+        <button class="new-chat" id="newChat" type="button" aria-label="Start new chat">+</button>
+    </aside>
+
+    <main class="chat-area" role="main" aria-live="polite">
+        <header class="chat-header">
             <div class="user-info">
                 <div class="name">Select a chat</div>
-                <div class="status">Online</div>
+                <div class="status">Offline</div>
             </div>
-            <div class="menu">⋮</div>
-        </div>
-        <div class="messages" id="messages"></div>
-        <div class="type-box">
-            <input type="text" id="msgInput"placeholder="Type a message...">
-            <button id="sendBtn">Send</button>
-        </div>
-    </div>
+            <button class="menu" aria-label="More options">⋮</button>
+        </header>
+
+        <section class="messages" id="messages" aria-label="Messages"></section>
+
+        <form class="type-box" id="msgForm" aria-label="Send message">
+            <label for="msgInput" class="visually-hidden">Message</label>
+            <input type="text" id="msgInput" name="message" placeholder="Type a message..." autocomplete="off">
+            <button id="sendBtn" type="submit" aria-label="Send message">➤</button>
+        </form>
+    </main>
 </div>
+
 <script src="script.js"></script>
 </body>
 </html>

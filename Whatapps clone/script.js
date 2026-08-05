@@ -46,24 +46,36 @@ const chatList = document.getElementById("chatList");
 const messages = document.getElementById("messages");
 const msgInput = document.getElementById("msgInput");
 const sendBtn = document.getElementById("sendBtn");
+const msgForm = document.getElementById("msgForm");
+const searchInput = document.getElementById("search");
 let currentIndex = null;
 // Render Chat List
-function renderChats() {
+function renderChats(filter = "") {
     chatList.innerHTML = "";
     chats.forEach((chat, index) => {
+        if (filter && !chat.name.toLowerCase().includes(filter.toLowerCase()) && !chat.last.toLowerCase().includes(filter.toLowerCase())) return;
         const chatDiv = document.createElement("div");
         chatDiv.className = "chat";
-        if (index === currentIndex) {
-            chatDiv.classList.add("active");
-        }
-        chatDiv.innerHTML = `
-            <img src="${chat.img}" alt="${chat.name}">
-            <div class="chat-info">
-                <div class="name">${chat.name}</div>
-                <div class="last">${chat.last}</div>
-            </div>
-            <div class="time">${chat.time}</div>
-        `;
+        if (index === currentIndex) chatDiv.classList.add("active");
+
+        const avatar = chat.img || `https://i.pravatar.cc/48?u=${encodeURIComponent(chat.name)}`;
+        const img = document.createElement('img');
+        img.src = avatar;
+        img.alt = chat.name + ' avatar';
+        img.onerror = function () { this.src = 'https://via.placeholder.com/48?text=' + (chat.name ? chat.name[0] : '?'); };
+
+        const info = document.createElement('div');
+        info.className = 'chat-info';
+        info.innerHTML = `<div class="name">${chat.name}</div><div class="last">${chat.last}</div>`;
+
+        const time = document.createElement('div');
+        time.className = 'time';
+        time.textContent = chat.time || '';
+
+        chatDiv.appendChild(img);
+        chatDiv.appendChild(info);
+        chatDiv.appendChild(time);
+
         chatDiv.onclick = () => openChat(index);
         chatList.appendChild(chatDiv);
     });
@@ -88,36 +100,41 @@ function openChat(index) {
     renderChats();
 }
 // Send Message
-sendBtn.addEventListener("click", sendMessage);
-msgInput.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-        sendMessage();
-    }
+// Handle message sending via form submit
+msgForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    sendMessage();
 });
+
+// Optional search
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => renderChats(e.target.value));
+}
+
 function sendMessage() {
     if (currentIndex === null) {
         alert("Please select a chat first.");
         return;
     }
     const text = msgInput.value.trim();
-    if (text === "") return;
+    if (!text) return;
     const currentUser = chats[currentIndex];
-    // Save message
-    currentUser.messages.push({
-        text: text,
-        type: "sent"
-    });
-    // Update last message
+    currentUser.messages.push({text, type: 'sent'});
     currentUser.last = text;
     openChat(currentIndex);
-    msgInput.value = "";
-    // Fake reply after 1 second
+    msgInput.value = '';
+    // Fake automated reply
     setTimeout(() => {
-        currentUser.messages.push({
-            text: "Received: " + text,
-            type: "received"
-        });
-        currentUser.last = "Received: " + text;
+        currentUser.messages.push({text: 'Received: ' + text, type: 'received'});
+        currentUser.last = 'Received: ' + text;
         openChat(currentIndex);
-    }, 1000);
+    }, 900);
 }
+
+// Improve initial accessibility focus
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'k' && (e.ctrlKey || e.metaKey)) {
+        searchInput?.focus();
+        e.preventDefault();
+    }
+});
