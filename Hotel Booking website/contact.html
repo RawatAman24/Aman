@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | StayEase</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f7fa;
+}
+
+nav{
+background:#0d3b66;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:#fff;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
+color:#fff;
+text-decoration:none;
+font-weight:bold;
+}
+
+.hero{
+background:linear-gradient(rgba(13,59,102,.75),rgba(13,59,102,.75)),
+url("https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600") center/cover;
+height:300px;
+display:flex;
+justify-content:center;
+align-items:center;
+color:#fff;
+}
+
+.hero h1{
+font-size:50px;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:50px auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.card{
+background:#fff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+.card h2{
+margin-bottom:20px;
+color:#0d3b66;
+}
+
+.info{
+margin-bottom:18px;
+display:flex;
+align-items:center;
+}
+
+.info i{
+font-size:20px;
+color:#ff9800;
+margin-right:15px;
+width:25px;
+}
+
+.form-group{
+margin-bottom:18px;
+}
+
+.form-group input,
+.form-group textarea{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:15px;
+}
+
+textarea{
+height:140px;
+resize:none;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#ff9800;
+color:#fff;
+font-size:18px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#e68900;
+}
+
+.social{
+margin-top:25px;
+}
+
+.social a{
+display:inline-block;
+margin-right:12px;
+font-size:24px;
+color:#0d3b66;
+transition:.3s;
+}
+
+.social a:hover{
+color:#ff9800;
+}
+
+iframe{
+width:100%;
+height:350px;
+border:none;
+border-radius:12px;
+margin-top:40px;
+}
+
+footer{
+background:#0d3b66;
+color:#fff;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+@media(max-width:768px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:36px;
+}
+
+nav{
+flex-direction:column;
+}
+
+nav ul{
+margin-top:10px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+<i class="fa-solid fa-hotel"></i> StayEase
+</div>
+
+<ul>
+<li><a href="Home.html">Home</a></li>
+<li><a href="Hotel-Details.html">Hotels</a></li>
+<li><a href="Contact.html">Contact</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+<h1>Contact Us</h1>
+</section>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Get In Touch</h2>
+
+<div class="info">
+<i class="fa-solid fa-location-dot"></i>
+<span>SG Highway, Ahmedabad, Gujarat, India</span>
+</div>
+
+<div class="info">
+<i class="fa-solid fa-phone"></i>
+<span>+91 98765 43210</span>
+</div>
+
+<div class="info">
+<i class="fa-solid fa-envelope"></i>
+<span>support@stayease.com</span>
+</div>
+
+<div class="info">
+<i class="fa-solid fa-clock"></i>
+<span>Open 24 Hours</span>
+</div>
+
+<div class="social">
+
+<a href="#"><i class="fab fa-facebook"></i></a>
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="fab fa-x-twitter"></i></a>
+
+<a href="#"><i class="fab fa-linkedin"></i></a>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Send Message</h2>
+
+<form id="contactForm">
+
+<div class="form-group">
+
+<input
+type="text"
+placeholder="Full Name"
+required>
+
+</div>
+
+<div class="form-group">
+
+<input
+type="email"
+placeholder="Email Address"
+required>
+
+</div>
+
+<div class="form-group">
+
+<input
+type="tel"
+placeholder="Phone Number"
+required>
+
+</div>
+
+<div class="form-group">
+
+<textarea
+placeholder="Write your message..."
+required></textarea>
+
+</div>
+
+<button type="submit">
+
+Send Message
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<div style="width:90%;max-width:1200px;margin:auto;">
+
+<iframe
+src="https://www.google.com/maps?q=Ahmedabad&output=embed"
+loading="lazy">
+</iframe>
+
+</div>
+
+<footer>
+
+<p>© 2026 StayEase Hotel Booking. All Rights Reserved.</p>
+
+</footer>
+
+<script>
+
+document.getElementById("contactForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("✅ Thank you! Your message has been sent successfully.");
+
+this.reset();
+
+});
+
+</script>
+
+</body>
+</html>

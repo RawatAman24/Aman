@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | StayEase Hotel Booking</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+}
+
+/* Navbar */
+nav{
+    background:#0d3b66;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:20px;
+}
+
+nav ul li a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* Hero */
+.hero{
+    height:350px;
+    background:linear-gradient(rgba(13,59,102,.75),rgba(13,59,102,.75)),
+    url("https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600") center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#fff;
+}
+
+.hero h1{
+    font-size:52px;
+}
+
+.hero p{
+    margin-top:15px;
+    font-size:20px;
+}
+
+/* Sections */
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:60px auto;
+}
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:15px;
+}
+
+.about h2{
+    color:#0d3b66;
+    margin-bottom:20px;
+}
+
+.about p{
+    line-height:1.8;
+}
+
+/* Mission */
+.mission{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    margin-top:60px;
+}
+
+.box{
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+.box i{
+    font-size:50px;
+    color:#ff9800;
+    margin-bottom:15px;
+}
+
+/* Counter */
+.counter{
+    background:#0d3b66;
+    color:white;
+    margin:70px 0;
+    padding:60px 20px;
+}
+
+.counter-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+    text-align:center;
+}
+
+.counter h2{
+    font-size:42px;
+}
+
+.counter p{
+    margin-top:10px;
+}
+
+/* Team */
+.team{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.member{
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    text-align:center;
+}
+
+.member img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.member h3{
+    margin-top:15px;
+}
+
+.member p{
+    margin-bottom:20px;
+    color:#777;
+}
+
+/* Testimonials */
+.testimonials{
+    margin-top:60px;
+}
+
+.review-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.review{
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+/* Footer */
+footer{
+    background:#0d3b66;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    margin-top:60px;
+}
+
+@media(max-width:768px){
+
+.about{
+    grid-template-columns:1fr;
+}
+
+.hero h1{
+    font-size:36px;
+}
+
+nav{
+    flex-direction:column;
+}
+
+nav ul{
+    margin-top:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">
+<i class="fa-solid fa-hotel"></i> StayEase
+</div>
+
+<ul>
+<li><a href="Home.html">Home</a></li>
+<li><a href="Hotel-Details.html">Hotels</a></li>
+<li><a href="Rooms.html">Rooms</a></li>
+<li><a href="Offer.html">Offers</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<div>
+<h1>About StayEase</h1>
+<p>Your Trusted Hotel Booking Partner</p>
+</div>
+</section>
+
+<div class="container">
+
+<div class="about">
+
+<img src="https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?w=900" alt="Luxury Hotel">
+
+<div>
+
+<h2>Who We Are</h2>
+
+<p>
+StayEase is a modern hotel booking platform that helps travelers discover
+luxury hotels, budget stays, resorts, and vacation homes at the best prices.
+Our goal is to make travel simple, secure, and affordable with an easy online
+booking experience.
+</p>
+
+<br>
+
+<p>
+Whether you're planning a family vacation, business trip, honeymoon,
+or weekend getaway, StayEase provides trusted accommodations
+with instant booking confirmation and 24/7 customer support.
+</p>
+
+</div>
+
+</div>
+
+<div class="mission">
+
+<div class="box">
+<i class="fa-solid fa-bullseye"></i>
+<h3>Our Mission</h3>
+<p>Deliver affordable, secure, and seamless hotel booking experiences.</p>
+</div>
+
+<div class="box">
+<i class="fa-solid fa-eye"></i>
+<h3>Our Vision</h3>
+<p>Become the world's most trusted online hotel booking platform.</p>
+</div>
+
+<div class="box">
+<i class="fa-solid fa-heart"></i>
+<h3>Customer First</h3>
+<p>Every decision we make is focused on providing the best guest experience.</p>
+</div>
+
+</div>
+
+</div>
+
+<section class="counter">
+
+<div class="counter-grid">
+
+<div>
+<h2>500+</h2>
+<p>Hotels</p>
+</div>
+
+<div>
+<h2>50K+</h2>
+<p>Happy Guests</p>
+</div>
+
+<div>
+<h2>100+</h2>
+<p>Cities</p>
+</div>
+
+<div>
+<h2>4.9★</h2>
+<p>Customer Rating</p>
+</div>
+
+</div>
+
+</section>
+
+<div class="container">
+
+<h2 style="text-align:center;color:#0d3b66;margin-bottom:30px;">
+Meet Our Team
+</h2>
+
+<div class="team">
+
+<div class="member">
+<img src="https://randomuser.me/api/portraits/men/32.jpg">
+<h3>Rahul Sharma</h3>
+<p>Founder & CEO</p>
+</div>
+
+<div class="member">
+<img src="https://randomuser.me/api/portraits/women/44.jpg">
+<h3>Priya Patel</h3>
+<p>Operations Manager</p>
+</div>
+
+<div class="member">
+<img src="https://randomuser.me/api/portraits/men/75.jpg">
+<h3>Amit Verma</h3>
+<p>Customer Success</p>
+</div>
+
+</div>
+
+<div class="testimonials">
+
+<h2 style="text-align:center;color:#0d3b66;margin-bottom:30px;">
+What Our Guests Say
+</h2>
+
+<div class="review-grid">
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p style="margin-top:15px;">
+"Excellent booking experience and fantastic hotel options."
+</p>
+<b>- Aman</b>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p style="margin-top:15px;">
+"Very easy to use and great customer support."
+</p>
+<b>- Sneha</b>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p style="margin-top:15px;">
+"Affordable prices with instant booking confirmation."
+</p>
+<b>- Rohit</b>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 StayEase Hotel Booking. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

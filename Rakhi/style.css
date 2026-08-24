@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Body */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #fff0f5, #fff8e7);
+    min-height: 100vh;
+    color: #5a2630;
+}
+/* Main Container */
+div[align="center"] {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px 25px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(180, 70, 90, 0.2);
+}
+/* Heading */
+h1 {
+    color: #d6336c;
+    font-size: 42px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(214, 51, 108, 0.2);
+}
+/* Paragraph */
+div[align="center"] > p {
+    font-size: 20px;
+    color: #6b3b45;
+    line-height: 1.7;
+    font-style: italic;
+}
+/* Image */
+img {
+    width: 500px;
+    max-width: 90%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    border: 6px solid #ffd6df;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+img:hover {
+    transform: scale(1.03);
+}
+/* Table */
+table {
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 15px;
+}
+/* Table Cells */
+td {
+    width: 200px;
+    padding: 25px 20px;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0 5px 15px rgba(150, 70, 80, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+td:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(150, 70, 80, 0.2);
+}
+/* Bond Box */
+td:first-child {
+    background: #ffe6f0;
+}
+/* Promise Box */
+td:last-child {
+    background: #fff4e6;
+}
+/* Table Heading */
+td h2 {
+    color: #c92a5b;
+    margin-bottom: 10px;
+    font-size: 24px;
+    text-transform: capitalize;
+}
+/* Table Paragraph */
+td p {
+    color: #70434d;
+    font-size: 17px;
+    line-height: 1.6;
+}
+/* Love You Text */
+h3 {
+    color: #d63338;
+    font-size: 28px;
+    margin-top: 10px;
+    animation: heartbeat 1.5s infinite;
+}
+/* Heartbeat Animation */
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.05);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+/* Decorative effect */
+div[align="center"]::before {
+    content: "🪷";
+    display: block;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    div[align="center"] {
+        width: 95%;
+        margin: 20px auto;
+        padding: 30px 15px;
+    }
+    h1 {
+        font-size: 28px;
+    }
+    div[align="center"] > p {
+        font-size: 17px;
+    }
+    table {
+        width: 100%;
+        border-spacing: 8px;
+    }
+    td {
+        width: 50%;
+        padding: 18px 10px;
+    }
+    td h2 {
+        font-size: 20px;
+    }
+    td p {
+        font-size: 14px;
+    }
+    h3 {
+        font-size: 23px;
+    }
+}

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Offers | StayEase</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f7fb;
+}
+
+nav{
+background:#0d3b66;
+color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.hero{
+height:350px;
+background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url("https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600") center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+color:white;
+text-align:center;
+}
+
+.hero h1{
+font-size:52px;
+}
+
+.hero p{
+font-size:20px;
+margin-top:10px;
+}
+
+.timer{
+margin-top:20px;
+background:#ff9800;
+padding:15px 30px;
+border-radius:8px;
+font-size:22px;
+font-weight:bold;
+}
+
+.section{
+width:90%;
+max-width:1200px;
+margin:60px auto;
+}
+
+.section h2{
+text-align:center;
+margin-bottom:35px;
+color:#0d3b66;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.discount{
+background:#e53935;
+color:white;
+display:inline-block;
+padding:6px 12px;
+border-radius:20px;
+font-size:14px;
+margin-bottom:10px;
+}
+
+.price{
+font-size:22px;
+font-weight:bold;
+color:#0d3b66;
+margin:12px 0;
+}
+
+.old-price{
+text-decoration:line-through;
+color:#888;
+margin-left:8px;
+font-size:16px;
+}
+
+.coupon{
+background:#f1f1f1;
+padding:12px;
+border:2px dashed #ff9800;
+text-align:center;
+margin:15px 0;
+font-weight:bold;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#ff9800;
+border:none;
+color:white;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#e68900;
+}
+
+footer{
+background:#0d3b66;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:60px;
+}
+
+@media(max-width:768px){
+.hero h1{
+font-size:36px;
+}
+
+nav{
+flex-direction:column;
+}
+
+nav ul{
+margin-top:10px;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+<i class="fa-solid fa-hotel"></i> StayEase
+</div>
+
+<ul>
+<li><a href="Home.html">Home</a></li>
+<li><a href="Hotel-Details.html">Hotels</a></li>
+<li><a href="Offer.html">Offers</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<h1>Exclusive Hotel Deals</h1>
+
+<p>Save up to 50% on your next stay.</p>
+
+<div class="timer">
+
+Offer Ends In:
+<span id="countdown"></span>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Today's Best Offers</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700">
+
+<div class="card-content">
+
+<div class="discount">
+50% OFF
+</div>
+
+<h3>Luxury Palace Hotel</h3>
+
+<p>Ahmedabad</p>
+
+<div class="price">
+
+₹4,999
+
+<span class="old-price">
+
+₹9,999
+
+</span>
+
+</div>
+
+<div class="coupon">
+
+Coupon:
+<b>STAY50</b>
+
+</div>
+
+<button onclick="location.href='booking.html'">
+
+Book Now
+
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=700">
+
+<div class="card-content">
+
+<div class="discount">
+35% OFF
+</div>
+
+<h3>Ocean View Resort</h3>
+
+<p>Goa</p>
+
+<div class="price">
+
+₹6,499
+
+<span class="old-price">
+
+₹9,999
+
+</span>
+
+</div>
+
+<div class="coupon">
+
+Coupon:
+<b>GOA35</b>
+
+</div>
+
+<button onclick="location.href='booking.html'">
+
+Book Now
+
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=700">
+
+<div class="card-content">
+
+<div class="discount">
+40% OFF
+</div>
+
+<h3>Mountain Retreat</h3>
+
+<p>Manali</p>
+
+<div class="price">
+
+₹3,999
+
+<span class="old-price">
+
+₹6,499
+
+</span>
+
+</div>
+
+<div class="coupon">
+
+Coupon:
+<b>HILL40</b>
+
+</div>
+
+<button onclick="location.href='booking.html'">
+
+Book Now
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 StayEase Hotel Booking. All Rights Reserved.</p>
+
+</footer>
+
+<script>
+
+let time = 24 * 60 * 60;
+
+function updateTimer(){
+
+let hrs = Math.floor(time / 3600);
+let mins = Math.floor((time % 3600) / 60);
+let secs = time % 60;
+
+document.getElementById("countdown").innerHTML =
+`${hrs.toString().padStart(2,"0")} :
+${mins.toString().padStart(2,"0")} :
+${secs.toString().padStart(2,"0")}`;
+
+if(time > 0){
+time--;
+}
+
+}
+
+setInterval(updateTimer,1000);
+
+updateTimer();
+
+</script>
+
+</body>
+</html>
