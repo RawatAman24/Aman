@@ -1,0 +1,304 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    color: #222;
+    background: #fff;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+header {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+}
+.logo span {
+    font-weight: 400;
+}
+nav {
+    display: flex;
+    gap: 30px;
+}
+nav a {
+    font-size: 15px;
+    transition: .3s;
+}
+nav a:hover {
+    color: #c58b5c;
+}
+.header-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.header-icons i {
+    cursor: pointer;
+}
+.cart {
+    position: relative;
+}
+.cart span {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #111;
+    color: white;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero {
+    height: 650px;
+    background:
+        linear-gradient(
+            rgba(0,0,0,.3),
+            rgba(0,0,0,.3)
+        ),
+        url("../images/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding-left: 8%;
+    color: white;
+}
+.hero-content p:first-child {
+    letter-spacing: 4px;
+}
+.hero h1 {
+    font-size: 70px;
+    line-height: 1.05;
+    margin: 20px 0;
+}
+.hero h1 span{
+    font-style: italic;
+}
+.hero-text{
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background: white;
+    color: #111;
+    font-weight: bold;
+    transition: .3s;
+}
+.btn:hover {
+    background: #111;
+    color: white;
+}
+.section{
+    padding: 80px 7%;
+}
+.section h2{
+    font-size: 35px;
+    margin-bottom: 45px;
+    text-align: center;
+}
+.categories {
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+    gap: 25px;
+}
+.categories{
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+.categories img{
+    width: 400%;
+    height: 100px;
+    object-fit: cover;
+}
+.categories h3{
+    font-size: 25px;
+    margin-top: 15px;
+}
+.category a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.section-heading h2{
+    margin: 0%;
+}
+.products {
+    display: grid;
+    grid-template-columns:
+        repeat(4, 1fr);
+    gap: 25px;
+}
+.product-image {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+}
+.product:hover img {
+    transform: scale(1.05);
+}
+.product-image button {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #111;
+    color: white;
+    padding: 6px 12px;
+    font-size: 12px;
+    z-index: 2;
+}
+.sale {
+    background: #c85c5c;
+}
+.product-info {
+    padding-top: 15px;
+}
+.product-info p {
+    color: #777;
+    font-size: 13px;
+}
+.product-info h3 {
+    margin: 8px 0;
+}
+.rating {
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+.offer {
+    height: 450px;
+    background:
+        linear-gradient(
+            rgba(0,0,0,.45),
+            rgba(0,0,0,.45)
+        ),
+        url("../images/offer.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+.offer h2 {
+    font-size: 55px;
+    margin: 15px 0;
+}
+.newsletter {
+    padding: 80px 20px;
+    text-align: center;
+    background: #f5f2ef;
+}
+.newsletter h2 {
+    font-size: 35px;
+}
+.newsletter p {
+    margin: 15px 0 25px;
+}
+.newsletter input {
+    width: 300px;
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+.newsletter button {
+    padding: 15px 25px;
+    border: none;
+    background: #111;
+    color: white;
+    cursor: pointer;
+}
+footer {
+    background: #111;
+    color: white;
+    padding: 60px 7% 20px;
+}
+.footer-container {
+    display: grid;
+    grid-template-columns:
+        2fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+.footer-container h3 {
+    margin-bottom: 20px;
+}
+.footer-container a {
+    display: block;
+    color: #aaa;
+    margin: 10px 0;
+}
+.social {
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+}
+.copyright {
+    text-align: center;
+    color: #777;
+    border-top: 1px solid #333;
+    margin-top: 40px;
+    padding-top: 20px;
+}
+@media(max-width: 600px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+    .header-icons {
+        gap: 10px;
+    }
+    .hero {
+        height: 550px;
+        padding: 30px;
+    }
+    .hero h1 {
+        font-size: 42px;
+    }
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+    .newsletter input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

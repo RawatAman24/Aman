@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Checkout | FAMMS</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" 
+rel="stylesheet">
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div id="header"></div>
+    <section class="page-banner">
+        <div class="container">
+            <p class="eyebrow">SECURE CHECKOUT</p>
+            <h1>Checkout</h1>
+        </div>
+    </section>
+<section class="section">
+    <div class="container checkout-grid">
+        <form class="form-card" id="checkoutForm">
+            <h2>Billing Details</h2>
+            <div class="form-grid">
+                <input required placeholder="First name">
+                <input required placeholder="Last name">
+                <input required type="email" placeholder="Email">
+                <input required type="tel" placeholder="Phone">
+                <input required class="full" placeholder="Address">
+                <input required placeholder="City">
+                <input required placeholder="Postal code">
+                <select required class="full">
+                    <option value="">Payment method</option>
+                    <option>Cash on Delivery</option>
+                    <option>UPI</option>
+                    <option>Credit / Debit Card</option>
+                </select>
+            </div>
+            <button class="btn" type="submit">Place Order</button>
+        </form>
+        <aside class="summary-card">
+            <h2>Order Summary</h2>
+            <div id="checkoutSummary">
+            </div>
+        </aside>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Kids Fashion | StyleAura</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        /* =================================
+           KIDS HERO
+        ================================= */
+
+        .kids-hero {
+
+            min-height: 520px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.25),
+                    rgba(0,0,0,.25)
+                ),
+                url("images/kids-banner.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 8%;
+
+            color: white;
+
+        }
+
+
+        .kids-hero-content {
+
+            max-width: 600px;
+
+        }
+
+
+        .kids-eyebrow {
+
+            font-size: 14px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .kids-hero h1 {
+
+            font-size: 65px;
+
+            line-height: 1.05;
+
+            margin: 15px 0;
+
+        }
+
+
+        .kids-hero h1 span {
+
+            font-style: italic;
+
+        }
+
+
+        .kids-hero p {
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .kids-btn {
+
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding: 15px 35px;
+
+            background: white;
+
+            color: #111;
+
+            font-weight: bold;
+
+            transition: .3s;
+
+        }
+
+
+        .kids-btn:hover {
+
+            background: #111;
+
+            color: white;
+
+        }
+
+
+
+        /* =================================
+           CATEGORY SECTION
+        ================================= */
+
+        .kids-categories {
+
+            padding: 75px 7%;
+
+        }
+
+
+        .kids-categories h2 {
+
+            text-align: center;
+
+            font-size: 34px;
+
+            margin-bottom: 40px;
+
+        }
+
+
+        .kids-category-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 22px;
+
+        }
+
+
+        .kids-category-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        .kids-category-card img {
+
+            width: 100%;
+
+            height: 340px;
+
+            object-fit: cover;
+
+            transition: .5s;
+
+        }
+
+
+        .kids-category-card:hover img {
+
+            transform: scale(1.07);
+
+        }
+
+
+        .kids-category-overlay {
+
+            position: absolute;
+
+            left: 0;
+
+            right: 0;
+
+            bottom: 0;
+
+            padding: 45px 20px 20px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,.8)
+                );
+
+        }
+
+
+        .kids-category-overlay h3 {
+
+            font-size: 22px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .kids-category-overlay a {
+
+            font-size: 13px;
+
+            text-decoration: underline;
+
+        }
+
+
+
+        /* =================================
+           PRODUCTS
+        ================================= */
+
+        .kids-products {
+
+            background: #faf8f7;
+
+            padding: 75px 7%;
+
+        }
+
+
+        .kids-heading {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 40px;
+
+        }
+
+
+        .kids-heading h2 {
+
+            font-size: 34px;
+
+        }
+
+
+        .kids-heading a {
+
+            text-decoration: underline;
+
+        }
+
+
+        .kids-product-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 25px;
+
+        }
+
+
+        .kids-product {
+
+            background: white;
+
+            overflow: hidden;
+
+        }
+
+
+        .kids-product-image {
+
+            position: relative;
+
+            height: 390px;
+
+            overflow: hidden;
+
+            background: #f3f3f3;
+
+        }
+
+
+        .kids-product-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: .4s;
+
+        }
+
+
+        .kids-product:hover
+        .kids-product-image img {
+
+            transform: scale(1.06);
+
+        }
+
+
+        .kids-badge {
+
+            position: absolute;
+
+            top: 15px;
+
+            left: 15px;
+
+            background: #111;
+
+            color: white;
+
+            padding: 6px 12px;
+
+            font-size: 11px;
+
+            z-index: 2;
+
+        }
+
+
+        .kids-sale {
+
+            background: #d35d70;
+
+        }
+
+
+        .kids-wishlist {
+
+            position: absolute;
+
+            top: 15px;
+
+            right: 15px;
+
+            width: 40px;
+
+            height: 40px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: white;
+
+            cursor: pointer;
+
+            z-index: 3;
+
+        }
+
+
+        .kids-wishlist:hover {
+
+            color: #d35d70;
+
+        }
+
+
+        .kids-add-cart {
+
+            position: absolute;
+
+            bottom: 15px;
+
+            left: 15px;
+
+            right: 15px;
+
+            padding: 13px;
+
+            background: #111;
+
+            color: white;
+
+            border: none;
+
+            cursor: pointer;
+
+            transform: translateY(70px);
+
+            transition: .3s;
+
+        }
+
+
+        .kids-product:hover
+        .kids-add-cart {
+
+            transform: translateY(0);
+
+        }
+
+
+        .kids-product-info {
+
+            padding: 15px;
+
+        }
+
+
+        .kids-product-info small {
+
+            color: #777;
+
+        }
+
+
+        .kids-product-info h3 {
+
+            font-size: 17px;
+
+            margin: 7px 0;
+
+        }
+
+
+        .kids-stars {
+
+            letter-spacing: 2px;
+
+            font-size: 13px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .kids-price {
+
+            font-weight: bold;
+
+            font-size: 17px;
+
+        }
+
+
+        .kids-old-price {
+
+            color: #999;
+
+            text-decoration: line-through;
+
+            margin-left: 8px;
+
+            font-weight: normal;
+
+        }
+
+
+
+        /* =================================
+           AGE GROUP
+        ================================= */
+
+        .age-section {
+
+            padding: 75px 7%;
+
+        }
+
+
+        .age-section h2 {
+
+            text-align: center;
+
+            font-size: 34px;
+
+            margin-bottom: 40px;
+
+        }
+
+
+        .age-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 25px;
+
+        }
+
+
+        .age-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        .age-card img {
+
+            width: 100%;
+
+            height: 300px;
+
+            object-fit: cover;
+
+            transition: .5s;
+
+        }
+
+
+        .age-card:hover img {
+
+            transform: scale(1.06);
+
+        }
+
+
+        .age-content {
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 0;
+
+            right: 0;
+
+            text-align: center;
+
+            padding: 35px 20px 25px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,.8)
+                );
+
+        }
+
+
+        .age-content h3 {
+
+            font-size: 25px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+
+        /* =================================
+           PROMOTION
+        ================================= */
+
+        .kids-promo {
+
+            margin: 75px 7%;
+
+            min-height: 380px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.35),
+                    rgba(0,0,0,.35)
+                ),
+                url("images/kids-offer.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            color: white;
+
+        }
+
+
+        .kids-promo h2 {
+
+            font-size: 50px;
+
+            margin: 15px 0;
+
+        }
+
+
+        .kids-promo p {
+
+            margin-bottom: 20px;
+
+        }
+
+
+
+        /* =================================
+           FEATURES
+        ================================= */
+
+        .kids-features {
+
+            padding: 70px 7%;
+
+        }
+
+
+        .kids-feature-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 25px;
+
+        }
+
+
+        .kids-feature {
+
+            text-align: center;
+
+            padding: 25px;
+
+        }
+
+
+        .kids-feature i {
+
+            font-size: 30px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .kids-feature h3 {
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .kids-feature p {
+
+            color: #777;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+        }
+
+
+
+        /* =================================
+           RESPONSIVE
+        ================================= */
+
+        @media(max-width:1000px) {
+
+            .kids-category-grid,
+            .kids-product-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+
+            .kids-feature-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+
+            .kids-hero h1 {
+
+                font-size: 52px;
+
+            }
+
+        }
+
+
+        @media(max-width:600px) {
+
+            .kids-hero {
+
+                min-height: 450px;
+
+                padding: 30px;
+
+            }
+
+
+            .kids-hero h1 {
+
+                font-size: 42px;
+
+            }
+
+
+            .kids-category-grid,
+            .kids-product-grid,
+            .kids-feature-grid,
+            .age-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .kids-heading {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 12px;
+
+            }
+
+
+            .kids-promo {
+
+                margin: 50px 5%;
+
+            }
+
+
+            .kids-promo h2 {
+
+                font-size: 36px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     HEADER
+================================= -->
+
+<header>
+
+    <div class="logo">
+
+        Style<span>Aura</span>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="shop.html"> Shop</a>
+        <a href="men.html"> Men</a>
+        <a href="women.html"> Women</a>
+        <a href="kids.html" style="font-weight:bold;">Kids</a>
+        <a href="offers.html"> Offers</a>
+    </nav>
+    <div class="header-icons">
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <i class="fa-regular fa-heart"></i>
+
+
+        <div class="cart">
+
+            <i class="fa-solid fa-bag-shopping"></i>
+
+            <span id="cartCount">
+                0
+            </span>
+
+        </div>
+
+
+        <i class="fa-regular fa-user"></i>
+
+    </div>
+
+</header>
+
+
+
+<!-- =================================
+     HERO
+================================= -->
+
+<section class="kids-hero">
+
+    <div class="kids-hero-content">
+
+        <p class="kids-eyebrow">
+
+            KIDS COLLECTION 2026
+
+        </p>
+
+
+        <h1>
+
+            Little Styles.
+            <br>
+
+            <span>Big Smiles.</span>
+
+        </h1>
+
+
+        <p>
+
+            Fun, comfortable and stylish outfits
+            designed for every little adventure.
+
+        </p>
+
+
+        <a
+            href="#kidsProducts"
+            class="kids-btn">
+
+            SHOP KIDS
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================
+     CATEGORIES
+================================= -->
+
+<section class="kids-categories">
+
+    <h2>
+
+        Shop Kids' Categories
+
+    </h2>
+
+
+    <div class="kids-category-grid">
+
+
+        <!-- BOYS -->
+
+        <div class="kids-category-card">
+
+            <img
+                src="images/kids-boys.jpg"
+                alt="Boys Fashion">
+
+
+            <div class="kids-category-overlay">
+
+                <h3>
+                    Boys
+                </h3>
+
+                <a href="#kidsProducts">
+
+                    Shop Collection →
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- GIRLS -->
+
+        <div class="kids-category-card">
+
+            <img
+                src="images/kids-girls.jpg"
+                alt="Girls Fashion">
+
+
+            <div class="kids-category-overlay">
+
+                <h3>
+                    Girls
+                </h3>
+
+                <a href="#kidsProducts">
+
+                    Shop Collection →
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- BABY -->
+
+        <div class="kids-category-card">
+
+            <img
+                src="images/baby-fashion.jpg"
+                alt="Baby Fashion">
+
+
+            <div class="kids-category-overlay">
+
+                <h3>
+                    Baby
+                </h3>
+
+                <a href="#kidsProducts">
+
+                    Shop Collection →
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTWEAR -->
+
+        <div class="kids-category-card">
+
+            <img
+                src="images/kids-footwear.jpg"
+                alt="Kids Footwear">
+
+
+            <div class="kids-category-overlay">
+
+                <h3>
+                    Footwear
+                </h3>
+
+                <a href="#kidsProducts">
+
+                    Shop Collection →
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================
+     AGE GROUP
+================================= -->
+
+<section class="age-section">
+
+    <h2>
+
+        Shop By Age
+
+    </h2>
+
+
+    <div class="age-grid">
+
+
+        <div class="age-card">
+
+            <img
+                src="images/baby.jpg"
+                alt="Baby Fashion">
+
+
+            <div class="age-content">
+
+                <h3>
+                    0 - 3 Years
+                </h3>
+
+                <p>
+                    Cute & Comfortable
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="age-card">
+
+            <img
+                src="images/kids.jpg"
+                alt="Kids Fashion">
+
+
+            <div class="age-content">
+
+                <h3>
+                    4 - 8 Years
+                </h3>
+
+                <p>
+                    Fun Everyday Styles
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="age-card">
+
+            <img
+                src="images/teen.jpg"
+                alt="Teen Fashion">
+
+
+            <div class="age-content">
+
+                <h3>
+                    9 - 14 Years
+                </h3>
+
+                <p>
+                    Cool & Trendy Looks
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================
+     PRODUCTS
+================================= -->
+
+<section
+    class="kids-products"
+    id="kidsProducts">
+
+
+    <div class="kids-heading">
+
+        <h2>
+
+            Trending Kids' Fashion
+
+        </h2>
+
+
+        <a href="shop.html">
+
+            View All Products →
+
+        </a>
+
+    </div>
+
+
+    <div class="kids-product-grid">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div class="kids-product">
+
+            <div class="kids-product-image">
+
+
+                <span class="kids-badge">
+
+                    NEW
+
+                </span>
+
+
+                <button
+                    class="kids-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+
+                <img
+                    src="images/kids-tshirt.jpg"
+                    alt="Kids T Shirt">
+
+
+                <button
+                    class="kids-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="kids-product-info">
+
+                <small>
+                    T-Shirts
+                </small>
+
+                <h3>
+                    Fun Graphic T-Shirt
+                </h3>
+
+
+                <div class="kids-stars">
+                    ★★★★★
+                </div>
+
+
+                <div class="kids-price">
+
+                    ₹799
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="kids-product">
+
+            <div class="kids-product-image">
+
+
+                <span class="kids-badge">
+
+                    BESTSELLER
+
+                </span>
+
+
+                <button
+                    class="kids-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+
+                <img
+                    src="images/kids-dress.jpg"
+                    alt="Girls Dress">
+
+
+                <button
+                    class="kids-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="kids-product-info">
+
+                <small>
+                    Dresses
+                </small>
+
+                <h3>
+                    Floral Party Dress
+                </h3>
+
+
+                <div class="kids-stars">
+                    ★★★★★
+                </div>
+
+
+                <div class="kids-price">
+
+                    ₹1,499
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 3 -->
+
+        <div class="kids-product">
+
+            <div class="kids-product-image">
+
+
+                <span class="kids-badge kids-sale">
+
+                    SALE
+
+                </span>
+
+
+                <button
+                    class="kids-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+
+                <img
+                    src="images/kids-jeans.jpg"
+                    alt="Kids Jeans">
+
+
+                <button
+                    class="kids-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="kids-product-info">
+
+                <small>
+                    Jeans
+                </small>
+
+                <h3>
+                    Comfortable Denim Jeans
+                </h3>
+
+
+                <div class="kids-stars">
+                    ★★★★☆
+                </div>
+
+
+                <div class="kids-price">
+
+                    ₹999
+
+                    <span class="kids-old-price">
+
+                        ₹1,399
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 4 -->
+
+        <div class="kids-product">
+
+            <div class="kids-product-image">
+
+
+                <span class="kids-badge">
+
+                    NEW
+
+                </span>
+
+
+                <button
+                    class="kids-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+
+                <img
+                    src="images/kids-hoodie.jpg"
+                    alt="Kids Hoodie">
+
+
+                <button
+                    class="kids-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="kids-product-info">
+
+                <small>
+                    Hoodies
+                </small>
+
+                <h3>
+                    Cozy Kids Hoodie
+                </h3>
+
+
+                <div class="kids-stars">
+                    ★★★★★
+                </div>
+
+
+                <div class="kids-price">
+
+                    ₹1,199
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 5 -->
+
+        <div class="kids-product">
+
+            <div class="kids-product-image">
+
+
+                <button
+                    class="kids-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+
+                <img
+                    src="images/kids-shirt.jpg"
+                    alt="Kids Shirt">
+
+
+                <button
+                    class="kids-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="kids-product-info">
+
+                <small>
+                    Shirts
+                </small>
+
+                <h3>
+                    Smart Casual Shirt
+                </h3>
+
+
+                <div class="kids-stars">
+                    ★★★★★
+                </div>
+
+
+                <div class="kids-price">
+
+                    ₹899
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 6 -->
+
+        <div class="kids-product">
+
+            <div class="kids-product-image">
+
+
+                <span class="kids-badge kids-sale">
+
+                    SALE
+
+                </span>
+
+
+                <button
+                    class="kids-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+
+                <img
+                    src="images/kids-shoes.jpg"
+                    alt="Kids Shoes">
+
+
+                <button
+                    class="kids-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="kids-product-info">
+
+                <small>
+                    Footwear
+                </small>
+
+                <h3>
+                    Kids Casual Sneakers
+                </h3>
+
+
+                <div class="kids-stars">
+                    ★★★★☆
+                </div>
+
+
+                <div class="kids-price">
+
+                    ₹1,299
+
+                    <span class="kids-old-price">
+
+                        ₹1,799
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 7 -->
+
+        <div class="kids-product">
+
+            <div class="kids-product-image">
+
+
+                <span class="kids-badge">
+
+                    NEW
+
+                </span>
+
+
+                <button
+                    class="kids-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+
+                <img
+                    src="images/baby-set.jpg"
+                    alt="Baby Clothing Set">
+
+
+                <button
+                    class="kids-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="kids-product-info">
+
+                <small>
+                    Baby Wear
+                </small>
+
+                <h3>
+                    Cute Baby Clothing Set
+                </h3>
+
+
+                <div class="kids-stars">
+                    ★★★★★
+                </div>
+
+
+                <div class="kids-price">
+
+                    ₹1,099
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 8 -->
+
+        <div class="kids-product">
+
+            <div class="kids-product-image">
+
+
+                <button
+                    class="kids-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+
+                <img
+                    src="images/kids-shorts.jpg"
+                    alt="Kids Shorts">
+
+
+                <button
+                    class="kids-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="kids-product-info">
+
+                <small>
+                    Shorts
+                </small>
+
+                <h3>
+                    Cotton Casual Shorts
+                </h3>
+
+
+                <div class="kids-stars">
+                    ★★★★★
+                </div>
+
+
+                <div class="kids-price">
+
+                    ₹699
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================
+     PROMOTION
+================================= -->
+
+<section class="kids-promo">
+
+    <div>
+
+        <p>
+            KIDS SPECIAL OFFER
+        </p>
+
+
+        <h2>
+
+            UP TO 40% OFF
+
+        </h2>
+
+
+        <p>
+
+            Bright styles, comfy clothes
+            and happy little shoppers.
+
+        </p>
+
+
+        <a
+            href="offers.html"
+            class="kids-btn">
+
+            SHOP SALE
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================
+     FEATURES
+================================= -->
+
+<section class="kids-features">
+
+    <div class="kids-feature-grid">
+
+
+        <div class="kids-feature">
+
+            <i class="fa-solid fa-truck"></i>
+
+            <h3>
+                Free Shipping
+            </h3>
+
+            <p>
+                Free delivery on orders above ₹999.
+            </p>
+
+        </div>
+
+
+        <div class="kids-feature">
+
+            <i class="fa-solid fa-rotate-left"></i>
+
+            <h3>
+                Easy Returns
+            </h3>
+
+            <p>
+                Simple and hassle-free returns.
+            </p>
+
+        </div>
+
+
+        <div class="kids-feature">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h3>
+                Secure Payment
+            </h3>
+
+            <p>
+                Safe and secure checkout.
+            </p>
+
+        </div>
+
+
+        <div class="kids-feature">
+
+            <i class="fa-solid fa-headset"></i>
+
+            <h3>
+                24/7 Support
+            </h3>
+
+            <p>
+                We're always here to help.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================
+     NEWSLETTER
+================================= -->
+
+<section class="newsletter">
+
+    <h2>
+        Join StyleAura
+    </h2>
+
+
+    <p>
+        Subscribe and get 10% OFF your first order.
+    </p>
+
+
+    <form>
+
+        <input
+            type="email"
+            placeholder="Enter your email"
+            required>
+
+
+        <button>
+            Subscribe
+        </button>
+
+    </form>
+
+</section>
+
+
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer>
+
+    <div class="footer-container">
+
+
+        <div>
+
+            <h2>
+                StyleAura
+            </h2>
+
+            <p>
+                Modern fashion for modern lifestyles.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Shop
+            </h3>
+
+            <a href="men.html">
+                Men
+            </a>
+
+            <a href="women.html">
+                Women
+            </a>
+
+            <a href="kids.html">
+                Kids
+            </a>
+
+            <a href="offers.html">
+                Offers
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Customer Care
+            </h3>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="orders.html">
+                Track Order
+            </a>
+
+            <a href="#">
+                Shipping
+            </a>
+
+            <a href="#">
+                Returns
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Follow Us
+            </h3>
+
+
+            <div class="social">
+
+                <i class="fab fa-instagram"></i>
+
+                <i class="fab fa-facebook"></i>
+
+                <i class="fab fa-twitter"></i>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 StyleAura. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+
+<!-- =================================
+     JAVASCRIPT
+================================= -->
+
+<script>
+
+    /* =================================
+       CART
+    ================================= */
+
+    let cartCount =
+        parseInt(
+            localStorage.getItem("cartCount")
+        ) || 0;
+
+
+    document.getElementById(
+        "cartCount"
+    ).innerText = cartCount;
+
+
+    function addToCart(quantity) {
+
+        cartCount += quantity;
+
+
+        localStorage.setItem(
+            "cartCount",
+            cartCount
+        );
+
+
+        document.getElementById(
+            "cartCount"
+        ).innerText = cartCount;
+
+
+        alert(
+            "Product added to cart 🛍️"
+        );
+
+    }
+
+
+
+    /* =================================
+       WISHLIST
+    ================================= */
+
+    function toggleWishlist(button) {
+
+        const icon =
+            button.querySelector("i");
+
+
+        icon.classList.toggle(
+            "fa-regular"
+        );
+
+
+        icon.classList.toggle(
+            "fa-solid"
+        );
+
+
+        if (
+            icon.classList.contains(
+                "fa-solid"
+            )
+        ) {
+
+            button.style.color =
+                "#d35d70";
+
+        }
+
+        else {
+
+            button.style.color =
+                "#111";
+
+        }
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Men's Fashion | StyleAura</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* =========================
+           MEN PAGE
+        ========================= */
+
+        .men-hero {
+            min-height: 500px;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, .35),
+                    rgba(0, 0, 0, .35)
+                ),
+                url("images/men-banner.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 8%;
+
+            color: white;
+        }
+
+        .men-hero-content {
+            max-width: 600px;
+        }
+
+        .men-hero-content p:first-child {
+            letter-spacing: 4px;
+            font-size: 14px;
+        }
+
+        .men-hero h1 {
+            font-size: 65px;
+            margin: 18px 0;
+            line-height: 1.05;
+        }
+
+        .men-hero p {
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .men-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 32px;
+            background: white;
+            color: #111;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .men-btn:hover {
+            background: #111;
+            color: white;
+        }
+
+
+        /* =========================
+           CATEGORY CARDS
+        ========================= */
+
+        .men-categories {
+            padding: 75px 7%;
+        }
+
+        .men-categories h2 {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 40px;
+        }
+
+        .men-category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .men-category-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .men-category-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .men-category-card:hover img {
+            transform: scale(1.07);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            padding: 35px 20px 20px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,.8)
+                );
+        }
+
+        .category-overlay h3 {
+            font-size: 22px;
+            margin-bottom: 7px;
+        }
+
+        .category-overlay a {
+            font-size: 13px;
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           PRODUCT SECTION
+        ========================= */
+
+        .men-products-section {
+            background: #fafafa;
+            padding: 75px 7%;
+        }
+
+        .men-section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .men-section-heading h2 {
+            font-size: 34px;
+        }
+
+        .men-section-heading a {
+            text-decoration: underline;
+        }
+
+        .men-product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .men-product {
+            background: white;
+        }
+
+        .men-product-image {
+            position: relative;
+            height: 390px;
+            overflow: hidden;
+            background: #f3f3f3;
+        }
+
+        .men-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .4s;
+        }
+
+        .men-product:hover img {
+            transform: scale(1.05);
+        }
+
+        .men-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+
+            background: #111;
+            color: white;
+
+            padding: 6px 12px;
+
+            font-size: 11px;
+
+            z-index: 2;
+        }
+
+        .men-sale {
+            background: #c85c5c;
+        }
+
+        .men-wishlist {
+            position: absolute;
+
+            top: 15px;
+            right: 15px;
+
+            width: 40px;
+            height: 40px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: white;
+
+            cursor: pointer;
+
+            z-index: 3;
+        }
+
+        .men-wishlist:hover {
+            color: #c85c5c;
+        }
+
+        .men-add-cart {
+            position: absolute;
+
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+
+            padding: 13px;
+
+            background: #111;
+            color: white;
+
+            border: none;
+
+            cursor: pointer;
+
+            transform: translateY(70px);
+            transition: .3s;
+        }
+
+        .men-product:hover .men-add-cart {
+            transform: translateY(0);
+        }
+
+        .men-product-info {
+            padding: 15px;
+        }
+
+        .men-product-info small {
+            color: #777;
+        }
+
+        .men-product-info h3 {
+            font-size: 17px;
+            margin: 7px 0;
+        }
+
+        .men-stars {
+            letter-spacing: 2px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .men-price {
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .men-old-price {
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-weight: normal;
+        }
+
+
+        /* =========================
+           PROMOTION
+        ========================= */
+
+        .men-promo {
+            margin: 75px 7%;
+
+            min-height: 350px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.45),
+                    rgba(0,0,0,.45)
+                ),
+                url("images/men-offer.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+        }
+
+        .men-promo h2 {
+            font-size: 48px;
+            margin: 12px 0;
+        }
+
+        .men-promo p {
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .men-features {
+            padding: 70px 7%;
+        }
+
+        .men-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .men-feature {
+            text-align: center;
+            padding: 25px;
+        }
+
+        .men-feature i {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .men-feature h3 {
+            margin-bottom: 8px;
+        }
+
+        .men-feature p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 1000px) {
+
+            .men-category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .men-product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .men-feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .men-hero h1 {
+                font-size: 52px;
+            }
+
+        }
+
+
+        @media(max-width: 600px) {
+
+            .men-hero {
+                min-height: 450px;
+                padding: 30px;
+            }
+
+            .men-hero h1 {
+                font-size: 42px;
+            }
+
+            .men-category-grid,
+            .men-product-grid,
+            .men-feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .men-section-heading {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .men-promo {
+                margin: 50px 5%;
+            }
+
+            .men-promo h2 {
+                font-size: 36px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="logo">
+        Style<span>Aura</span>
+    </div>
+    <nav>
+        <a href="index.html"> Home </a>
+        <a href="shop.html"> Shop </a>
+        <a href="men.html" style="font-weight:bold;"> Men </a>
+        <a href="women.html"> Women </a>
+        <a href="kids.html"> Kids </a>
+        <a href="offers.html"> Offers </a>
+    </nav>
+
+
+    <div class="header-icons">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <i class="fa-regular fa-heart"></i>
+
+        <div class="cart">
+
+            <i class="fa-solid fa-bag-shopping"></i>
+
+            <span id="cartCount">
+                0
+            </span>
+
+        </div>
+
+        <i class="fa-regular fa-user"></i>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="men-hero">
+
+    <div class="men-hero-content">
+
+        <p>
+            MEN'S COLLECTION 2026
+        </p>
+
+        <h1>
+            Modern Style.
+            <br>
+            Timeless Confidence.
+        </h1>
+
+        <p>
+            Discover premium men's fashion designed
+            for every occasion.
+        </p>
+
+        <a href="#menProducts"
+           class="men-btn">
+
+            SHOP MEN
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section class="men-categories">
+
+    <h2>
+        Shop Men's Categories
+    </h2>
+
+
+    <div class="men-category-grid">
+
+
+        <!-- SHIRTS -->
+
+        <div class="men-category-card">
+
+            <img
+                src="images/men-shirts.jpg"
+                alt="Men Shirts">
+
+            <div class="category-overlay">
+
+                <h3>
+                    Shirts
+                </h3>
+
+                <a href="#menProducts">
+                    Shop Collection →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- T-SHIRTS -->
+
+        <div class="men-category-card">
+
+            <img
+                src="images/men-tshirts.jpg"
+                alt="Men T Shirts">
+
+            <div class="category-overlay">
+
+                <h3>
+                    T-Shirts
+                </h3>
+
+                <a href="#menProducts">
+                    Shop Collection →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- JACKETS -->
+
+        <div class="men-category-card">
+
+            <img
+                src="images/men-jackets.jpg"
+                alt="Men Jackets">
+
+            <div class="category-overlay">
+
+                <h3>
+                    Jackets
+                </h3>
+
+                <a href="#menProducts">
+                    Shop Collection →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- TROUSERS -->
+
+        <div class="men-category-card">
+
+            <img
+                src="images/men-trousers.jpg"
+                alt="Men Trousers">
+
+            <div class="category-overlay">
+
+                <h3>
+                    Trousers
+                </h3>
+
+                <a href="#menProducts">
+                    Shop Collection →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRODUCTS
+========================= -->
+
+<section
+    class="men-products-section"
+    id="menProducts">
+
+
+    <div class="men-section-heading">
+
+        <h2>
+            Trending Men's Fashion
+        </h2>
+
+        <a href="shop.html">
+            View All Products →
+        </a>
+
+    </div>
+
+
+    <div class="men-product-grid">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div class="men-product">
+
+            <div class="men-product-image">
+
+                <span class="men-badge">
+                    NEW
+                </span>
+
+                <button
+                    class="men-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/shirt.jpg"
+                    alt="Premium Casual Shirt">
+
+                <button
+                    class="men-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="men-product-info">
+
+                <small>
+                    Shirts
+                </small>
+
+                <h3>
+                    Premium Casual Shirt
+                </h3>
+
+                <div class="men-stars">
+                    ★★★★★
+                </div>
+
+                <div class="men-price">
+                    ₹1,999
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="men-product">
+
+            <div class="men-product-image">
+
+                <span class="men-badge">
+                    BESTSELLER
+                </span>
+
+                <button
+                    class="men-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/jacket.jpg"
+                    alt="Denim Jacket">
+
+                <button
+                    class="men-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="men-product-info">
+
+                <small>
+                    Jackets
+                </small>
+
+                <h3>
+                    Premium Denim Jacket
+                </h3>
+
+                <div class="men-stars">
+                    ★★★★☆
+                </div>
+
+                <div class="men-price">
+                    ₹2,999
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+
+        <div class="men-product">
+
+            <div class="men-product-image">
+
+                <span class="men-badge men-sale">
+                    SALE
+                </span>
+
+                <button
+                    class="men-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/tshirt.jpg"
+                    alt="Classic T Shirt">
+
+                <button
+                    class="men-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="men-product-info">
+
+                <small>
+                    T-Shirts
+                </small>
+
+                <h3>
+                    Classic White T-Shirt
+                </h3>
+
+                <div class="men-stars">
+                    ★★★★★
+                </div>
+
+                <div class="men-price">
+
+                    ₹999
+
+                    <span class="men-old-price">
+                        ₹1,499
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 4 -->
+
+        <div class="men-product">
+
+            <div class="men-product-image">
+
+                <span class="men-badge">
+                    NEW
+                </span>
+
+                <button
+                    class="men-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/hoodie.jpg"
+                    alt="Oversized Hoodie">
+
+                <button
+                    class="men-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="men-product-info">
+
+                <small>
+                    Hoodies
+                </small>
+
+                <h3>
+                    Oversized Premium Hoodie
+                </h3>
+
+                <div class="men-stars">
+                    ★★★★★
+                </div>
+
+                <div class="men-price">
+                    ₹1,799
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 5 -->
+
+        <div class="men-product">
+
+            <div class="men-product-image">
+
+                <button
+                    class="men-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/men-jeans.jpg"
+                    alt="Slim Fit Jeans">
+
+                <button
+                    class="men-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="men-product-info">
+
+                <small>
+                    Jeans
+                </small>
+
+                <h3>
+                    Premium Slim Fit Jeans
+                </h3>
+
+                <div class="men-stars">
+                    ★★★★★
+                </div>
+
+                <div class="men-price">
+                    ₹2,299
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 6 -->
+
+        <div class="men-product">
+
+            <div class="men-product-image">
+
+                <span class="men-badge men-sale">
+                    SALE
+                </span>
+
+                <button
+                    class="men-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/men-blazer.jpg"
+                    alt="Formal Blazer">
+
+                <button
+                    class="men-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="men-product-info">
+
+                <small>
+                    Formal Wear
+                </small>
+
+                <h3>
+                    Classic Formal Blazer
+                </h3>
+
+                <div class="men-stars">
+                    ★★★★☆
+                </div>
+
+                <div class="men-price">
+
+                    ₹3,999
+
+                    <span class="men-old-price">
+                        ₹5,499
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 7 -->
+
+        <div class="men-product">
+
+            <div class="men-product-image">
+
+                <button
+                    class="men-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/men-polo.jpg"
+                    alt="Polo Shirt">
+
+                <button
+                    class="men-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="men-product-info">
+
+                <small>
+                    Polo
+                </small>
+
+                <h3>
+                    Premium Cotton Polo
+                </h3>
+
+                <div class="men-stars">
+                    ★★★★★
+                </div>
+
+                <div class="men-price">
+                    ₹1,499
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 8 -->
+
+        <div class="men-product">
+
+            <div class="men-product-image">
+
+                <span class="men-badge">
+                    NEW
+                </span>
+
+                <button
+                    class="men-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/men-trousers.jpg"
+                    alt="Formal Trousers">
+
+                <button
+                    class="men-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+
+            <div class="men-product-info">
+
+                <small>
+                    Trousers
+                </small>
+
+                <h3>
+                    Tailored Formal Trousers
+                </h3>
+
+                <div class="men-stars">
+                    ★★★★★
+                </div>
+
+                <div class="men-price">
+                    ₹2,199
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROMOTION
+========================= -->
+
+<section class="men-promo">
+
+    <div>
+
+        <p>
+            MEN'S SPECIAL OFFER
+        </p>
+
+        <h2>
+            UP TO 40% OFF
+        </h2>
+
+        <p>
+            Upgrade your wardrobe with premium
+            styles at exclusive prices.
+        </p>
+
+        <a
+            href="offers.html"
+            class="men-btn">
+
+            SHOP SALE
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="men-features">
+
+    <div class="men-feature-grid">
+
+
+        <div class="men-feature">
+
+            <i class="fa-solid fa-truck"></i>
+
+            <h3>
+                Free Shipping
+            </h3>
+
+            <p>
+                Free delivery on orders above ₹999.
+            </p>
+
+        </div>
+
+
+        <div class="men-feature">
+
+            <i class="fa-solid fa-rotate-left"></i>
+
+            <h3>
+                Easy Returns
+            </h3>
+
+            <p>
+                Hassle-free 7-day returns.
+            </p>
+
+        </div>
+
+
+        <div class="men-feature">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h3>
+                Secure Payment
+            </h3>
+
+            <p>
+                Safe and secure checkout.
+            </p>
+
+        </div>
+
+
+        <div class="men-feature">
+
+            <i class="fa-solid fa-headset"></i>
+
+            <h3>
+                24/7 Support
+            </h3>
+
+            <p>
+                Our support team is always here.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NEWSLETTER
+========================= -->
+
+<section class="newsletter">
+
+    <h2>
+        Join StyleAura
+    </h2>
+
+    <p>
+        Subscribe and get 10% OFF your first order.
+    </p>
+
+    <form>
+
+        <input
+            type="email"
+            placeholder="Enter your email"
+            required>
+
+        <button>
+            Subscribe
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+    <div class="footer-container">
+        <div>
+            <h2>
+                StyleAura
+            </h2>
+            <p>
+                Modern fashion for modern lifestyles.
+            </p>
+        </div>
+        <div>
+            <h3>
+                Shop
+            </h3>
+            <a href="men.html">
+                Men
+            </a>
+            <a href="women.html">
+                Women
+            </a>
+            <a href="kids.html">
+                Kids
+            </a>
+            <a href="offers.html">
+                Offers
+            </a>
+        </div>
+        <div>
+            <h3>
+                Customer Care
+            </h3>
+            <a href="contact.html">
+                Contact
+            </a>
+            <a href="orders.html">
+                Track Order
+            </a>
+            <a href="#">
+                Shipping
+            </a>
+            <a href="#">
+                Returns
+            </a>
+        </div>
+        <div>
+            <h3>
+                Follow Us
+            </h3>
+            <div class="social">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        © 2026 StyleAura. All Rights Reserved.
+    </div>
+</footer>
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+<script>
+    /* =========================
+       CART
+    ========================= */
+    let cartCount =
+        parseInt(
+            localStorage.getItem("cartCount")
+        ) || 0;
+    document.getElementById("cartCount").innerText =
+        cartCount;
+    function addToCart(quantity) {
+        cartCount += quantity;
+        localStorage.setItem(
+            "cartCount",
+            cartCount
+        );
+        document.getElementById("cartCount").innerText =
+            cartCount;
+        alert(
+            "Product added to cart 🛍️"
+        );
+    }
+    /* =========================
+       WISHLIST
+    ========================= */
+    function toggleWishlist(button) {
+        const icon =
+            button.querySelector("i");
+        icon.classList.toggle(
+            "fa-regular"
+        );
+        icon.classList.toggle(
+            "fa-solid"
+        );
+        if (
+            icon.classList.contains(
+                "fa-solid"
+            )
+        ) {
+            button.style.color =
+                "#c85c5c";
+        } else {
+            button.style.color =
+                "#111";
+        }
+    }
+</script>
+</body>
+</html>

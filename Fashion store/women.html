@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Women's Fashion | StyleAura</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* =========================
+           WOMEN HERO
+        ========================= */
+
+        .women-hero {
+            min-height: 520px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.30),
+                    rgba(0,0,0,.30)
+                ),
+                url("images/women-banner.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 8%;
+
+            color: white;
+        }
+
+        .women-hero-content {
+            max-width: 600px;
+        }
+
+        .women-hero-content .eyebrow {
+            letter-spacing: 4px;
+            font-size: 14px;
+        }
+
+        .women-hero h1 {
+            font-size: 65px;
+            line-height: 1.05;
+            margin: 18px 0;
+        }
+
+        .women-hero h1 span {
+            font-style: italic;
+        }
+
+        .women-hero p {
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .women-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 35px;
+            background: white;
+            color: #111;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .women-btn:hover {
+            background: #111;
+            color: white;
+        }
+
+
+        /* =========================
+           CATEGORY SECTION
+        ========================= */
+
+        .women-categories {
+            padding: 75px 7%;
+        }
+
+        .women-categories h2 {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 40px;
+        }
+
+        .women-category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .women-category-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .women-category-card img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .women-category-card:hover img {
+            transform: scale(1.07);
+        }
+
+        .women-category-overlay {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            padding: 45px 20px 20px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,.8)
+                );
+        }
+
+        .women-category-overlay h3 {
+            font-size: 22px;
+            margin-bottom: 7px;
+        }
+
+        .women-category-overlay a {
+            font-size: 13px;
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .women-products-section {
+            background: #faf8f7;
+            padding: 75px 7%;
+        }
+
+        .women-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .women-heading h2 {
+            font-size: 34px;
+        }
+
+        .women-heading a {
+            text-decoration: underline;
+        }
+
+        .women-product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .women-product {
+            background: white;
+            overflow: hidden;
+        }
+
+        .women-product-image {
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            background: #f3f3f3;
+        }
+
+        .women-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .4s;
+        }
+
+        .women-product:hover
+        .women-product-image img {
+            transform: scale(1.06);
+        }
+
+        .women-badge {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+
+            background: #111;
+            color: white;
+
+            padding: 6px 12px;
+
+            font-size: 11px;
+
+            z-index: 2;
+        }
+
+        .women-sale {
+            background: #c85c5c;
+        }
+
+        .women-wishlist {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+
+            width: 40px;
+            height: 40px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: white;
+
+            cursor: pointer;
+
+            z-index: 3;
+        }
+
+        .women-wishlist:hover {
+            color: #c85c5c;
+        }
+
+        .women-add-cart {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+
+            padding: 13px;
+
+            border: none;
+            background: #111;
+            color: white;
+
+            cursor: pointer;
+
+            transform: translateY(70px);
+            transition: .3s;
+        }
+
+        .women-product:hover .women-add-cart {
+            transform: translateY(0);
+        }
+
+        .women-product-info {
+            padding: 15px;
+        }
+
+        .women-product-info small {
+            color: #777;
+        }
+
+        .women-product-info h3 {
+            margin: 7px 0;
+            font-size: 17px;
+        }
+
+        .women-stars {
+            letter-spacing: 2px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .women-price {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .women-old-price {
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-weight: normal;
+        }
+
+
+        /* =========================
+           PROMO
+        ========================= */
+
+        .women-promo {
+            min-height: 380px;
+
+            margin: 75px 7%;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.35),
+                    rgba(0,0,0,.35)
+                ),
+                url("images/women-offer.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+        }
+
+        .women-promo h2 {
+            font-size: 50px;
+            margin: 15px 0;
+        }
+
+        .women-promo p {
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .women-features {
+            padding: 70px 7%;
+        }
+
+        .women-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .women-feature {
+            text-align: center;
+            padding: 25px;
+        }
+
+        .women-feature i {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .women-feature h3 {
+            margin-bottom: 8px;
+        }
+
+        .women-feature p {
+            color: #777;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 1000px) {
+
+            .women-category-grid,
+            .women-product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .women-feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .women-hero h1 {
+                font-size: 52px;
+            }
+
+        }
+
+        @media(max-width: 600px) {
+
+            .women-hero {
+                min-height: 450px;
+                padding: 30px;
+            }
+
+            .women-hero h1 {
+                font-size: 42px;
+            }
+
+            .women-category-grid,
+            .women-product-grid,
+            .women-feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .women-heading {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .women-promo {
+                margin: 50px 5%;
+            }
+
+            .women-promo h2 {
+                font-size: 36px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="logo">
+        Style<span>Aura</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="shop.html">
+            Shop
+        </a>
+
+        <a href="men.html">
+            Men
+        </a>
+
+        <a href="women.html"
+           style="font-weight:bold;">
+            Women
+        </a>
+
+        <a href="kids.html">
+            Kids
+        </a>
+
+        <a href="offers.html">
+            Offers
+        </a>
+
+    </nav>
+
+    <div class="header-icons">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <i class="fa-regular fa-heart"></i>
+
+        <div class="cart">
+
+            <i class="fa-solid fa-bag-shopping"></i>
+
+            <span id="cartCount">
+                0
+            </span>
+
+        </div>
+
+        <i class="fa-regular fa-user"></i>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="women-hero">
+
+    <div class="women-hero-content">
+
+        <p class="eyebrow">
+            WOMEN'S COLLECTION 2026
+        </p>
+
+        <h1>
+            Elegance Meets
+            <br>
+            <span>Everyday Style.</span>
+        </h1>
+
+        <p>
+            Discover contemporary women's fashion
+            designed to make every moment stylish.
+        </p>
+
+        <a
+            href="#womenProducts"
+            class="women-btn">
+
+            SHOP WOMEN
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section class="women-categories">
+
+    <h2>
+        Shop Women's Categories
+    </h2>
+
+    <div class="women-category-grid">
+
+
+        <!-- DRESSES -->
+
+        <div class="women-category-card">
+
+            <img
+                src="images/women-dresses.jpg"
+                alt="Women's Dresses">
+
+            <div class="women-category-overlay">
+
+                <h3>
+                    Dresses
+                </h3>
+
+                <a href="#womenProducts">
+                    Shop Collection →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- TOPS -->
+
+        <div class="women-category-card">
+
+            <img
+                src="images/women-tops.jpg"
+                alt="Women's Tops">
+
+            <div class="women-category-overlay">
+
+                <h3>
+                    Tops
+                </h3>
+
+                <a href="#womenProducts">
+                    Shop Collection →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- JEANS -->
+
+        <div class="women-category-card">
+
+            <img
+                src="images/women-jeans.jpg"
+                alt="Women's Jeans">
+
+            <div class="women-category-overlay">
+
+                <h3>
+                    Jeans
+                </h3>
+
+                <a href="#womenProducts">
+                    Shop Collection →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACCESSORIES -->
+
+        <div class="women-category-card">
+
+            <img
+                src="images/women-accessories.jpg"
+                alt="Women's Accessories">
+
+            <div class="women-category-overlay">
+
+                <h3>
+                    Accessories
+                </h3>
+
+                <a href="#womenProducts">
+                    Shop Collection →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRODUCTS
+========================= -->
+
+<section
+    class="women-products-section"
+    id="womenProducts">
+
+
+    <div class="women-heading">
+
+        <h2>
+            Trending Women's Fashion
+        </h2>
+
+        <a href="shop.html">
+            View All Products →
+        </a>
+
+    </div>
+
+
+    <div class="women-product-grid">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div class="women-product">
+
+            <div class="women-product-image">
+
+                <span class="women-badge">
+                    NEW
+                </span>
+
+                <button
+                    class="women-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/dress.jpg"
+                    alt="Elegant Summer Dress">
+
+                <button
+                    class="women-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+            <div class="women-product-info">
+
+                <small>
+                    Dresses
+                </small>
+
+                <h3>
+                    Elegant Summer Dress
+                </h3>
+
+                <div class="women-stars">
+                    ★★★★★
+                </div>
+
+                <div class="women-price">
+                    ₹2,499
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="women-product">
+
+            <div class="women-product-image">
+
+                <span class="women-badge women-sale">
+                    SALE
+                </span>
+
+                <button
+                    class="women-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/women-top.jpg"
+                    alt="Premium Women's Top">
+
+                <button
+                    class="women-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+            <div class="women-product-info">
+
+                <small>
+                    Tops
+                </small>
+
+                <h3>
+                    Premium Satin Top
+                </h3>
+
+                <div class="women-stars">
+                    ★★★★★
+                </div>
+
+                <div class="women-price">
+
+                    ₹1,499
+
+                    <span class="women-old-price">
+                        ₹1,999
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+
+        <div class="women-product">
+
+            <div class="women-product-image">
+
+                <span class="women-badge">
+                    BESTSELLER
+                </span>
+
+                <button
+                    class="women-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/women-jeans.jpg"
+                    alt="Women's Jeans">
+
+                <button
+                    class="women-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+            <div class="women-product-info">
+
+                <small>
+                    Jeans
+                </small>
+
+                <h3>
+                    High-Waist Straight Jeans
+                </h3>
+
+                <div class="women-stars">
+                    ★★★★☆
+                </div>
+
+                <div class="women-price">
+                    ₹2,199
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 4 -->
+
+        <div class="women-product">
+
+            <div class="women-product-image">
+
+                <span class="women-badge">
+                    NEW
+                </span>
+
+                <button
+                    class="women-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/women-blazer.jpg"
+                    alt="Women's Blazer">
+
+                <button
+                    class="women-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+            <div class="women-product-info">
+
+                <small>
+                    Blazers
+                </small>
+
+                <h3>
+                    Tailored Women's Blazer
+                </h3>
+
+                <div class="women-stars">
+                    ★★★★★
+                </div>
+
+                <div class="women-price">
+                    ₹3,499
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 5 -->
+
+        <div class="women-product">
+
+            <div class="women-product-image">
+
+                <button
+                    class="women-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/women-handbag.jpg"
+                    alt="Women's Handbag">
+
+                <button
+                    class="women-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+            <div class="women-product-info">
+
+                <small>
+                    Accessories
+                </small>
+
+                <h3>
+                    Luxury Everyday Handbag
+                </h3>
+
+                <div class="women-stars">
+                    ★★★★★
+                </div>
+
+                <div class="women-price">
+                    ₹3,299
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 6 -->
+
+        <div class="women-product">
+
+            <div class="women-product-image">
+
+                <span class="women-badge women-sale">
+                    SALE
+                </span>
+
+                <button
+                    class="women-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/women-skirt.jpg"
+                    alt="Women's Skirt">
+
+                <button
+                    class="women-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+            <div class="women-product-info">
+
+                <small>
+                    Skirts
+                </small>
+
+                <h3>
+                    Pleated Midi Skirt
+                </h3>
+
+                <div class="women-stars">
+                    ★★★★☆
+                </div>
+
+                <div class="women-price">
+
+                    ₹1,799
+
+                    <span class="women-old-price">
+                        ₹2,499
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 7 -->
+
+        <div class="women-product">
+
+            <div class="women-product-image">
+
+                <span class="women-badge">
+                    NEW
+                </span>
+
+                <button
+                    class="women-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/women-coat.jpg"
+                    alt="Women's Coat">
+
+                <button
+                    class="women-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+            <div class="women-product-info">
+
+                <small>
+                    Outerwear
+                </small>
+
+                <h3>
+                    Premium Long Coat
+                </h3>
+
+                <div class="women-stars">
+                    ★★★★★
+                </div>
+
+                <div class="women-price">
+                    ₹4,299
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 8 -->
+
+        <div class="women-product">
+
+            <div class="women-product-image">
+
+                <button
+                    class="women-wishlist"
+                    onclick="toggleWishlist(this)">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <img
+                    src="images/women-heels.jpg"
+                    alt="Women's Heels">
+
+                <button
+                    class="women-add-cart"
+                    onclick="addToCart(1)">
+
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+            <div class="women-product-info">
+
+                <small>
+                    Footwear
+                </small>
+
+                <h3>
+                    Elegant Block Heels
+                </h3>
+
+                <div class="women-stars">
+                    ★★★★★
+                </div>
+
+                <div class="women-price">
+                    ₹2,799
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROMOTION
+========================= -->
+
+<section class="women-promo">
+
+    <div>
+
+        <p>
+            WOMEN'S SPECIAL OFFER
+        </p>
+
+        <h2>
+            UP TO 50% OFF
+        </h2>
+
+        <p>
+            Refresh your wardrobe with our
+            latest collection.
+        </p>
+
+        <a
+            href="offers.html"
+            class="women-btn">
+
+            SHOP SALE
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="women-features">
+
+    <div class="women-feature-grid">
+
+
+        <div class="women-feature">
+
+            <i class="fa-solid fa-truck"></i>
+
+            <h3>
+                Free Shipping
+            </h3>
+
+            <p>
+                Free delivery on orders above ₹999.
+            </p>
+
+        </div>
+
+
+        <div class="women-feature">
+
+            <i class="fa-solid fa-rotate-left"></i>
+
+            <h3>
+                Easy Returns
+            </h3>
+
+            <p>
+                Simple and hassle-free returns.
+            </p>
+
+        </div>
+
+
+        <div class="women-feature">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h3>
+                Secure Payment
+            </h3>
+
+            <p>
+                Your payment information is protected.
+            </p>
+
+        </div>
+
+
+        <div class="women-feature">
+
+            <i class="fa-solid fa-headset"></i>
+
+            <h3>
+                24/7 Support
+            </h3>
+
+            <p>
+                We're always here to help you.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NEWSLETTER
+========================= -->
+
+<section class="newsletter">
+
+    <h2>
+        Join StyleAura
+    </h2>
+
+    <p>
+        Subscribe and get 10% OFF your first order.
+    </p>
+
+    <form>
+
+        <input
+            type="email"
+            placeholder="Enter your email"
+            required>
+
+        <button>
+            Subscribe
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-container">
+
+
+        <div>
+
+            <h2>
+                StyleAura
+            </h2>
+
+            <p>
+                Modern fashion for modern lifestyles.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Shop
+            </h3>
+
+            <a href="men.html">
+                Men
+            </a>
+
+            <a href="women.html">
+                Women
+            </a>
+
+            <a href="kids.html">
+                Kids
+            </a>
+
+            <a href="offers.html">
+                Offers
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Customer Care
+            </h3>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="orders.html">
+                Track Order
+            </a>
+
+            <a href="#">
+                Shipping
+            </a>
+
+            <a href="#">
+                Returns
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Follow Us
+            </h3>
+
+            <div class="social">
+
+                <i class="fab fa-instagram"></i>
+
+                <i class="fab fa-facebook"></i>
+
+                <i class="fab fa-twitter"></i>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 StyleAura. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    /* =========================
+       CART
+    ========================= */
+
+    let cartCount =
+        parseInt(
+            localStorage.getItem("cartCount")
+        ) || 0;
+
+
+    document.getElementById("cartCount").innerText =
+        cartCount;
+
+
+    function addToCart(quantity) {
+
+        cartCount += quantity;
+
+        localStorage.setItem(
+            "cartCount",
+            cartCount
+        );
+
+        document.getElementById("cartCount").innerText =
+            cartCount;
+
+        alert(
+            "Product added to cart 🛍️"
+        );
+
+    }
+
+
+    /* =========================
+       WISHLIST
+    ========================= */
+
+    function toggleWishlist(button) {
+
+        const icon =
+            button.querySelector("i");
+
+        icon.classList.toggle(
+            "fa-regular"
+        );
+
+        icon.classList.toggle(
+            "fa-solid"
+        );
+
+
+        if (
+            icon.classList.contains(
+                "fa-solid"
+            )
+        ) {
+
+            button.style.color =
+                "#c85c5c";
+
+        } else {
+
+            button.style.color =
+                "#111";
+
+        }
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

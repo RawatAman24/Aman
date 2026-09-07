@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FAMMS | Fashion Store</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<div id="header"></div>
+
+<section class="hero">
+  <div class="container hero-content">
+    <div>
+      <p class="eyebrow">NEW COLLECTION 2026</p>
+      <h1>Sale <span>20% Off</span><br>On Everything</h1>
+      <p>Discover modern fashion, premium quality and everyday styles for men, women and kids.</p>
+      <a class="btn" href="shop.html">Shop Now</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="section-title"><p class="eyebrow">WHY CHOOSE US</p><h2>Why Shop <span>With Us</span></h2></div>
+  <div class="features">
+    <div class="feature"><i class="fa-solid fa-truck"></i><h3>Fast Delivery</h3><p>Quick and reliable delivery to your doorstep.</p></div>
+    <div class="feature"><i class="fa-solid fa-shield-halved"></i><h3>Secure Payment</h3><p>Your checkout and payment information stays protected.</p></div>
+    <div class="feature"><i class="fa-solid fa-medal"></i><h3>Best Quality</h3><p>Carefully selected products at fair prices.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="arrival">
+<div class="container"><div class="arrival-box"><p class="eyebrow">TRENDING NOW</p><h2>#NewArrivals</h2><p>Fresh styles designed for your everyday wardrobe.</p><a class="btn" href="shop.html">Explore Collection</a></div></div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="section-title"><p class="eyebrow">SHOP OUR COLLECTION</p><h2>Featured <span>Products</span></h2></div>
+  <div class="products" id="featuredProducts"></div>
+  <div class="center"><a class="btn dark" href="shop.html">View All Products</a></div>
+</div>
+</section>
+
+<section class="newsletter">
+<div class="container newsletter-box">
+  <div><p class="eyebrow">SPECIAL OFFERS</p><h2>Subscribe & Get Discount Offers</h2><p>Get new arrivals, offers and fashion updates in your inbox.</p></div>
+  <form id="newsletterForm"><input type="email" placeholder="Enter your email" required><button>Subscribe</button></form>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="section-title"><p class="eyebrow">CUSTOMER REVIEWS</p><h2>What Customers <span>Say</span></h2></div>
+  <div class="testimonial"><button class="circle" onclick="prevReview()"><i class="fa fa-arrow-left"></i></button><div id="review"></div><button class="circle" onclick="nextReview()"><i class="fa fa-arrow-right"></i></button></div>
+</div>
+</section>
+
+<div id="footer"></div>
+<script src="data.js"></script><script src="app.js"></script>
+</body>
+</html>

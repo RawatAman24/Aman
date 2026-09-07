@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>AdminPanel</span>
+        </div>
+        <ul class="menu">
+            <li class="active">
+                <a href="#">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Orders</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Analytics</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Messages</span>
+                    <span class="badge">5</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+        <div class="sidebar-bottom">
+            <a href="#" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+    <!-- Main -->
+    <main class="main">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Welcome back, Admin 👋</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <!-- Search -->
+                <div class="search">
+                    <i class="fa-solid fa-search"></i>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search...">
+                </div>
+                <!-- Notification -->
+                <div class="notification">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>3</span>
+                </div>
+                <!-- Dark Mode -->
+                <button class="theme-btn" id="themeBtn">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <!-- Profile -->
+                <div class="profile">
+                    <img
+                        src="https://i.pravatar.cc/100?img=12"
+                        alt="Admin">
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Administrator</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Content -->
+        <section class="content">
+            <!-- Cards -->
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon blue">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <p>Total Users</p>
+                        <h2>12,540</h2>
+                        <span class="positive">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            12.5%
+                        </span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon green">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </div>
+                    <div>
+                        <p>Total Revenue</p>
+                        <h2>$48,250</h2>
+                        <span class="positive">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            8.2%
+                        </span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon orange">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <div>
+                        <p>Total Orders</p>
+                        <h2>3,845</h2>
+                        <span class="positive">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            5.4%
+                        </span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon purple">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                    <div>
+                        <p>Products</p>
+                        <h2>1,250</h2>
+                        <span class="negative">
+                            <i class="fa-solid fa-arrow-down"></i>
+                            2.1%
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- Charts -->
+            <div class="charts">
+                <div class="chart-box large">
+                    <div class="box-header">
+                        <div>
+                            <h3>Revenue Overview</h3>
+                            <p>Monthly revenue statistics</p>
+                        </div>
+                        <select id="chartFilter">
+                            <option>2026</option>
+                            <option>2025</option>
+                            <option>2024</option>
+                        </select>
+                    </div>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <div class="box-header">
+                        <div>
+                            <h3>Sales</h3>
+                            <p>Sales distribution</p>
+                        </div>
+                    </div>
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+            <!-- Orders -->
+            <div class="table-box">
+                <div class="table-header">
+                    <div>
+                        <h3>Recent Orders</h3>
+                        <p>Latest customer orders</p>
+                    </div>
+                    <button class="view-btn">
+                        View All
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody id="orderTable">
+                        <tr>
+                            <td>#ORD-1001</td>
+                            <td>
+                                <div class="customer">
+                                    <img src="https://i.pravatar.cc/40?img=1">
+                                    Rahul Sharma
+                                </div>
+                            </td>
+                            <td>Premium Shoes</td>
+                            <td>16 Aug 2026</td>
+                            <td>$120</td>
+                            <td>
+                                <span class="status completed">
+                                    Completed
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-1002</td>
+                            <td>
+                                <div class="customer">
+                                    <img src="https://i.pravatar.cc/40?img=2">
+                                    Priya Patel
+                                </div>
+                            </td>
+                            <td>Smart Watch</td>
+                            <td>15 Aug 2026</td>
+                            <td>$250</td>
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-1003</td>
+                            <td>
+                                <div class="customer">
+                                    <img src="https://i.pravatar.cc/40?img=3">
+                                    Amit Kumar
+                                </div>
+                            </td>
+                            <td>Headphones</td>
+                            <td>14 Aug 2026</td>
+                            <td>$85</td>
+                            <td>
+                                <span class="status completed">
+                                    Completed
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-1004</td>
+                            <td>
+                                <div class="customer">
+                                    <img src="https://i.pravatar.cc/40?img=4">
+                                    Neha Singh
+                                </div>
+                            </td>
+                            <td>Laptop</td>
+                            <td>13 Aug 2026</td>
+                            <td>$850</td>
+                            <td>
+                                <span class="status cancelled">
+                                    Cancelled
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-1005</td>
+                            <td>
+                                <div class="customer">
+                                    <img src="https://i.pravatar.cc/40?img=5">
+                                    Vikash Shah
+                                </div>
+                            </td>
+                            <td>Keyboard</td>
+                            <td>12 Aug 2026</td>
+                            <td>$75</td>
+                            <td>
+                                <span class="status completed">
+                                    Completed
+                                </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Bottom Section -->
+            <div class="bottom-grid">
+                <!-- Top Products -->
+                <div class="table-box">
+                    <div class="table-header">
+                        <div>
+                            <h3>Top Products</h3>
+                            <p>Best selling products</p>
+                        </div>
+                    </div>
+                    <div class="product-list">
+                        <div class="product">
+                            <div class="product-img">
+                                <i class="fa-solid fa-laptop"></i>
+                            </div>
+                            <div class="product-info">
+                                <strong>MacBook Pro</strong>
+                                <span>145 sold</span>
+                            </div>
+                            <strong>$2,400</strong>
+                        </div>
+                        <div class="product">
+                            <div class="product-img">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                            </div>
+                            <div class="product-info">
+                                <strong>Smartphone</strong>
+                                <span>120 sold</span>
+                            </div>
+                            <strong>$1,850</strong>
+                        </div>
+                        <div class="product">
+                            <div class="product-img">
+                                <i class="fa-solid fa-headphones"></i>
+                            </div>
+                            <div class="product-info">
+                                <strong>Headphones</strong>
+                                <span>98 sold</span>
+                            </div>
+                            <strong>$980</strong>
+                        </div>
+                    </div>
+                </div>
+                <!-- Activity -->
+                <div class="table-box">
+                    <div class="table-header">
+                        <div>
+                            <h3>Recent Activity</h3>
+                            <p>Latest system activity</p>
+                        </div>
+                    </div>
+                    <div class="activity">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-user-plus"></i>
+                            </div>
+                            <div>
+                                <strong>New user registered</strong>
+                                <p>Rahul joined the platform</p>
+                                <small>5 minutes ago</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                            <div>
+                                <strong>New order received</strong>
+                                <p>Order #ORD-1006</p>
+                                <small>20 minutes ago</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-box"></i>
+                            </div>
+                            <div>
+                                <strong>Product added</strong>
+                                <p>New product added</p>
+                                <small>1 hour ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

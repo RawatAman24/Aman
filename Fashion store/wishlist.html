@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist | StyleAura </title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #111;
+            background:#fff;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+        header{
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            border-bottom: 1px solid #eee;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo{
+            font-size: 27px;
+            font-weight: 800;
+        }
+        .logo span{
+            font-style: italic;
+        }
+        nav{
+            display: flex;
+            gap: 28px;
+        }
+        nav a{
+            font-size: 14px;
+        }
+        nav a:hover{
+            opacity: .5;
+        }
+          .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .header-icons i {
+            cursor: pointer;
+        }
+        .cart {
+            position: relative;
+        }
+        #cartCount {
+            position: absolute;
+            top: -10px;
+            right: -12px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #111;
+            color: white;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wishlist-hero {
+            background: #f5f2ef;
+            text-align: center;
+            padding: 70px 20px;
+        }
+        .wishlist-hero i {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+        .wishlist-hero h1 {
+            font-size: 48px;
+            margin: 10px 0;
+        }
+        .wishlist-hero p {
+            color: #666;
+        }
+        .wishlist-section {
+            padding: 70px 7%;
+        }
+        .wishlist-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+        .wishlist-top h2 {
+            font-size: 30px;
+            margin: 0;
+        }
+        .clear-btn {
+            border: none;
+            background: transparent;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .wishlist-card {
+            background: #fafafa;
+            overflow: hidden;
+            position: relative;
+        }
+        .product-image {
+            height: 380px;
+            position: relative;
+            overflow: hidden;
+            background: #eee;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .4s;
+        }
+        .wishlist-card:hover .product-image img {
+            transform: scale(1.06);
+        }
+        .remove-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            z-index: 3;
+        } .remove-btn:hover {
+            color: #d35d70;
+        }
+        .sale-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 7px 12px;
+            background: #d35d70;
+            color: white;
+            font-size: 11px;
+            z-index: 2;
+        }.product-info {
+            padding: 18px;
+        }
+        .product-info small {
+            color: #777;
+        }
+        .product-info h3 {
+            margin: 8px 0;
+            font-size: 17px;
+        }
+        .stars {
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }.price {
+            font-size: 17px;
+            font-weight: bold;
+        }
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-weight: normal;
+        }
+        .add-cart {
+            width: 100%;
+            border: none;
+            background: #111;
+            color: white;
+            padding: 13px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: .3s;
+        }
+        .add-cart:hover {
+            background: #333;
+        }
+        .empty-wishlist {
+            display: none;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .empty-wishlist i {
+            font-size: 70px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        .empty-wishlist h2 {
+            font-size: 30px;
+        }
+        .empty-wishlist p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+        .shop-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #111;
+            color: white;
+        }
+        .shop-btn:hover {
+            background: #333;
+        }
+         .benefits {
+            padding: 60px 7%;
+            background: #faf8f7;
+        }
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .benefit {
+            text-align: center;
+            padding: 20px;
+        }
+        .benefit i {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+        .benefit h3 {
+            margin: 8px 0;
+        }
+        .benefit p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.5;
+        }.newsletter {
+            padding: 70px 7%;
+            text-align: center;
+            background: #f5f2ef;
+        }
+        .newsletter h2 {
+            font-size: 34px;
+        }
+        .newsletter p {
+            color: #666;
+        }
+        .newsletter form {
+            display: flex;
+            max-width: 550px;
+            margin: 25px auto 0;
+        }
+        .newsletter input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+        .newsletter button {
+            padding: 15px 25px;
+            background: #111;
+            color: white;
+            border: none;
+            cursor: pointer;
+        } footer {
+            background: #111;
+            color: white;
+            padding: 60px 7% 0;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-container p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+        .footer-container a {
+            display: block;
+            color: #aaa;
+            margin: 10px 0;
+        }
+        .footer-container a:hover {
+            color: white;
+        }
+        .social {
+            display: flex;
+            gap: 18px;
+        }
+        .social i {
+            cursor: pointer;
+        }
+        .copyright {
+            margin-top: 50px;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+        } @media(max-width: 1000px) {
+            .wishlist-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .benefit-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media(max-width: 600px) {
+            header {
+                padding: 15px 5%;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            nav {
+                order: 3;
+                width: 100%;
+                overflow-x: auto;
+                gap: 18px;
+            }
+            .wishlist-hero h1 {
+                font-size: 38px;
+            }
+            .wishlist-top {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .wishlist-grid,
+            .benefit-grid,
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .newsletter form {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        </style>
+</head>
+<body>
+    <header>
+        <div class="logo"> style<span>Aura</span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="men.html">Men</a>
+            <a href="women.html">Women</a>
+            <a href="kids.html">Kids</a>
+            <a href="offers.html">Offer</a>
+            <a href="wishlist.html" style="font-weight: bold;">Wishlist</a>
+        </nav>
+        <div class="header-icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-regular fa-header"></i>
+            <div class="cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span id="cartCount">0</span>
+            </div>
+            <i class="fa-regulat fa-user"></i>
+        </div>
+    </header>
+    <section class="wishlist-hero">
+        <i class="fa-regular fa-heart"></i>
+        <h1> My Wishlist </h1>
+        <p> Save your favorite fashion pieces and shop them wheneever you're ready.</p>
+    </section>
+    <section class="wishlist-section">
+        <div class="wishlist-top">
+            <h2> Saved Items (<span id="wishlistConut">0</span>)</h2>
+            <button class="clear-btn" onclick="clearWishlist()"> Clear Wishlist </button>
+        </div>
+        <div class="wishlist-grid" id="wishlistGrid">
+            <div class="wishlist-card" data-id="1">
+                <div class="product-image">
+                    <span class="sale-badge">30% OFF </span>
+                    <button class="remove-btn" onclick="removeItem(this)">
+                    </button>
+                    <img src="" alt="premium Summer Dress">
+                </div>
+                <div class="product-info">
+                    <small>Women</small>
+                    <h3>Premium summer Dress </h3>
+                    <div class="stars">★★★★★</div>
+                    <div class="price">1,799</div>
+                    <span class="old-price">2,599</span>
+                </div>
+                <button class="add-cart" onclick="addToCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart </button>
+            </div>
+        </div>
+        <div class="wishlist-card" data-id="2">
+            <div class="product-image">
+                <button class="remove-btn" onclick="removeIteem(this)">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                 <img src="" alt="premium Casual Shirt">
+            </div>
+            <div class="product-info">
+                    <small>Women</small>
+                    <h3> Premium Casual Shirt </h3>
+                    <div class="stars">★★★★★</div>
+                    <div class="price">1,299</div>
+                <button class="add-cart" onclick="addToCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart </button>
+            </div>
+        </div>
+         <div class="wishlist-card" data-id="3">
+            <div class="product-image">
+                <span class="sale-badge"> SALE </span>
+                <button class="remove-btn" onclick="removeIteem(this)">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                 <img src="" alt="High Waist Jeans">
+            </div>
+            <div class="product-info">
+                    <small>Women</small>
+                    <h3> High Waist Denim jeans </h3>
+                    <div class="stars">★★★★★</div>
+                    <div class="price">1,099</div>
+                    <span class="old-price">2,199</span>
+                <button class="add-cart" onclick="addToCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart </button>
+        </div>
+        </div>
+         <div class="wishlist-card" data-id="4">
+            <div class="product-image">
+                <button class="remove-btn" onclick="removeIteem(this)">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                 <img src="" alt="Kids Floral Dress">
+            </div>
+            <div class="product-info">
+                    <small>Kids</small>
+                    <h3> Kids Floral Party Dress </h3>
+                    <div class="stars">★★★★★</div>
+                    <div class="price">1,499</div>
+                <button class="add-cart" onclick="addToCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart </button>
+            </div>
+         </div>
+        </div>
+        <div class="empty-wishlist" id="emptyWishlist">
+            <i class="fa-regular fa-heart"></i>
+            <h2> your Wishlist Is Empty </h2>
+            <p> You haven't saved any products yet. </p>
+            <a href="shop.html" class="shop-btn"> Start Shopping </a>
+        </div>
+    </section>
+    <section class="benefits">
+    <div class="benefits-grid">
+        <div class="benefit">
+            <i class="fa-solid fa-truck"></i>
+            <h3> Free Shipping </h3>
+            <p> Free delivery on orders above 999.</p>
+        </div>
+        <div class="benefits">
+            <i class="fa-solid fa-rotate-left"></i>
+            <h3> Easy Returns </h3>
+            <p> Simple and hassle-free returns.</p>
+        </div>
+        <div class="benefit">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3> Secure Payment </h3>
+            <p> Safe and Secure checkout.</p>
+        </div>
+        <div class="benefit">
+            <i class="fa-solid fa-headset"></i>
+            <h3> Customer Support </h3>
+            <p> We're always here to help.</p>
+        </div>
+    </div>
+    </section>
+    <section class="newsletter">
+        <h2> Join StyleAura </h2>
+        <p> Subscribe and get 10% OFF your first order.</p>
+        <form onsubmit="subscribeNewsletter(event)">
+            <input type="email"
+            id="email" placeholder="ENter your email" required>
+            <button type="submit">Subscribe </button>
+        </form>
+    </section>
+    <footer>
+    <div class="footer-container">
+        <div>
+            <h2> StyleAura </h2>
+            <p> Modern fashion for modern lifestyles. </p>
+        </div>
+        <div>
+            <h3> Shop </h3>
+            <a href="men.html">Men</a>
+            <a href="women.html">Women</a>
+            <a href="kids.html">Kids</a>
+            <a href="offers.html">Offers</a>
+        </div>
+        <div>
+            <h3> Customer Care </h3>
+            <a href="contact.html"> Contact </a>
+            <a href="orders.html"> Track Order  </a>
+            <a href="#"> Shipping </a>
+            <a href="#"> Returns  </a>
+        </div>
+        <div>
+            <h3> Follow Us  </h3>
+            <div class="social">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        © 2026 StyleAura. All Rights Reserved.
+    </div>
+</footer>
+<script>
+    /* ==========================================
+       CART
+    ========================================== */
+    let cartCount =
+        parseInt(
+            localStorage.getItem("cartCount")
+        ) || 0;
+    document.getElementById("cartCount")
+        .innerText = cartCount;
+    function addToCart() {
+        cartCount++;
+        localStorage.setItem(
+            "cartCount",
+            cartCount
+        );
+        document.getElementById("cartCount")
+            .innerText = cartCount;
+        alert("Product added to cart 🛍️");
+    }
+    /* ==========================================
+       WISHLIST
+    ========================================== */
+    let wishlist =
+        JSON.parse(
+            localStorage.getItem("wishlist")
+        ) || [1, 2, 3, 4];
+    function updateWishlistCount() {
+        document.getElementById(
+            "wishlistCount"
+        ).innerText = wishlist.length;
+    }
+    function removeItem(button) {
+        const card =
+            button.closest(".wishlist-card");
+        const id =
+            Number(card.dataset.id);
+        wishlist =
+            wishlist.filter(
+                item => item !== id
+            );
+        localStorage.setItem(
+            "wishlist",
+            JSON.stringify(wishlist)
+        );
+        card.remove();
+        updateWishlistCount();
+        checkEmptyWishlist();
+    }
+    function clearWishlist() {
+        if (
+            !confirm(
+                "Are you sure you want to clear your wishlist?"
+            )
+        ) {
+            return;
+        }
+        wishlist = [];
+        localStorage.setItem(
+            "wishlist",
+            JSON.stringify(wishlist)
+        );
+        document.querySelectorAll(
+            ".wishlist-card"
+        ).forEach(card => {
+            card.remove();
+        });
+        updateWishlistCount();
+        checkEmptyWishlist();
+    }
+    function checkEmptyWishlist() {
+        const cards =
+            document.querySelectorAll(
+                ".wishlist-card"
+            );
+        const empty =
+            document.getElementById(
+                "emptyWishlist"
+            );
+        if (cards.length === 0) {
+            empty.style.display = "block";
+        } else {
+            empty.style.display = "none";
+        }
+    }
+    /* ==========================================
+       NEWSLETTER
+    ========================================== */
+    function subscribeNewsletter(event) {
+        event.preventDefault();
+        alert(
+            "Thank you for subscribing to StyleAura! 🎉"
+        );
+        document.getElementById(
+            "email"
+        ).value = "";
+    }
+    /* ==========================================
+       INITIALIZE
+    ========================================== */
+    updateWishlistCount();
+    checkEmptyWishlist();
+</script>
+</body>
+</html>

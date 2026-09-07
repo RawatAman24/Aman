@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Offers & Sale | StyleAura</title>
+    <link rel="stylesheet"
+          href="style.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* =========================================
+           GLOBAL
+        ========================================= */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #111;
+            background: #fff;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        /* =========================================
+           HEADER
+        ========================================= */
+        header {
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        .logo span {
+            font-style: italic;
+        }
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+        nav a {
+            font-size: 14px;
+            transition: .3s;
+        }
+        nav a:hover {
+            opacity: .55;
+        }
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header-icons i {
+            cursor: pointer;
+        }
+        .cart {
+            position: relative;
+        }
+        #cartCount {
+            position: absolute;
+            top: -10px;
+            right: -12px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #111;
+            color: white;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* =========================================
+           OFFER HERO
+        ========================================= */
+        .offer-hero {
+            min-height: 520px;
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.42),
+                    rgba(0,0,0,.42)
+                ),
+                url("images/offer-banner.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 30px;
+
+        }
+        .offer-hero-content {
+            max-width: 750px;
+        }
+        .offer-label {
+            font-size: 14px;
+            letter-spacing: 5px;
+            font-weight: bold;
+        }
+        .offer-hero h1 {
+            font-size: 70px;
+            line-height: 1;
+            margin: 20px 0;
+        }
+        .offer-hero h1 span {
+            font-style: italic;
+        }
+        .offer-hero p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .offer-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 38px;
+            background: white;
+            color: #111;
+            font-weight: bold;
+            transition: .3s;
+        }
+        .offer-btn:hover {
+            background: #111;
+            color: white;
+        }
+        /* =========================================
+           COUNTDOWN
+        ========================================= */
+        .countdown-section {
+            padding: 70px 7%;
+            text-align: center;
+            background: #111;
+            color: white;
+        }
+        .countdown-section h2 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+        .countdown-section p {
+            color: #ccc;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 35px;
+        }
+        .time-box {
+            width: 100px;
+            padding: 18px 10px;
+            background: white;
+            color: #111;
+        }
+        .time-box strong {
+            display: block;
+            font-size: 32px;
+        }
+        .time-box span {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #777;
+        }
+        /* =========================================
+           OFFER CATEGORIES
+        ========================================= */
+        .offer-categories {
+            padding: 75px 7%;
+        }
+        .offer-categories h2 {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 40px;
+        }
+        .offer-category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .offer-category {
+            position: relative;
+            overflow: hidden;
+            height: 360px;
+        }
+        .offer-category img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+        .offer-category:hover img {
+            transform: scale(1.07);
+        }
+        .offer-category-content {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 60px 25px 25px;
+            color: white;
+            background: linear-gradient(
+                transparent,
+                rgba(0,0,0,.85)
+            );
+        }
+        .offer-category-content h3 {
+            font-size: 28px;
+            margin: 0 0 7px;
+        }
+        .offer-category-content p {
+            margin: 0 0 15px;
+        }
+        .category-link {
+            text-decoration: underline;
+            font-size: 13px;
+        }
+        /* =========================================
+           DEAL PRODUCTS
+        ========================================= */
+        .deals-section {
+            padding: 75px 7%;
+            background: #faf8f7;
+        }
+        .deals-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .deals-heading h2 {
+            font-size: 34px;
+        }
+        .deals-heading a {
+            text-decoration: underline;
+        }
+        .deal-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .deal-card {
+            background: white;
+            overflow: hidden;
+        }
+        .deal-image {
+            height: 390px;
+            position: relative;
+            overflow: hidden;
+        }
+        .deal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .4s;
+        }
+        .deal-card:hover .deal-image img {
+            transform: scale(1.06);
+        }
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #c74e61;
+            color: white;
+            padding: 7px 12px;
+            font-size: 11px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        .deal-heart {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            z-index: 3;
+        }
+        .deal-heart:hover {
+            color: #c74e61;
+        }
+        .deal-cart {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            padding: 13px;
+            border: none;
+            background: #111;
+            color: white;
+            cursor: pointer;
+            transform: translateY(70px);
+            transition: .3s;
+        }
+        .deal-card:hover .deal-cart {
+            transform: translateY(0);
+        }
+        .deal-info {
+            padding: 15px;
+        }
+        .deal-info small {
+            color: #777;
+        }
+        .deal-info h3 {
+            font-size: 17px;
+            margin: 7px 0;
+        }
+        .deal-stars {
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .deal-price {
+            font-size: 17px;
+            font-weight: bold;
+        }
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-weight: normal;
+        }
+        /* =========================================
+           COUPON SECTION
+        ========================================= */
+        .coupon-section {
+            padding: 75px 7%;
+        }
+        .coupon-section h2 {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 40px;
+        }
+        .coupon-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .coupon {
+            border: 2px dashed #111;
+            padding: 30px;
+            text-align: center;
+            background: #fff;
+        }
+        .coupon i {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+        .coupon h3 {
+            font-size: 25px;
+            margin: 10px 0;
+        }
+        .coupon p {
+            color: #777;
+            line-height: 1.5;
+        }
+        .coupon-code {
+            display: inline-block;
+            padding: 10px 18px;
+            background: #111;
+            color: white;
+            margin-top: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+        /* =========================================
+           BIG DEAL
+        ========================================= */
+        .big-deal {
+            margin: 20px 7% 75px;
+            min-height: 400px;
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.45),
+                    rgba(0,0,0,.45)
+                ),
+                url("images/big-sale.jpg");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .big-deal h2 {
+            font-size: 55px;
+            margin: 15px 0;
+        }
+        .big-deal p {
+            font-size: 17px;
+        }
+        /* =========================================
+           FEATURES
+        ========================================= */
+        .offer-features {
+            padding: 70px 7%;
+        }
+        .offer-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .offer-feature {
+            text-align: center;
+            padding: 25px;
+        }
+        .offer-feature i {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+        .offer-feature h3 {
+            margin-bottom: 8px;
+        }
+        .offer-feature p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        /* =========================================
+           NEWSLETTER
+        ========================================= */
+        .newsletter {
+            padding: 70px 7%;
+            background: #f5f2ef;
+            text-align: center;
+        }
+        .newsletter h2 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+        .newsletter p {
+            color: #666;
+        }
+        .newsletter form {
+            display: flex;
+            justify-content: center;
+            max-width: 550px;
+            margin: 25px auto 0;
+        }
+        .newsletter input {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+        .newsletter button {
+            padding: 15px 25px;
+            background: #111;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        /* =========================================
+           FOOTER
+        ========================================= */
+        footer {
+            background: #111;
+            color: white;
+            padding: 60px 7% 0;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-container h2 {
+            margin-top: 0;
+        }
+        .footer-container h3 {
+            margin-top: 0;
+        }
+        .footer-container p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+        .footer-container a {
+            display: block;
+            color: #aaa;
+            margin: 10px 0;
+        }
+        .footer-container a:hover {
+            color: white;
+        }
+        .social {
+            display: flex;
+            gap: 18px;
+        }
+        .social i {
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .copyright {
+            margin-top: 50px;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+        }
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+        @media(max-width: 1000px) {
+            nav {
+                gap: 15px;
+            }
+            .offer-hero h1 {
+                font-size: 55px;
+            }
+            .deal-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .offer-category-grid,
+            .coupon-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .offer-feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media(max-width: 600px) {
+            header {
+                padding: 15px 5%;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            nav {
+                order: 3;
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+            .header-icons {
+                gap: 12px;
+            }
+            .offer-hero {
+                min-height: 450px;
+            }
+            .offer-hero h1 {
+                font-size: 43px;
+            }
+            .countdown {
+                gap: 8px;
+            }
+            .time-box {
+                width: 70px;
+            }
+            .time-box strong {
+                font-size: 24px;
+            }
+            .offer-category-grid,
+            .deal-grid,
+            .coupon-grid,
+            .offer-feature-grid,
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .deals-heading {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .big-deal {
+                margin: 20px 5% 50px;
+            }
+            .big-deal h2 {
+                font-size: 38px;
+            }
+            .newsletter form {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- =========================================
+     HEADER
+========================================= -->
+<header>
+    <div class="logo">
+        Style<span>Aura</span>
+    </div>
+    <nav>
+        <a href="index.html"> Home </a>
+        <a href="shop.html"> Shop </a>
+        <a href="men.html"> Men </a>
+        <a href="women.html"> Women </a>
+        <a href="kids.html"> Kids </a>
+        <a href="offers.html" style="font-weight:bold;"> Offers </a>
+    </nav>
+    <div class="header-icons">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-regular fa-heart"></i>
+        <div class="cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span id="cartCount">
+                0
+            </span>
+        </div>
+        <i class="fa-regular fa-user"></i>
+    </div>
+</header>
+<!-- =========================================
+     HERO
+========================================= -->
+<section class="offer-hero">
+    <div class="offer-hero-content">
+        <div class="offer-label">
+            STYLEAURA SALE
+        </div>
+        <h1>
+            Up To
+            <span>50% OFF</span>
+        </h1>
+        <p>
+            Refresh your wardrobe with our
+            biggest fashion deals of the season.
+        </p>
+        <a
+            href="#deals"
+            class="offer-btn">
+            SHOP THE SALE
+        </a>
+    </div>
+</section>
+<!-- =========================================
+     COUNTDOWN
+========================================= -->
+<section class="countdown-section">
+    <h2>
+        Flash Sale Ends Soon
+    </h2>
+    <p>
+        Don't miss our limited-time fashion deals.
+    </p>
+    <div class="countdown">
+        <div class="time-box">
+            <strong id="days">
+                00
+            </strong>
+            <span>
+                Days
+            </span>
+        </div>
+        <div class="time-box">
+            <strong id="hours">
+                00
+            </strong>
+            <span>
+                Hours
+            </span>
+        </div>
+        <div class="time-box">
+            <strong id="minutes">
+                00
+            </strong>
+            <span>
+                Minutes
+            </span>
+        </div>
+        <div class="time-box">
+            <strong id="seconds">
+                00
+            </strong>
+            <span>
+                Seconds
+            </span>
+        </div>
+    </div>
+</section>
+<!-- =========================================
+     SALE CATEGORIES
+========================================= -->
+<section class="offer-categories">
+    <h2>
+        Shop Deals By Category
+    </h2>
+    <div class="offer-category-grid">
+        <div class="offer-category">
+            <img
+                src="images/men-sale.jpg"
+                alt="Men Sale">
+            <div class="offer-category-content">
+                <h3>
+                    Men's Sale
+                </h3>
+                <p>
+                    Up to 40% OFF
+                </p>
+                <a
+                    href="men.html"
+                    class="category-link">
+                    Shop Men →
+                </a>
+            </div>
+        </div>
+        <div class="offer-category">
+            <img
+                src="images/women-sale.jpg"
+                alt="Women Sale">
+            <div class="offer-category-content">
+                <h3>
+                    Women's Sale
+                </h3>
+                <p>
+                    Up to 50% OFF
+                </p>
+                <a
+                    href="women.html"
+                    class="category-link">
+                    Shop Women →
+                </a>
+            </div>
+        </div>
+        <div class="offer-category">
+            <img
+                src="images/kids-sale.jpg"
+                alt="Kids Sale">
+            <div class="offer-category-content">
+                <h3>
+                    Kids' Sale
+                </h3>
+                <p>
+                    Up to 40% OFF
+                </p>
+                <a
+                    href="kids.html"
+                    class="category-link">
+                    Shop Kids →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =========================================
+     DEAL PRODUCTS
+========================================= -->
+<section
+    class="deals-section"
+    id="deals">
+    <div class="deals-heading">
+        <h2> Hot Deals </h2>
+        <a href="shop.html">
+            View All Products →
+        </a>
+    </div>
+    <div class="deal-grid">
+        <!-- DEAL 1 -->
+        <div class="deal-card">
+            <div class="deal-image">
+                <span class="discount-badge">
+                    40% OFF
+                </span>
+                <button
+                    class="deal-heart"
+                    onclick="toggleWishlist(this)">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+                <img
+                    src="images/sale-dress.jpg"
+                    alt="Sale Dress">
+                <button
+                    class="deal-cart"
+                    onclick="addToCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart
+                </button>
+            </div>
+            <div class="deal-info">
+                <small>
+                    Women
+                </small>
+                <h3>
+                    Premium Summer Dress
+                </h3>
+                <div class="deal-stars">
+                    ★★★★★
+                </div>
+                <div class="deal-price">
+                    ₹1,799
+                    <span class="old-price">
+                        ₹2,999
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- DEAL 2 -->
+        <div class="deal-card">
+            <div class="deal-image">
+                <span class="discount-badge">
+                    35% OFF
+                </span>
+                <button
+                    class="deal-heart"
+                    onclick="toggleWishlist(this)">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+                <img
+                    src="images/sale-shirt.jpg"
+                    alt="Sale Shirt">
+                <button
+                    class="deal-cart"
+                    onclick="addToCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart
+                </button>
+            </div>
+            <div class="deal-info">
+                <small>
+                    Men
+                </small>
+                <h3>
+                    Premium Casual Shirt
+                </h3>
+                <div class="deal-stars">
+                    ★★★★★
+                </div>
+                <div class="deal-price">
+                    ₹1,299
+                    <span class="old-price">
+                        ₹1,999
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- DEAL 3 -->
+        <div class="deal-card">
+            <div class="deal-image">
+                <span class="discount-badge">
+                    50% OFF
+                </span>
+                <button
+                    class="deal-heart"
+                    onclick="toggleWishlist(this)">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+                <img
+                    src="images/sale-jeans.jpg"
+                    alt="Sale Jeans">
+                <button
+                    class="deal-cart"
+                    onclick="addToCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart
+                </button>
+            </div>
+            <div class="deal-info">
+                <small>
+                    Women
+                </small>
+                <h3>
+                    High Waist Denim Jeans
+                </h3>
+                <div class="deal-stars">
+                    ★★★★☆
+                </div>
+                <div class="deal-price">
+                    ₹1,099
+                    <span class="old-price">
+                        ₹2,199
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- DEAL 4 -->
+        <div class="deal-card">
+            <div class="deal-image">
+                <span class="discount-badge">
+                    30% OFF
+                </span>
+                <button
+                    class="deal-heart"
+                    onclick="toggleWishlist(this)">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+                <img
+                    src="images/sale-kids.jpg"
+                    alt="Kids Sale">
+                <button
+                    class="deal-cart"
+                    onclick="addToCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Add To Cart
+                </button>
+            </div>
+            <div class="deal-info">
+                <small>
+                    Kids
+                </small>
+                <h3>
+                    Kids Casual Outfit
+                </h3>
+                <div class="deal-stars">
+                    ★★★★★
+                </div>
+                <div class="deal-price">
+                    ₹899
+                    <span class="old-price">
+                        ₹1,299
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =========================================
+     COUPONS
+========================================= -->
+<section class="coupon-section">
+    <h2>
+        Exclusive Coupons
+    </h2>
+    <div class="coupon-grid">
+        <div class="coupon">
+            <i class="fa-solid fa-ticket"></i>
+            <h3>
+                10% OFF
+            </h3>
+            <p>
+                Get 10% off on your first order.
+            </p>
+            <span
+                class="coupon-code"
+                onclick="copyCoupon('WELCOME10')">
+                WELCOME10
+            </span>
+        </div>
+        <div class="coupon">
+            <i class="fa-solid fa-tags"></i>
+            <h3>
+                ₹500 OFF
+            </h3>
+            <p>
+                Get ₹500 OFF on orders above ₹3,999.
+            </p>
+            <span
+                class="coupon-code"
+                onclick="copyCoupon('SAVE500')">
+                SAVE500
+            </span>
+        </div>
+        <div class="coupon">
+            <i class="fa-solid fa-crown"></i>
+            <h3>
+                20% OFF
+            </h3>
+            <p>
+                Special discount for StyleAura members.
+            </p>
+            <span
+                class="coupon-code"
+                onclick="copyCoupon('STYLE20')">
+                STYLE20
+            </span>
+        </div>
+    </div>
+</section>
+<!-- =========================================
+     BIG SALE
+========================================= -->
+<section class="big-deal">
+    <div>
+        <p> LIMITED TIME ONLY </p>
+        <h2> EXTRA 20% OFF </h2>
+        <p>
+            Use code
+            <strong>EXTRA20</strong>
+            at checkout.</p>
+        <a
+            href="shop.html"
+            class="offer-btn"> SHOP NOW </a>
+    </div>
+</section>
+<!-- =========================================
+     FEATURES
+========================================= -->
+<section class="offer-features">
+    <div class="offer-feature-grid">
+        <div class="offer-feature">
+            <i class="fa-solid fa-truck"></i>
+            <h3> Free Shipping </h3>
+            <p> Free delivery on orders above ₹999. </p>
+        </div>
+        <div class="offer-feature">
+            <i class="fa-solid fa-rotate-left"></i>
+            <h3> Easy Returns </h3>
+            <p> Simple and hassle-free returns. </p>
+        </div>
+        <div class="offer-feature">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3> Secure Payment </h3>
+            <p> Safe and secure online payments. </p>
+        </div>
+        <div class="offer-feature">
+            <i class="fa-solid fa-headset"></i>
+            <h3> 24/7 Support </h3>
+            <p> Our support team is always available. </p>
+        </div>
+    </div>
+</section>
+<!-- =========================================
+     NEWSLETTER
+========================================= -->
+<section class="newsletter">
+    <h2> Join StyleAura </h2>
+    <p> Subscribe and get 10% OFF your first order. </p>
+    <form
+        onsubmit="subscribeNewsletter(event)">
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required>
+        <button type="submit"> Subscribe </button>
+    </form>
+</section>
+<!-- =========================================
+     FOOTER
+========================================= -->
+<footer>
+    <div class="footer-container">
+        <div>
+            <h2> StyleAura </h2>
+            <p>
+                Modern fashion for modern lifestyles.
+            </p>
+        </div>
+        <div>
+            <h3>
+                Shop
+            </h3>
+            <a href="men.html">
+                Men
+            </a>
+            <a href="women.html">
+                Women
+            </a>
+            <a href="kids.html">
+                Kids
+            </a>
+            <a href="offers.html">
+                Offers
+            </a>
+        </div>
+        <div>
+            <h3>
+                Customer Care
+            </h3>
+            <a href="contact.html">
+                Contact
+            </a>
+            <a href="orders.html">
+                Track Order
+            </a>
+            <a href="#">
+                Shipping
+            </a>
+            <a href="#">
+                Returns
+            </a>
+        </div>
+        <div>
+            <h3>
+                Follow Us
+            </h3>
+            <div class="social">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        © 2026 StyleAura. All Rights Reserved.
+    </div>
+</footer>
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+<script>
+    /* =========================================
+       CART
+    ========================================= */
+    let cartCount =
+        parseInt(
+            localStorage.getItem("cartCount")
+        ) || 0;
+    document.getElementById(
+        "cartCount"
+    ).innerText = cartCount;
+    function addToCart() {
+        cartCount++;
+        localStorage.setItem(
+            "cartCount",
+            cartCount
+        );
+        document.getElementById(
+            "cartCount"
+        ).innerText = cartCount;
+        alert(
+            "Product added to cart 🛍️"
+        );
+    }
+    /* =========================================
+       WISHLIST
+    ========================================= */
+    function toggleWishlist(button) {
+        const icon =
+            button.querySelector("i");
+        icon.classList.toggle(
+            "fa-regular"
+        );
+        icon.classList.toggle(
+            "fa-solid"
+        );
+        if (
+            icon.classList.contains(
+                "fa-solid"
+            )
+        ) {
+            button.style.color =
+                "#c74e61";
+        }
+        else {
+            button.style.color =
+                "#111";
+        }
+    }
+    /* =========================================
+       COUNTDOWN TIMER
+    ========================================= */
+    let saleEnd =
+        localStorage.getItem("saleEnd");
+    if (!saleEnd) {
+        saleEnd =
+            new Date().getTime()
+            +
+            (2 * 24 * 60 * 60 * 1000)
+            +
+            (12 * 60 * 60 * 1000);
+        localStorage.setItem(
+            "saleEnd",
+            saleEnd
+        );
+    }
+    function updateCountdown() {
+        const now =
+            new Date().getTime();
+        const distance =
+            saleEnd - now;
+        if (distance <= 0) {
+            document.getElementById(
+                "days"
+            ).innerText = "00";
+            document.getElementById(
+                "hours"
+            ).innerText = "00";
+            document.getElementById(
+                "minutes"
+            ).innerText = "00";
+            document.getElementById(
+                "seconds"
+            ).innerText = "00";
+            return;
+        }
+        const days =
+            Math.floor(
+                distance /
+                (1000 * 60 * 60 * 24)
+            );
+        const hours =
+            Math.floor(
+                (distance %
+                    (1000 * 60 * 60 * 24))
+                /
+                (1000 * 60 * 60)
+            );
+        const minutes =
+            Math.floor(
+                (distance %
+                    (1000 * 60 * 60))
+                /
+                (1000 * 60)
+            );
+        const seconds =
+            Math.floor(
+                (distance %
+                    (1000 * 60))
+                /
+                1000
+            );
+        document.getElementById(
+            "days"
+        ).innerText =
+            String(days).padStart(2, "0");
+        document.getElementById(
+            "hours"
+        ).innerText =
+            String(hours).padStart(2, "0");
+        document.getElementById(
+            "minutes"
+        ).innerText =
+            String(minutes).padStart(2, "0");
+        document.getElementById(
+            "seconds"
+        ).innerText =
+            String(seconds).padStart(2, "0");
+    }
+    updateCountdown();
+    setInterval(
+        updateCountdown,
+        1000
+    );
+    /* =========================================
+       COPY COUPON
+    ========================================= */
+    function copyCoupon(code) {
+        navigator.clipboard.writeText(code)
+            .then(function () {
+                alert(
+                    "Coupon code " +
+                    code +
+                    " copied! 🎉"
+                );
+            })
+            .catch(function () {
+
+                alert(
+                    "Coupon Code: " +
+                    code
+                );
+            });
+    }
+    /* =========================================
+       NEWSLETTER
+    ========================================= */
+    function subscribeNewsletter(event) {
+        event.preventDefault();
+        const email =
+            document.getElementById(
+                "email"
+            ).value;
+        if (email) {
+            alert(
+                "Thank you for subscribing! 🎉"
+            );
+            document.getElementById(
+                "email"
+            ).value = "";
+        }
+    }
+</script>
+</body>
+</html>

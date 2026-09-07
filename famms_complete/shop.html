@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Shop | FAMMS</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" 
+        rel="stylesheet">
+        <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </head>
+<body>
+    <div id="header"></div>
+    <section class="page-banner">
+        <div class="container">
+            <p class="eyebrow">OUR COLLECTION</p>
+            <h1>Shop</h1>
+            <p><a href="index.html">Home</a> / Shop</p>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="shop-tools">
+                <input id="searchInput" type="search" placeholder="Search products...">
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                    <option value="kids">Kids</option>
+                </select>
+                <select id="sortSelect">
+                    <option value="default">Sort by</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
+                </select>
+            </div>
+<div class="products" id="allProducts"></div>
+</div>
+</section>
+<div id="footer"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
