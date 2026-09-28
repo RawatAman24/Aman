@@ -1,0 +1,197 @@
+/* ==============================
+   Global Styles
+================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #667eea,
+        #764ba2
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+/* ==============================
+   Profile Container
+================================= */
+.profile-container {
+    width: 100%;
+    max-width: 420px;
+}
+/* ==============================
+   Profile Card
+================================= */
+.profile-card {
+    background: #ffffff;
+    width: 100%;
+    padding: 35px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.20);
+    transition: 0.3s ease;
+}
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.25);
+}
+/* ==============================
+   Profile Image
+================================= */
+.profile-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.profile-image img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #667eea;
+    padding: 3px;
+    background: white;
+}
+/* ==============================
+   Profile Information
+================================= */
+.profile-info h1 {
+    font-size: 26px;
+    color: #222;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+.username {
+    color: #667eea;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+.role {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+.bio {
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+/* ==============================
+   Statistics
+================================= */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 20px 0;
+    margin-bottom: 25px;
+}
+.stat {
+    flex: 1;
+}
+.stat h2 {
+    color: #222;
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+.stat span {
+    color: #888;
+    font-size: 13px;
+}
+/* ==============================
+   Buttons
+================================= */
+.buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+.buttons button {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+/* Follow Button */
+.follow-btn {
+    border: none;
+    background: #667eea;
+    color: white;
+}
+.follow-btn:hover {
+    background: #5568d8;
+    transform: translateY(-2px);
+}
+/* Message Button */
+.message-btn {
+    border: 2px solid #667eea;
+    background: white;
+    color: #667eea;
+}
+.message-btn:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+/* ==============================
+   Social Links
+================================= */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.social-links a {
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+.social-links a:hover {
+    color: #667eea;
+}
+/* ==============================
+   Responsive Design
+================================= */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    .profile-card {
+        padding: 30px 20px;
+    }
+    .profile-info h1 {
+        font-size: 22px;
+    }
+    .stats {
+        padding: 15px 0;
+    }
+    .stat h2 {
+        font-size: 18px;
+    }
+    .stat span {
+        font-size: 12px;
+    }
+    .buttons {
+        flex-direction: column;
+    }
+    .social-links {
+        gap: 12px;
+    }
+}
